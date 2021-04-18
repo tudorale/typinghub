@@ -1,0 +1,32 @@
+.informations {
+  color: white;
+  margin: 20px;
+  margin-top: 90px;
+  padding-right: 30px;
+  h1 {
+    font-size: 1.65rem;
+    font-weight: 500;
+  }
+  p {
+    margin-top: 10px;
+    font-size: 1.07rem;
+    span {
+      color: $text-color;
+    }
+    .formula {
+      color: white;
+      background-color: $text-color;
+    }
+  }
+  h2 {
+    font-size: 1.4rem;
+    margin-top: 15px;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .informations {
+    padding-right: 5px;
+  }
+}

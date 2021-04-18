@@ -1,0 +1,229 @@
+$input-color: $card-background;
+
+.accountSettingsWrapper {
+  display: none;
+  .subWrapper {
+    position: relative;
+    top: 10px;
+    color: white;
+    margin: 20px;
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 500;
+    }
+    p {
+      font-size: 1.15rem;
+      margin-top: 20px;
+      font-weight: 300;
+      margin-left: 20px;
+      span {
+        font-weight: 600;
+        color: $text-color;
+      }
+    }
+    h1:nth-child(7) {
+      margin-top: 40px;
+    }
+    .profilePicture {
+      margin-left: 20px;
+      position: relative;
+      margin-top: 20px;
+      p {
+        margin-left: 0px;
+      }
+      .profileImageSettings {
+        width: 150px;
+        height: 150px;
+        margin-top: 10px;
+      }
+      input {
+        margin-top: 15px;
+      }
+      button {
+        @extend %button-styles;
+        margin-top: 10px;
+      }
+      .status {
+        color: rgb(134, 134, 134);
+      }
+    }
+    .status {
+      color: rgb(134, 134, 134);
+    }
+    .dLabel {
+      margin-top: 20px;
+      margin-left: 30px;
+      font-size: 1rem;
+      background-color: $input-color;
+      transition: all 400ms linear;
+      position: absolute;
+      color: rgb(85, 85, 85);
+    }
+    textarea {
+      margin-left: 20px;
+      margin-top: 10px;
+      resize: none;
+      width: 400px;
+      height: 200px;
+      font-size: 1.02rem;
+      outline: none;
+      border-radius: 5px;
+      background-color: $input-color;
+      border: none;
+      padding: 10px;
+      padding-top: 27px;
+      color: white;
+    }
+    .description span {
+      padding-right: 30px;
+      position: relative;
+      word-break: break-all;
+    }
+    .descriptionSpinner {
+      position: relative;
+      top: 4px;
+      left: 250px;
+      display: none;
+      margin-bottom: -35px;
+      @extend %loadingSpinner;
+    }
+
+    select {
+      margin-left: 20px;
+      width: 170px;
+      margin-top: 15px;
+      height: 35px;
+      font-size: 1rem;
+      outline: none;
+      border: none;
+      border-radius: 3px;
+      padding-left: 5px;
+      background-color: $main-color;
+      color: white;
+    }
+
+    .asHeader {
+      margin-top: 30px;
+    }
+
+    .usernameButton {
+      @extend %button-styles;
+      margin-left: 20px;
+      font-size: 1rem !important;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .settingsContent {
+      display: flex;
+      margin-top: -5px;
+      margin-left: 20px;
+      flex-direction: column;
+      p {
+        font-size: 1.1rem;
+      }
+      .newUsername,
+      .newEmail,
+      .newPassword,
+      .deleteAccount {
+        position: relative;
+        margin-top: 10px;
+        form {
+          display: flex;
+          flex-direction: column;
+          p {
+            margin-left: 0px;
+          }
+          label {
+            margin-top: -10px;
+            font-size: 1rem;
+            transition: all 400ms linear;
+            position: relative;
+            top: 30px;
+            left: 10px;
+            color: rgb(85, 85, 85);
+          }
+          input {
+            width: 300px;
+            border: none;
+            padding-top: 20px;
+            height: 40px;
+            transition: all 300ms linear;
+            border-radius: 3px;
+            outline: none;
+            background-color: $input-color;
+            color: white;
+            padding-left: 10px;
+            font-size: 1rem;
+          }
+          button {
+            @extend %button-styles;
+            width: 180px;
+            margin-top: 10px;
+            font-size: 1.05rem !important;
+            padding: 0 !important;
+          }
+          .loadingSpinner {
+            @extend %loadingSpinner;
+            position: relative;
+            top: -40px;
+            left: 190px;
+            margin-bottom: -35px;
+            display: none;
+          }
+        }
+      }
+
+      .deleteAccount {
+        padding-right: 20px;
+        p {
+          margin-left: 0px;
+        }
+        button {
+          @extend %button-styles;
+          margin-top: 20px;
+          font-size: 1.05rem !important;
+        }
+      }
+    }
+  }
+}
+
+.networkSpinner {
+  @extend %loadingSpinner;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+  .accountSettingsWrapper .subWrapper {
+    padding-right: 20px;
+    margin-left: 10px;
+  }
+  .accountSettingsWrapper .subWrapper p {
+    margin-left: 10px;
+  }
+
+  .accountSettingsWrapper .subWrapper .profilePicture,
+  .accountSettingsWrapper .subWrapper .usernameButton,
+  .accountSettingsWrapper .subWrapper select,
+  .accountSettingsWrapper .subWrapper .settingsContent {
+    margin-left: 10px;
+  }
+  .accountSettingsWrapper .subWrapper textarea {
+    width: 100%;
+    margin-left: 10px;
+  }
+
+  .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount {
+    padding-right: 0px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .accountSettingsWrapper .subWrapper .settingsContent .newUsername form,
+  .accountSettingsWrapper .subWrapper .settingsContent .newEmail form,
+  .accountSettingsWrapper .subWrapper .settingsContent .newPassword form {
+    input {
+      width: 250px;
+    }
+  }
+}

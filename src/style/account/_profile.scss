@@ -1,0 +1,121 @@
+.profileWrapper {
+  .grid {
+    margin: 20px;
+    .first-section {
+      display: grid;
+      grid-template-columns: 250px auto;
+      grid-template-rows: auto;
+      grid-template-areas: "image userInfo";
+      img {
+        width: 250px;
+        height: 250px;
+        grid-area: image;
+      }
+      .userInfo {
+        grid-area: userInfo;
+        margin-left: 20px;
+        color: white;
+        h1 {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 10px;
+          .usern {
+            font-size: 1.85rem;
+            font-weight: 500;
+            word-break: break-all;
+            width: fit-content;
+            padding-right: 15px;
+          }
+
+          .jtId {
+            font-size: 1.1rem;
+            color: rgb(170, 170, 170);
+            margin-top: 9px;
+            position: relative;
+          }
+
+          img {
+            width: 53px;
+            height: 25px;
+            border-radius: 3px;
+            margin-right: 15px;
+            position: relative;
+            top: 6px;
+          }
+        }
+        .descriptionProfile {
+          margin-top: 10px;
+          font-size: 1.05rem;
+          word-wrap: break-word;
+          word-break: break-all;
+          color: rgb(170, 170, 170);
+        }
+        .pointsProfile {
+          position: relative;
+          top: 10px;
+          font-size: 1.05rem;
+        }
+      }
+    }
+
+    .second-section {
+      color: white;
+      margin-top: 25px;
+      margin-bottom: 50px;
+      h1 {
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+      p {
+        font-size: 1.1rem;
+        margin-top: 10px;
+        span {
+          font-weight: 600;
+          color: $text-color;
+        }
+      }
+      .profileNote,
+      .wantPro {
+        margin-top: 20px;
+        a {
+          color: $text-color;
+        }
+      }
+      .wantPro {
+        margin-top: 7px;
+      }
+      .moreStats {
+        font-size: 1.4rem;
+        margin-top: 25px;
+      }
+
+      .restriction {
+        margin-top: 20px;
+      }
+      .graphic {
+        margin-top: 70px;
+        margin-left: -15px;
+      }
+    }
+  }
+}
+
+.loadingSpinnerProfile {
+  @extend %loadingSpinner;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 730px) {
+  .profileWrapper .grid .first-section {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "image"
+      "userInfo";
+    grid-row-gap: 20px;
+  }
+  .profileWrapper .grid .first-section .userInfo {
+    margin-left: 0px;
+    margin-bottom: 30px;
+  }
+}

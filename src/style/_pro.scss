@@ -1,0 +1,117 @@
+.loadingSpinnerPro {
+  @extend %loadingSpinner;
+  position: relative;
+  top: 60px;
+  left: 20px;
+}
+
+.loginBox {
+  position: absolute;
+  color: white;
+  top: 80px;
+  left: 20px;
+  display: none;
+  form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    justify-content: space-between;
+    p {
+      font-size: 1.04rem;
+      padding-right: 50px;
+    }
+    div {
+      label {
+        position: absolute;
+        font-size: 1rem;
+        margin: 13px;
+        margin-left: 10px;
+        margin-top: 15px;
+        color: #8c8b8f;
+        transition: all 300ms linear;
+      }
+      input {
+        outline: none;
+        border: none;
+        border-radius: 3px;
+        font-size: 1.06rem;
+        background-color: $card-background;
+        padding: 10px;
+        padding-top: 20px;
+        color: white;
+      }
+    }
+    a {
+      color: $text-color;
+      font-size: 1rem;
+      width: fit-content;
+    }
+    button {
+      @extend %button-styles;
+      font-size: 1.05rem !important;
+      height: 35px !important;
+      width: fit-content;
+    }
+  }
+}
+
+.proBox {
+  color: white;
+  font-size: 1rem;
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  margin-bottom: 30px;
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+    margin-top: 20px;
+  }
+  p {
+    margin-top: 10px;
+    img {
+      width: 40px;
+      height: 20px;
+      border-radius: 3px;
+      position: absolute;
+      margin-left: 15px;
+    }
+  }
+  .paypal {
+    margin-top: 10px;
+    .ppButtons {
+      width: 400px;
+      margin-top: 20px;
+    }
+    .redirectedButtons {
+      display: flex;
+      margin-top: 0px;
+
+      a button {
+        @extend %button-styles;
+        font-size: 1.05rem !important;
+        margin-right: 20px;
+      }
+      a button:nth-child(1) {
+        margin-left: 0px;
+      }
+    }
+    .ppStatus {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .proBox {
+    padding-right: 10px;
+    width: 100%;
+  }
+  .proBox .paypal .ppButtons {
+    width: 100%;
+    padding-right: 20px;
+  }
+}

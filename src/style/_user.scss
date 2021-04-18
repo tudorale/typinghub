@@ -1,0 +1,108 @@
+.userPageWrapper {
+  color: white;
+  font-size: 1rem;
+  .userPageContent {
+    margin: 20px;
+    .userPageStatus {
+      font-size: 1.2rem;
+    }
+
+    .userPageGrid {
+      .userSectionOne {
+        display: grid;
+        grid-template-columns: 250px auto;
+        grid-template-rows: auto;
+        grid-template-areas: "image userInfo";
+        img {
+          width: 250px;
+          height: 250px;
+          grid-area: image;
+        }
+        .userPageInfo {
+          grid-area: userInfo;
+          margin-left: 20px;
+          color: white;
+          h1 {
+            font-size: 1.85rem;
+            font-weight: 500;
+            span {
+              font-size: 1.1rem;
+              color: rgb(170, 170, 170);
+              margin-left: 15px;
+              position: relative;
+            }
+
+            img {
+              width: 53px;
+              height: 25px;
+              margin-left: 15px;
+              border-radius: 3px;
+              position: relative;
+              top: 2px;
+            }
+          }
+          .userPageDescription {
+            margin-top: 10px;
+            font-size: 1.05rem;
+            color: rgb(170, 170, 170);
+          }
+          .userPagePoints {
+            position: relative;
+            top: 10px;
+            font-size: 1.05rem;
+          }
+        }
+      }
+
+      .userSectionTwo {
+        color: white;
+        margin-top: 25px;
+        h1 {
+          font-size: 1.6rem;
+          font-weight: 500;
+        }
+        p {
+          font-size: 1.1rem;
+          margin-top: 10px;
+          span {
+            font-weight: 600;
+            color: $text-color;
+          }
+        }
+
+        .restriction {
+          margin-top: 20px;
+        }
+        .graphic {
+          margin-top: 70px;
+          margin-left: -15px;
+        }
+      }
+    }
+  }
+}
+
+.userPageSpinner {
+  @extend %loadingSpinner;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+  .userPageWrapper .userPageContent .userPageGrid .userSectionOne {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "image"
+      "userInfo";
+  }
+
+  .userPageWrapper
+    .userPageContent
+    .userPageGrid
+    .userSectionOne
+    .userPageInfo {
+    margin-left: 0px;
+    margin: 20px 0px;
+    padding-right: 10px;
+  }
+}

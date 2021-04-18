@@ -1,0 +1,917 @@
+@import "variables";
+
+.content {
+  .hero {
+    width: 100%;
+    height: 750px;
+    background-color: $background;
+    h1 {
+      font-size: 2.7rem;
+      color: white;
+      font-weight: 500;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      line-height: 60px;
+      top: 250px;
+      width: 800px;
+      left: 50%;
+      text-align: center;
+      span {
+        font-weight: 500;
+        color: $text-color;
+      }
+    }
+    &_buttons {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 430px;
+      left: 50%;
+      display: flex;
+      .heroButton {
+        width: 160px;
+        height: 45px;
+        background-color: $main-color;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        outline: none;
+        transition: all 300ms linear;
+        &:hover {
+          background-color: $text-color;
+        }
+        p {
+          display: inline-block;
+          color: white;
+          font-size: 1.3rem;
+          position: relative;
+          top: -15px;
+          left: 5px;
+        }
+        svg {
+          stroke: white;
+          display: inline-block;
+          position: relative;
+          width: 40px;
+          left: -15px;
+        }
+      }
+
+      .join {
+        margin-left: 50px;
+        svg {
+          width: 35px;
+        }
+      }
+
+      .sign {
+        width: 170px;
+        p {
+          left: -3px;
+        }
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .arrows {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 630px;
+      left: 50%;
+      display: flex;
+      .arrow {
+        margin: 15px;
+        animation: arrows 900ms linear infinite forwards alternate-reverse;
+      }
+      .arrow:nth-child(2) {
+        animation-duration: 700ms;
+      }
+      .arrow:nth-child(3) {
+        animation-duration: 1200ms;
+      }
+    }
+  }
+
+  .watermark {
+    z-index: 2;
+    position: relative;
+    letter-spacing: 30px;
+    font-size: 8rem;
+    transform: rotate(-30deg);
+    width: fit-content;
+    font-weight: 600;
+    color: #3b3b3b;
+    opacity: 0.3;
+    top: -150px;
+    left: 30px;
+  }
+
+  .subHero_content {
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+    .what {
+      h1 {
+        font-weight: 400;
+        font-size: 2.3rem;
+      }
+
+      .cards {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-column-gap: 70px;
+        grid-template-rows: auto;
+        margin-bottom: 50px;
+        text-align: start;
+        grid-template-areas: "card1 card2 card3";
+        .card {
+          h1 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+          }
+          p {
+            font-size: 1.1rem;
+          }
+          p span {
+            color: $text-color;
+            font-weight: 400;
+          }
+        }
+
+        .card-1 {
+          grid-area: card1;
+        }
+
+        .card-2 {
+          grid-area: card2;
+        }
+
+        .grid-3 {
+          grid-area: card3;
+        }
+      }
+    }
+
+    .what:before {
+      content: "W";
+      padding: 3px 20px;
+      z-index: -1;
+      background-color: #e8e8e8;
+      border-radius: 7px;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: #cecece;
+      position: absolute;
+      float: right;
+      margin-top: -100px;
+      margin-left: 300px;
+      transform: rotate(-40deg);
+    }
+
+    .addon {
+      font-weight: 400;
+      font-size: 2.2rem;
+      position: relative;
+      top: 80px;
+      padding: 0px 80px;
+      line-height: 60px;
+      span {
+        font-weight: 400;
+        color: $text-color;
+      }
+    }
+
+    #progress {
+      border-radius: 5px;
+      width: 700px;
+      height: 250px;
+      position: relative;
+      top: 160px;
+      transform: rotate(-10deg);
+    }
+
+    .addon:before {
+      content: "A";
+      padding: 3px 20px;
+      z-index: -1;
+      background-color: #e8e8e8;
+      border-radius: 7px;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: #cecece;
+      position: absolute;
+      float: left;
+      margin-top: -100px;
+      margin-left: -70px;
+      transform: rotate(40deg);
+    }
+
+    .about {
+      position: relative;
+      top: 250px;
+      h1 {
+        font-weight: 400;
+        font-size: 2.3rem;
+      }
+      p {
+        margin-top: 15px;
+        font-weight: 300;
+        font-size: 1.3rem;
+        span {
+          font-weight: 300;
+          color: $text-color;
+        }
+      }
+    }
+
+    .about:before {
+      content: "X";
+      padding: 3px 20px;
+      z-index: -1;
+      background-color: #e8e8e8;
+      border-radius: 7px;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: #cecece;
+      position: absolute;
+      float: right;
+      margin-top: -50px;
+      margin-left: 300px;
+      transform: rotate(-40deg);
+    }
+
+    .pro {
+      position: relative;
+      top: 360px;
+      h1 {
+        font-weight: 400;
+        font-size: 2.2rem;
+        span {
+          color: $text-color;
+          font-weight: 400;
+        }
+      }
+
+      .pro_content {
+        margin-top: 30px;
+        margin: 35px auto;
+        width: fit-content;
+        p {
+          font-size: 1.3rem;
+          text-align: start;
+        }
+      }
+
+      button {
+        width: 170px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        background-color: $main-color;
+        transition: all 300ms linear;
+        border-radius: 3px;
+        margin-top: 30px;
+        color: white;
+        height: 40px;
+        font-size: 1.1rem;
+        &:hover {
+          background-color: $text-color;
+        }
+      }
+    }
+
+    .pro:before {
+      content: "B";
+      padding: 3px 20px;
+      z-index: -1;
+      background-color: #e8e8e8;
+      border-radius: 7px;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: #cecece;
+      position: absolute;
+      float: left;
+      margin-top: -110px;
+      margin-left: -450px;
+      transform: rotate(40deg);
+    }
+
+    .contact {
+      position: relative;
+      top: 460px;
+      width: 80%;
+      margin: 0 auto;
+      h1 {
+        font-weight: 400;
+        font-size: 2.3rem;
+      }
+      p {
+        font-size: 1.3rem;
+        margin-top: 20px;
+        padding: 0px 20px;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto;
+        position: relative;
+        top: 40px;
+        padding: 0px 30px;
+        grid-column-gap: 25px;
+        grid-row-gap: 35px;
+        grid-template-areas:
+          "name email"
+          "message message"
+          "button .";
+        input {
+          height: 50px;
+          border: none;
+          border-radius: 5px;
+          border: 1px solid rgb(214, 214, 214);
+          background-color: white;
+          outline: none;
+          padding: 15px;
+          font-size: 1.1rem;
+          width: 100%;
+          font-weight: 400;
+          transition: all 300ms linear;
+        }
+        textarea {
+          border: none;
+          border-radius: 5px;
+          border: 1px solid rgb(214, 214, 214);
+          background-color: white;
+          width: 100%;
+          outline: none;
+          resize: none;
+          padding: 15px;
+          font-size: 1.1rem;
+          font-weight: 400;
+          height: 150px;
+          transition: all 300ms linear;
+        }
+        .label {
+          position: absolute;
+          font-size: 1.05rem;
+          font-weight: 400;
+          transition: all 300ms linear;
+          color: $text-color;
+          background-color: white;
+          z-index: 3;
+          margin-top: 13px;
+          margin-left: 15px;
+          width: fit-content;
+        }
+
+        .messageLabel {
+          margin-top: 10px;
+        }
+        .nameWrapper {
+          grid-area: name;
+        }
+        .emailWrapper {
+          grid-area: email;
+        }
+        .messageWrapper {
+          grid-area: message;
+        }
+        button {
+          grid-area: button;
+          width: 100px;
+          height: 40px;
+          border: none;
+          outline: none;
+          background-color: $main-color;
+          color: white;
+          font-size: 1rem;
+          border-radius: 3px;
+          cursor: pointer;
+          transition: all 300ms linear;
+          position: relative;
+          top: -15px;
+          text-align: center;
+          font-size: 1.15rem;
+          &:hover {
+            background-color: $text-color;
+          }
+        }
+      }
+      .emailstatus {
+        text-align: start;
+        margin-top: 10px;
+        margin-left: 7px;
+      }
+
+      .loading {
+        border: 6px solid rgb(236, 236, 236);
+        border-radius: 50%;
+        border-top: 6px solid $main-color;
+        width: 35px;
+        height: 35px;
+        position: relative;
+        z-index: 999;
+        transition: all 300ms ease-in;
+        left: 160px;
+        top: -15px;
+        opacity: 0;
+        -webkit-animation: spin 1s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+      }
+    }
+    .contact:before {
+      content: "U";
+      padding: 3px 20px;
+      z-index: -1;
+      background-color: #e8e8e8;
+      border-radius: 7px;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: #cecece;
+      position: absolute;
+      margin-top: -180px;
+      margin-left: 300px;
+      transform: rotate(40deg);
+    }
+
+    .contact:after {
+      content: "P";
+      padding: 3px 20px;
+      z-index: -1;
+      background-color: #e8e8e8;
+      border-radius: 7px;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: #cecece;
+      position: absolute;
+      margin-top: -500px;
+      margin-left: -440px;
+      transform: rotate(20deg);
+    }
+  }
+
+  .footer {
+    width: 100%;
+    height: 270px;
+    background-color: $background;
+    position: relative;
+    top: 650px;
+
+    .logo {
+      position: absolute;
+      color: white;
+      margin: 30px 0px 30px 15px;
+      font-size: 1.6rem;
+      font-weight: 500;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      span {
+        width: 2px;
+        height: 30px;
+        background-color: white;
+        position: absolute;
+        margin-left: 5px;
+        margin-top: 4px;
+        animation: logo 650ms infinite forwards alternate-reverse;
+      }
+    }
+
+    .rights {
+      position: relative;
+      color: white;
+      font-size: 1.05rem;
+      top: 235px;
+      left: 15px;
+      float: left;
+    }
+
+    .links {
+      position: relative;
+      font-size: 1.05rem;
+      top: 235px;
+      left: 40px;
+      width: fit-content;
+      display: inline;
+      a {
+        color: white;
+        cursor: pointer;
+      }
+      a:nth-child(2) {
+        margin-left: 30px;
+      }
+    }
+
+    .footer_buttons {
+      display: flex;
+      flex-direction: column;
+      margin: 30px;
+      margin-top: 10px;
+      position: absolute;
+      right: 0;
+
+      .footerButton {
+        width: 160px;
+        height: 45px;
+        background-color: $main-color;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        outline: none;
+        transition: all 300ms linear;
+        &:hover {
+          background-color: $text-color;
+        }
+        p {
+          display: inline-block;
+          color: white;
+          font-size: 1.3rem;
+          position: relative;
+          top: -15px;
+          left: 5px;
+        }
+        svg {
+          stroke: white;
+          display: inline-block;
+          position: relative;
+          width: 40px;
+          left: -15px;
+        }
+      }
+
+      .join {
+        margin-top: 40px;
+        svg {
+          width: 35px;
+        }
+      }
+
+      .sign {
+        p {
+          font-size: 1.15rem;
+          left: 2px;
+        }
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+// responsivness
+
+@media only screen and (max-width: 1110px) {
+  .content .subHero_content {
+    max-width: unset;
+    padding: 0px 2.5em;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .content .subHero_content .what .cards {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "card1 card2"
+      "card3 .";
+    grid-row-gap: 50px;
+    padding: 0px 1em;
+  }
+
+  .content .subHero_content .pro:before {
+    margin-left: -380px;
+  }
+
+  .content .subHero_content .contact:after {
+    margin-left: -390px;
+  }
+
+  .content .subHero_content .contact {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .content .hero h1 {
+    font-size: 2.6rem;
+    padding: 0px 1em;
+    line-height: unset;
+    width: fit-content;
+  }
+
+  .content .subHero_content .pro:before {
+    margin-left: -310px;
+  }
+
+  .content .subHero_content .contact:after {
+    margin-left: -300px;
+  }
+
+  .content .subHero_content .what:before {
+    margin-left: 200px;
+  }
+
+  .content .subHero_content .contact:before {
+    margin-left: 220px;
+  }
+
+  .content .subHero_content .about:before {
+    margin-left: 220px;
+  }
+
+  .content .footer .footer_buttons .join {
+    margin-top: 20px;
+  }
+
+  .content .footer .footer_buttons {
+    margin-top: -5px;
+  }
+  .content .footer .logo {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .content .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .content .subHero_content #progress {
+    display: none;
+  }
+
+  .content .subHero_content .about {
+    top: 180px;
+  }
+
+  .content .subHero_content .what h1,
+  .content .subHero_content .about h1,
+  .content .subHero_content .addon,
+  .content .subHero_content .pro h1,
+  .content .subHero_content .contact h1 {
+    font-size: 2rem;
+  }
+
+  .content .subHero_content .addon {
+    padding: 0px;
+  }
+
+  .content .subHero_content .addon:before {
+    margin-left: 0;
+  }
+
+  .content .subHero_content .what .cards .card h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .content .subHero_content .what .cards {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "card1"
+      "card2"
+      "card3";
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .content .footer {
+    height: 350px;
+  }
+
+  .content .footer .rights {
+    top: 270px;
+  }
+
+  .content .footer .links {
+    left: 15px;
+    top: 285px;
+    display: block;
+  }
+
+  .content .subHero_content .contact form {
+    padding: 0px;
+  }
+
+  .content .subHero_content .contact p {
+    padding: 0px;
+  }
+
+  .content .footer .footer_buttons {
+    left: 0;
+    margin-top: 60px;
+    margin-left: 15px;
+  }
+
+  .content .subHero_content .contact form {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    grid-row-gap: 40px;
+    grid-template-areas:
+      "name"
+      "email"
+      "message"
+      "button";
+  }
+
+  .content .subHero_content .contact:after {
+    margin-left: -210px;
+    margin-top: -670px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .content .subHero_content .pro:before {
+    margin-left: -200px;
+  }
+  .content .subHero_content .what:before {
+    margin-left: 120px;
+  }
+
+  .content .subHero_content .contact:before {
+    display: none;
+  }
+
+  .content .subHero_content .about:before {
+    margin-left: 120px;
+  }
+
+  .content .hero h1 {
+    font-size: 2.1rem;
+    padding: 0px 10px;
+  }
+
+  .content .hero .hero_buttons .join {
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .content .watermark {
+    display: none;
+  }
+
+  .content .subHero_content {
+    padding: 0px 15px;
+  }
+
+  .content .subHero_content .contact form {
+    padding: 0px;
+  }
+
+  .content .subHero_content .contact p {
+    padding: 0px;
+  }
+
+  .content .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .content .subHero_content {
+    margin-top: 170px;
+  }
+
+  .content .subHero_content .pro:before {
+    margin-left: -140px;
+  }
+
+  .content .subHero_content .contact:after {
+    margin-left: -180px;
+  }
+
+  .content .subHero_content .what:before {
+    margin-left: -180px;
+    margin-top: -120px;
+  }
+
+  .content .subHero_content .contact:before {
+    display: none;
+  }
+
+  .content .subHero_content .about:before {
+    margin-left: 30px;
+  }
+
+  .content .subHero_content .what h1,
+  .content .subHero_content .about h1,
+  .content .subHero_content .addon,
+  .content .subHero_content .pro h1,
+  .content .subHero_content .contact h1 {
+    font-size: 1.7rem;
+  }
+
+  .content .subHero_content .what .cards .card h1 {
+    font-size: 1.4rem;
+  }
+
+  .content .subHero_content .what .cards .card p {
+    font-size: 1.1rem;
+  }
+
+  .content .subHero_content .about p {
+    font-size: 1.15rem;
+  }
+
+  .content .subHero_content .pro .pro_content p {
+    font-size: 1.15rem;
+  }
+
+  .content .subHero_content .contact p {
+    font-size: 1.15rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .content .footer .footer_buttons .footerButton {
+    height: 42px;
+    width: 140px;
+    p {
+      font-size: 1.15rem;
+      top: -17px;
+    }
+
+    svg {
+      width: 35px;
+    }
+  }
+  .content .footer .footer_buttons .join svg {
+    width: 33px;
+  }
+
+  .content .hero .hero_buttons .heroButton {
+    height: 42px;
+    width: 140px;
+    p {
+      font-size: 1.15rem;
+      top: -17px;
+    }
+
+    svg {
+      width: 35px;
+    }
+  }
+
+  .content .hero .hero_buttons .join svg {
+    width: 33px;
+  }
+
+  .content .hero .hero_buttons .join {
+    width: 120px;
+    margin-left: 20px;
+  }
+
+  .content .subHero_content .contact:after {
+    margin-left: -140px;
+  }
+
+  .content .subHero_content .what:before {
+    margin-left: -130px;
+  }
+}
+// animations
+
+@keyframes arrows {
+  from {
+    transform: translateY(-55px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes logo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fromLeft {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

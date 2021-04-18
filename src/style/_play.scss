@@ -1,0 +1,783 @@
+.slowNetworkSpinner {
+  @extend %loadingSpinner;
+  margin: 20px;
+}
+
+.notLoggedIn {
+  margin: 20px;
+  display: none;
+  p {
+    color: white;
+    font-size: 1.2rem;
+    padding-right: 10px;
+  }
+
+  button {
+    @extend %button-styles;
+    margin-top: 15px;
+  }
+}
+
+.extraWrapper {
+  .playWrapper {
+    max-width: 1250px;
+    margin: 0 auto;
+    .playContent {
+      position: relative;
+      width: 94%;
+      .phoneIndicator {
+        font-size: 1.05rem;
+        color: white;
+        display: none;
+        margin-top: 15px;
+      }
+      .globalGrid {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+        grid-template-areas: "rowOne rowTwo";
+        grid-gap: 70px;
+        position: relative;
+        margin: 20px;
+        top: 30px;
+        .rowOne {
+          grid-area: rowOne;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 50px;
+
+          .section-one {
+            display: grid;
+            grid-gap: 30px;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto auto;
+            grid-template-areas:
+              "header"
+              "card1"
+              "card2"
+              "card3";
+            grid-area: sectionOne;
+
+            .roomsHeader {
+              grid-area: header;
+              color: white;
+              font-size: 1.75rem;
+              font-weight: 500;
+              span {
+                font-size: 1rem;
+                display: block;
+                position: absolute;
+              }
+            }
+
+            .card {
+              height: 170px;
+              background-color: $card-background;
+              border-radius: 10px;
+              color: white;
+              position: relative;
+              overflow: hidden;
+              margin-top: 10px;
+              h1 {
+                font-size: 1.2rem;
+                padding: 10px;
+                padding-top: 5px;
+              }
+              .races {
+                float: right;
+                position: relative;
+                top: -35px;
+                margin-right: 13px;
+                font-size: 0.9rem;
+              }
+              button {
+                @extend %button-styles;
+                position: absolute;
+                margin-top: 25px;
+                margin-left: 10px;
+              }
+              .points {
+                position: absolute;
+                bottom: 0;
+                padding: 10px;
+                padding-bottom: 5px;
+                font-size: 0.9rem;
+                z-index: 100;
+              }
+
+              .blob {
+                width: 300px;
+                float: right;
+                position: relative;
+                left: 160px;
+                top: -30px;
+                transform: rotate(10deg);
+              }
+              .icons {
+                position: absolute;
+                z-index: 100;
+                right: 0;
+                bottom: 0;
+                margin: 10px;
+                display: flex;
+                top: 120px;
+                .icon {
+                  width: 29px;
+                  margin-left: 7px;
+                }
+                .normalPunctuation {
+                  font-weight: 700;
+                  font-size: 1.2rem;
+                  margin-left: 7px;
+                  margin-top: 7px;
+                }
+              }
+            }
+            .card1 {
+              grid-area: card1;
+            }
+            .card2 {
+              grid-area: card2;
+              .blob {
+                width: 330px;
+                transform: rotate(-40deg);
+              }
+            }
+            .card3 {
+              grid-area: card3;
+              .blob {
+                width: 380px;
+                transform: rotate(0deg);
+              }
+            }
+          }
+          .section-four {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+              "chatHeader"
+              "globalChat";
+            grid-gap: 30px;
+            grid-area: sectionFour;
+            margin-top: 50px;
+            .chatHeader {
+              grid-area: chatHeader;
+              color: white;
+              font-size: 1.75rem;
+              font-weight: 500;
+            }
+            .globalChat {
+              grid-area: globalChat;
+              background-color: $card-background;
+              border-radius: 5px;
+              position: relative;
+              height: 610px;
+              form {
+                height: 60px;
+                background-color: $card-background;
+                position: relative;
+                top: -12px;
+                margin: 20px;
+                p {
+                  font-size: 0.9rem;
+                  margin-top: 67px;
+                  color: rgb(139, 139, 139);
+                }
+                .length {
+                  float: left;
+                  width: 20px;
+                }
+
+                .cooldown {
+                  float: right;
+                  display: none;
+                }
+                input {
+                  position: absolute;
+                  bottom: 0;
+                  width: 100%;
+                  left: 0;
+                  height: 50px;
+                  border: none;
+                  border-radius: 3px;
+                  outline: none;
+                  padding: 0px 55px 0px 10px;
+                  background-color: $background;
+                  color: white;
+                  font-size: 1.1rem;
+                }
+
+                input[placeholder] {
+                  font-size: 1rem;
+                }
+
+                .send {
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  margin-right: 13px;
+                  cursor: pointer;
+                  svg {
+                    stroke: white;
+                    width: 35px;
+                  }
+                }
+              }
+
+              .chatContent {
+                overflow: auto;
+                height: 490px;
+                display: flex;
+                margin: 20px;
+                flex-direction: column;
+                .messageWrapper:nth-child(1) {
+                  margin-top: 0;
+                }
+                .messageWrapper {
+                  color: white;
+                  display: grid;
+                  grid-template-columns: 45px auto;
+                  grid-template-rows: auto auto;
+                  color: white;
+                  float: left;
+                  grid-template-areas:
+                    "image name"
+                    "message message";
+                  margin-top: 30px;
+                  grid-gap: 10px;
+                  width: 95%;
+
+                  a .profileImageChat {
+                    width: 45px;
+                    height: 45px;
+                    grid-area: image;
+                    border-radius: 50%;
+                  }
+                  a {
+                    color: white;
+                    text-decoration: none;
+                  }
+                  a .username {
+                    grid-area: name;
+                    font-size: 1.3rem;
+                    position: relative;
+                    left: 4px;
+                    top: 4px;
+
+                    .proImage {
+                      position: relative;
+                      width: 50px;
+                      height: 25px;
+                      border-radius: 3px;
+                      top: 6px;
+                    }
+                    span {
+                      font-size: 1rem;
+                      color: rgb(153, 153, 153);
+                    }
+                  }
+                  .message {
+                    grid-area: message;
+                    font-size: 1.1rem;
+                    word-wrap: break-word;
+                    span {
+                      font-size: 0.9rem;
+                      color: lightgrey;
+                    }
+                  }
+                }
+              }
+
+              .chatContent::-webkit-scrollbar {
+                width: 10px;
+                background-color: #1d1d1d;
+                border-radius: 10px;
+              }
+
+              .chatContent::-webkit-scrollbar-thumb {
+                width: 10px;
+                background-color: $main-color;
+                border-radius: 10px;
+                height: 30px;
+              }
+
+              .chatLocked {
+                background-color: black;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                border-radius: 5px;
+                opacity: 0.6;
+              }
+
+              .lockedIconChat {
+                position: absolute;
+                z-index: 4;
+                stroke: white;
+                top: 50%;
+                z-index: 101;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100px;
+                height: 100px;
+              }
+
+              .mustPro {
+                color: white;
+                position: absolute;
+                z-index: 101;
+                top: 62%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1rem;
+                width: fit-content;
+              }
+              .buyProChat {
+                color: white;
+                position: absolute;
+                z-index: 101;
+                top: 67%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1rem;
+                width: fit-content;
+                a {
+                  color: $text-color;
+                }
+              }
+
+              .chatSpinner {
+                top: 32%;
+                left: 45.5%;
+                position: absolute;
+                z-index: 500 !important;
+                @extend %loadingSpinner;
+              }
+            }
+          }
+        }
+        .rowTwo {
+          grid-area: rowTwo;
+          .section-five {
+            grid-area: sectionFive;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+              "topHeader"
+              "top10";
+            grid-gap: 30px;
+            margin-top: 10px;
+            .topHeader {
+              color: white;
+              grid-area: topHeader;
+              font-size: 1.75rem;
+              font-weight: 500;
+            }
+            .top10 {
+              grid-area: top10;
+              background-color: $card-background;
+              border-radius: 5px;
+              padding: 20px;
+              position: relative;
+              height: 610px;
+              overflow: auto;
+              .userWrapper:nth-child(1) {
+                margin-top: 0px;
+              }
+
+              %place {
+                content: "";
+                width: 70px;
+                height: 70px;
+                position: absolute;
+                right: 0;
+                margin-right: 10px;
+                margin-top: -7px;
+              }
+
+              .userWrapper:nth-child(1):before {
+                @extend %place;
+                background-image: url(../../images/firstplace.png);
+              }
+
+              .userWrapper:nth-child(2):before {
+                @extend %place;
+                background-image: url(../../images/secondplace.png);
+              }
+
+              .userWrapper:nth-child(3):before {
+                @extend %place;
+                background-image: url(../../images/thirthplace.png);
+              }
+
+              @for $i from 3 to 10 {
+                .userWrapper:nth-child(#{$i + 1}):before {
+                  content: "#{$i + 1}th";
+                  position: absolute;
+                  right: 0;
+                  font-size: 2rem;
+                  margin-right: 35px;
+                  margin-top: 3px;
+                  color: rgb(116, 116, 116);
+                }
+              }
+
+              .userWrapper {
+                color: white;
+                display: grid;
+                grid-template-columns: 55px auto auto;
+                grid-template-rows: auto auto;
+                grid-column-gap: 10px;
+                margin-top: 30px;
+                width: 100%;
+                padding: 10px 0px;
+                padding-right: 60px;
+                grid-template-areas:
+                  "lbimage lbuser ."
+                  "lbimage lbpoints .";
+
+                a .lbImage {
+                  border-radius: 50%;
+                  width: 50px;
+                  height: 50px;
+                  grid-area: lbimage;
+                  position: absolute;
+                }
+                a {
+                  color: white;
+                  text-decoration: none;
+                }
+                .lbUser {
+                  font-size: 1.2rem;
+                  font-weight: 500;
+                  margin-top: -3px;
+                  width: fit-content;
+                  grid-area: lbuser;
+                  .lbPro {
+                    position: absolute;
+                    width: 50px;
+                    height: 23px;
+                    border-radius: 3px;
+                    margin-left: 10px;
+                    margin-top: 2px;
+                  }
+                }
+
+                .lbPoints {
+                  grid-area: lbpoints;
+                  font-size: 0.9rem;
+                  margin-top: 5px;
+                }
+              }
+
+              .lbSpinner {
+                @extend %loadingSpinner;
+              }
+            }
+
+            .top10::-webkit-scrollbar {
+              width: 10px;
+              background-color: #1d1d1d;
+              border-radius: 10px;
+            }
+
+            .top10::-webkit-scrollbar-thumb {
+              width: 10px;
+              background-color: $main-color;
+              border-radius: 10px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1120px) {
+  .extraWrapper .playWrapper .playContent {
+    width: 100%;
+  }
+
+  .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four {
+    margin-top: 75px;
+  }
+
+  .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five {
+    margin-top: -40px;
+  }
+
+  .extraWrapper .playWrapper {
+    max-width: unset;
+    width: 100%;
+    padding: 0 5em;
+    margin-bottom: 70px;
+  }
+  .extraWrapper .playWrapper .playContent .globalGrid {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "rowOne"
+      "rowTwo";
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .extraWrapper .playWrapper {
+    padding: 0 1em;
+  }
+
+  .extraWrapper .playWrapper .playContent .phoneIndicator {
+    display: block;
+    padding: 0 1em;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .userWrapper::before {
+    display: none;
+  }
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .userWrapper {
+    grid-template-columns: 55px auto;
+    grid-template-rows: auto auto;
+    padding-right: 0px !important;
+    grid-template-areas:
+      "lbimage lbuser"
+      "lbimage lbpoints";
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .extraWrapper .playWrapper {
+    padding: 0 10px !important;
+  }
+
+  .extraWrapper .playWrapper .playContent .phoneIndicator {
+    padding: 0 0px;
+  }
+
+  .extraWrapper .playWrapper .playContent .globalGrid {
+    margin: 20px 0px !important;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-one
+    .card
+    .blob {
+    display: none;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-four
+    .globalChat
+    form {
+    margin: 10px;
+    margin-top: 20px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-four
+    .globalChat
+    .chatContent {
+    margin: 10px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-four
+    .globalChat
+    .chatContent
+    .messageWrapper
+    a
+    .username {
+    font-size: 1rem;
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-four
+    .globalChat
+    .chatContent
+    .messageWrapper
+    a
+    .profileImageChat {
+    width: 40px;
+    height: 40px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-four
+    .globalChat
+    .chatContent
+    .messageWrapper
+    .message {
+    font-size: 0.9rem;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-four
+    .globalChat
+    .chatContent
+    .messageWrapper {
+    grid-gap: 0px;
+    grid-row-gap: 10px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-four
+    .globalChat
+    .chatContent
+    .messageWrapper
+    a
+    .username
+    .proImage {
+    width: 40px;
+    height: 20px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .top10
+    .userWrapper
+    a
+    .lbImage {
+    width: 40px;
+    height: 40px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .top10 {
+    padding: 10px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .top10
+    .userWrapper
+    .lbUser {
+    font-size: 1rem;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .top10
+    .userWrapper
+    .lbPoints {
+    font-size: 0.9rem;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .top10
+    .userWrapper {
+    grid-gap: 0px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-five
+    .top10
+    .userWrapper
+    .lbUser
+    .lbPro {
+    width: 40px;
+    height: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-one
+    .card
+    .icons
+    .icon {
+    width: 23px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowOne
+    .section-one
+    .card
+    .icons
+    .normalPunctuation {
+    font-size: 1rem;
+  }
+}

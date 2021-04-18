@@ -1,0 +1,89 @@
+.recover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $card-background;
+  width: 370px;
+  padding: 20px 0px;
+  border-radius: 5px;
+  color: white;
+
+  h1 {
+    a {
+      font-size: 2rem;
+      font-weight: 500;
+      margin: 20px;
+      margin-bottom: 0px;
+      margin-top: -5px;
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  form {
+    padding: 20px;
+    .emailWrapperRecover {
+      display: flex;
+      flex-direction: column;
+      margin-top: 7px;
+
+      input {
+        background-color: transparent;
+        height: 35px;
+        border: none;
+        border-bottom: 2px solid white;
+        outline: none;
+        color: $text-color;
+        font-size: 1.15rem;
+      }
+      label {
+        position: relative;
+        font-size: 1.1rem;
+        top: 30px;
+        transition: all 290ms linear;
+        color: white;
+      }
+    }
+
+    p {
+      font-size: 1.15rem;
+    }
+
+    .instructions {
+      margin-bottom: 20px;
+    }
+
+    .recoverError {
+      margin: 15px 0px;
+    }
+
+    button {
+      height: 35px;
+      background-color: $main-color;
+      font-size: 1.15rem;
+      color: white;
+      width: 100%;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      margin-bottom: 50px;
+      transition: all 300ms linear;
+      &:hover {
+        background-color: $text-color;
+      }
+    }
+  }
+
+  a {
+    margin: 20px;
+    color: $text-color;
+    font-size: 1.15rem;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .recover {
+    width: 310px;
+  }
+}

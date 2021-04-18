@@ -1,0 +1,231 @@
+.effectSecond {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  position: fixed;
+  opacity: 0;
+  transition: all 350ms ease;
+}
+
+.navbarSecond {
+  width: 100%;
+  height: 65px;
+  background-color: $background;
+  .logoNavSecond {
+    position: relative;
+    color: white;
+    font-size: 1.5rem;
+    margin: 13px;
+    margin-left: 20px;
+    float: left;
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    span {
+      width: 2px;
+      height: 25px;
+      background-color: white;
+      position: absolute;
+      margin-left: 5px;
+      margin-top: 5px;
+      animation: logo 650ms infinite forwards alternate-reverse;
+    }
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    color: white;
+    font-size: 1.15rem;
+    float: right;
+    margin: 18px;
+    margin-top: 20px;
+    margin-right: 210px;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    li {
+      cursor: pointer;
+      margin-left: 25px;
+      transition: all 300ms linear;
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+
+  .navButtonSecond {
+    width: 150px;
+    height: 40px;
+    background-color: $main-color;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    float: right;
+    margin: 13px;
+    position: relative;
+    left: 460px;
+    transition: all 300ms linear;
+    &:hover {
+      background-color: $text-color;
+    }
+    p {
+      display: inline-block;
+      color: white;
+      font-size: 1.2rem;
+      position: relative;
+      top: -18px;
+      left: 3px;
+    }
+    svg {
+      stroke: white;
+      display: inline-block;
+      position: relative;
+      width: 35px;
+      left: -11px;
+      top: -2px;
+      transform: rotate(180deg);
+    }
+  }
+
+  .hamburgerSecond {
+    width: 30px;
+    height: 23px;
+    background-color: transparent;
+    float: right;
+    margin: 20px 25px 20px 0px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    .lineSecond {
+      width: 30px;
+      height: 2.5px;
+      background-color: white;
+      border-radius: 3px;
+      transition: all 300ms linear;
+    }
+  }
+}
+
+.mobileNavSecond {
+  width: 300px;
+  height: 100vh;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 350ms linear;
+  display: none;
+  animation: fromLeft 400ms linear 1 forwards;
+
+  .logoNavMobileSecond {
+    position: relative;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 13px;
+    margin-left: 20px;
+    float: left;
+
+    a {
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    span {
+      width: 2px;
+      height: 25px;
+      background-color: black;
+      position: absolute;
+      margin-left: 5px;
+      margin-top: 5px;
+      animation: logo 650ms infinite forwards alternate-reverse;
+    }
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    color: black;
+    font-size: 1.2rem;
+    float: left;
+    margin: 18px;
+    margin-right: 0px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80px;
+    top: 30px;
+    left: -20px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    li {
+      cursor: pointer;
+      margin-left: 25px;
+      transition: all 300ms linear;
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+
+  .navButtonMobileSecond {
+    width: 150px;
+    height: 40px;
+    background-color: $main-color;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    float: right;
+    margin: 13px;
+    position: relative;
+    left: -113px;
+    top: 30px;
+    transition: all 300ms linear;
+    &:hover {
+      background-color: $text-color;
+    }
+    p {
+      display: inline-block;
+      color: white;
+      font-size: 1.2rem;
+      position: relative;
+      top: -18px;
+      left: 3px;
+    }
+    svg {
+      stroke: white;
+      display: inline-block;
+      position: relative;
+      width: 35px;
+      left: -11px;
+      top: -2px;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .navbarSecond .hamburgerSecond {
+    display: flex;
+  }
+
+  .navbarSecond ul {
+    display: none;
+  }
+
+  .navbarSecond .navButtonSecond {
+    display: none;
+  }
+}

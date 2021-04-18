@@ -1,0 +1,44 @@
+.termsWrapper {
+  width: 100%;
+  height: 100%;
+  background-color: $background;
+  padding: 20px;
+  .termsContent {
+    color: white;
+    h1 {
+      margin-top: 35px;
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    .update {
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 1.05rem;
+    }
+
+    ol {
+      font-size: 1.1rem;
+      margin-left: 30px;
+      margin-top: 10px;
+    }
+
+    h1:nth-child(1) {
+      margin-top: 0px;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .termsWrapper {
+    padding: 20px 7px;
+  }
+}

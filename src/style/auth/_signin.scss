@@ -1,0 +1,108 @@
+.signin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $card-background;
+  width: 370px;
+  padding: 20px 0px;
+  border-radius: 5px;
+  color: white;
+
+  h1 {
+    a {
+      font-weight: 500;
+      margin: 20px;
+      margin-bottom: 0px;
+      margin-top: -5px;
+      font-size: 2.3rem;
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  form {
+    padding: 20px;
+    .emailWrapperLogin,
+    .passwordWrapperLogin {
+      display: flex;
+      flex-direction: column;
+      margin-top: 7px;
+
+      input {
+        background-color: transparent;
+        height: 35px;
+        border: none;
+        border-bottom: 2px solid white;
+        outline: none;
+        color: $text-color;
+        font-size: 1.15rem;
+      }
+      label {
+        position: relative;
+        font-size: 1.1rem;
+        top: 30px;
+        transition: all 290ms linear;
+        color: white;
+      }
+    }
+
+    .passwordWrapperLogin {
+      margin-bottom: 10px;
+      margin-top: 20px;
+
+      .eyeClosed {
+        display: none;
+      }
+
+      .eyeOpen,
+      .eyeClosed {
+        width: 32px;
+        fill: white;
+        cursor: pointer;
+        position: relative;
+        top: -35px;
+        left: 290px;
+      }
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin: 10px;
+      text-align: center;
+      a {
+        color: $text-color;
+      }
+    }
+    .error {
+      margin-bottom: -10px;
+      margin-top: 20px;
+    }
+
+    button {
+      height: 35px;
+      background-color: $main-color;
+      font-size: 1.15rem;
+      color: white;
+      width: 100%;
+      border: none;
+      outline: none;
+      margin-top: 30px;
+      cursor: pointer;
+      transition: all 300ms linear;
+      &:hover {
+        background-color: $text-color;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .signin {
+    width: 310px;
+  }
+  .signin form .passwordWrapperLogin .eyeClosed,
+  .signin form .passwordWrapperLogin .eyeOpen {
+    left: 235px;
+  }
+}
