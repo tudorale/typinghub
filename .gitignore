@@ -10,6 +10,7 @@
 
 #production
 /build
+/README.md
 
 **/Firebase.tsx
 

@@ -323,9 +323,9 @@ function Home() {
               </p>
             </div>
 
-            <a href="/pro">
+            <HashLink to="/pro">
               <button id="contact">Buy now! $4.99</button>
-            </a>
+            </HashLink>
           </div>
 
           <div className="contact">
