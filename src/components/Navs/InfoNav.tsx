@@ -1,6 +1,7 @@
 import React from "react";
 import "../../style/css/main.css";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 function Navigation() {
   // ui stuff
@@ -39,9 +40,9 @@ function Navigation() {
       <div className="effectInfo" onClick={handleRemoveMobile}></div>
       <div className="navbarInfo">
         <h1 className="logoNavInfo">
-          <a href="/">
+          <HashLink to="/">
             JustTyp<span></span>
-          </a>
+          </HashLink>
         </h1>
         <ul>
           <Link to="/">
@@ -67,9 +68,9 @@ function Navigation() {
 
       <div className="mobileNavInfo">
         <h1 className="logoNavMobileInfo">
-          <a href="/">
+          <HashLink to="/">
             JustTyp<span></span>
-          </a>
+          </HashLink>
         </h1>
         <ul>
           <Link to="/">

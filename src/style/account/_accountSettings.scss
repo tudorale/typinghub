@@ -74,11 +74,14 @@ $input-color: $card-background;
       padding-top: 27px;
       color: white;
     }
-    .description span {
-      padding-right: 30px;
-      position: relative;
-      word-break: break-all;
+    .hisDescription {
+      .description span {
+        padding-right: 30px;
+        position: relative;
+        word-break: break-word;
+      }
     }
+
     .descriptionSpinner {
       position: relative;
       top: 4px;

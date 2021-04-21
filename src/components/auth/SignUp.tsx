@@ -4,6 +4,7 @@ import fire, { db } from "../services/Firebase";
 import { Link } from "react-router-dom";
 import firebase from "firebase/app";
 import Html from "../subComponents/Html";
+import { useHistory } from "react-router-dom";
 
 function SignUp() {
   // states
@@ -13,6 +14,8 @@ function SignUp() {
   const [error, setError] = useState("");
 
   const [buttonStatus, setButtonStatus] = useState("Sign Up");
+
+  const history = useHistory();
 
   // ui functions
   const handleFocus = (label: string, pxUp: string): void => {
@@ -142,7 +145,8 @@ function SignUp() {
                       "https://firebasestorage.googleapis.com/v0/b/justtype-preview.appspot.com/o/profileimage.jpg?alt=media&token=ff56cecc-ffce-42c5-8079-bcc806e70348",
                   })
                   .then(() => {
-                    window.location.href = "/play";
+                    // window.location.href = "/play";
+                    history.push("/play");
                   });
               })
               .catch((error: any) => {

@@ -45,6 +45,9 @@
             margin-top: 10px;
             font-size: 1.05rem;
             color: rgb(170, 170, 170);
+            p {
+              word-break: break-word;
+            }
           }
           .userPagePoints {
             position: relative;

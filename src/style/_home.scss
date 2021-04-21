@@ -400,10 +400,15 @@
           }
         }
       }
-      .emailstatus {
+      .emailstatus,
+      .emailRestriction {
         text-align: start;
         margin-top: 10px;
         margin-left: 7px;
+      }
+
+      .emailRestriction {
+        display: none;
       }
 
       .loading {

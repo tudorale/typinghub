@@ -147,10 +147,8 @@ function Play() {
       .limit(10)
       .get()
       .then((data: any) => {
-        console.log(data);
         data.forEach((usr: any) => {
           setUsers((prevState: any) => [...prevState, usr.data()]);
-          console.log(users);
         });
       })
       .catch((err) => {

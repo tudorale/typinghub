@@ -4,6 +4,7 @@ import Nav from "./Navs/LoggedNav";
 import Firebase, { db } from "./services/Firebase";
 import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
+import { useHistory } from "react-router-dom";
 
 function AccountSettings() {
   const [user, setUser] = useState<any>(undefined);
@@ -263,8 +264,10 @@ function AccountSettings() {
       });
   };
 
+  const history = useHistory();
+
   const deleteAccount = () => {
-    window.location.href = "/delete-account";
+    history.push("/delete-account");
   };
 
   const handleImage = (e: any) => {
@@ -420,10 +423,13 @@ function AccountSettings() {
             <button onClick={() => handleSetImage()}>Change image</button>
           </div>
 
-          <p className="description">
-            Description:{" "}
-            <span>{userData ? userData.description : "Loading..."}</span>
-          </p>
+          <div className="hisDescription">
+            <p className="description">
+              Description:{" "}
+              <span>{userData ? userData.description : "Loading..."}</span>
+            </p>
+          </div>
+
           <label htmlFor="description" className="dLabel">
             Set description
           </label>
@@ -439,6 +445,7 @@ function AccountSettings() {
             }
             onBlur={() => handleBlurDescription(".dLabel", "20", description)}
           ></textarea>
+
           <p
             style={{ marginTop: "10px", marginBottom: "10px" }}
             className="status"

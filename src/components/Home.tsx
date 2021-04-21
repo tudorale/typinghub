@@ -5,10 +5,36 @@ import Nav from "./Navs/Navigation";
 import { Link } from "react-router-dom";
 import Firebase from "./services/Firebase";
 import Progress from "../images/progress.png";
+import { HashLink } from "react-router-hash-link";
+
+declare global {
+  interface Window {
+    localStorage: any;
+  }
+}
 
 function Home() {
   // ui stuff
-  const [emailStatus, setEmailStatus] = useState("");
+  const [emailStatus, setEmailStatus] = useState<string>("");
+  const [timer, setTimer] = useState<number>(0);
+
+  const interval = React.useRef<any>();
+
+  const startCountdown = () => {
+    interval.current = setInterval(() => {
+      setTimer((s) => s - 1);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    let cooldown = document.querySelector(
+      ".emailRestriction"
+    ) as HTMLParagraphElement;
+    if (timer === 0) {
+      cooldown.style.display = "none";
+      clearInterval(interval.current);
+    }
+  }, [timer]);
 
   useEffect(() => {
     Firebase.auth().signOut();
@@ -46,34 +72,52 @@ function Home() {
     if (loading) {
       loading.style.opacity = "1";
     }
-    emailjs
-      .sendForm(
-        "service_srvaoe4",
-        "template_4p6r7zt",
-        e.target,
-        "user_Nhfa1wRoTgxUK7tXg0nDn"
-      )
-      .then(
-        () => {
-          e.target.reset();
-          setEmailStatus(
-            "Your email has been sent, as soon as we can we will respond. Thank you!"
-          );
-          loading.style.opacity = "0";
-          l1.style.top = "37px";
-          l2.style.top = "37x";
-          l4.style.top = "37px";
-          l1.style.fontSize = "1.1rem";
-          l2.style.fontSize = "1.1rem";
-          l4.style.fontSize = "1.1rem";
-        },
-        () => {
-          loading.style.opacity = "0";
-          setEmailStatus(
-            "Something went wrong, try again or check the inputs."
-          );
-        }
-      );
+    let cooldown = document.querySelector(
+      ".emailRestriction"
+    ) as HTMLParagraphElement;
+
+    setEmailStatus("");
+
+    if (timer === 0) {
+      emailjs
+        .sendForm(
+          "service_srvaoe4",
+          "template_4p6r7zt",
+          e.target,
+          "user_Nhfa1wRoTgxUK7tXg0nDn"
+        )
+        .then(
+          () => {
+            e.target.reset();
+            setTimer(120);
+
+            startCountdown();
+
+            setEmailStatus(
+              "Your email has been sent, as soon as we can we will respond. Thank you!"
+            );
+
+            loading.style.opacity = "0";
+            l1.style.marginTop = "13px";
+            l2.style.marginTop = "13x";
+            l4.style.marginTop = "13px";
+            l1.style.fontSize = "1.1rem";
+            l2.style.fontSize = "1.1rem";
+            l4.style.fontSize = "1.1rem";
+          },
+          () => {
+            loading.style.opacity = "0";
+            setEmailStatus(
+              "Something went wrong, try again or check the inputs."
+            );
+          }
+        );
+    } else {
+      if (loading) {
+        loading.style.opacity = "0";
+      }
+      cooldown.style.display = "block";
+    }
   };
 
   return (
@@ -218,11 +262,12 @@ function Home() {
               <div className="card card-3">
                 <h1>Tests</h1>
                 <p>
-                  You have three categories where you can play, easy, normal and
-                  hard, on each category you will find different texts with
-                  lowercase, uppercase words, punctuation, symbol, quotes, based
-                  on what category are you playing in, you will get a number of
-                  points.
+                  You have three categories where you can play, random, quotes
+                  and custom, on each category you will find a different system
+                  of typing, for example on "random" category you will have only
+                  lowercase random words. You have to make a minimum number of
+                  WPM to get the normal amount of points and an accuracy that is
+                  above 70% - non-abusing system.
                 </p>
               </div>
             </div>
@@ -339,14 +384,17 @@ function Home() {
             </form>
             <div className="loading"></div>
             <p className="emailstatus">{emailStatus}</p>
+            <p className="emailRestriction">
+              You have to wait {timer} seconds to send another message.
+            </p>
           </div>
         </div>
 
         <div className="footer">
           <h1 className="logo">
-            <a href="/">
+            <HashLink to="/#top">
               JustTyp<span></span>
-            </a>
+            </HashLink>
           </h1>
 
           <p className="rights">© JustType 2021, All rights reserved</p>

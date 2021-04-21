@@ -46,9 +46,10 @@
         .descriptionProfile {
           margin-top: 10px;
           font-size: 1.05rem;
-          word-wrap: break-word;
-          word-break: break-all;
           color: rgb(170, 170, 170);
+          p {
+            word-break: break-word;
+          }
         }
         .pointsProfile {
           position: relative;

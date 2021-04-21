@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import "./style/css/main.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   const Home = React.lazy(() => import("./components/Home"));
@@ -40,7 +40,7 @@ function App() {
             <Route exact path="/speed/:category" component={TestSpeed} />
             <Route exact path="/info" component={Info} />
             <Route exact path="/pro" component={Pro} />
-            <Route exact path="*" component={Page404} />
+            <Route component={Page404} />
           </Switch>
         </Router>
       </div>

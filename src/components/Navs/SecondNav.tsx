@@ -1,6 +1,7 @@
 import React from 'react'
 import "../../style/css/main.css"
 import {Link} from "react-router-dom"
+import { HashLink } from "react-router-hash-link";
 
 function Navigation() {
 
@@ -40,7 +41,7 @@ function Navigation() {
             <div className="effectSecond" onClick={handleRemoveMobile}></div>
             <div className="navbarSecond">
 
-                <h1 className="logoNavSecond"><a href="/">JustTyp<span></span></a></h1>
+                <h1 className="logoNavSecond"><HashLink to="/">JustTyp<span></span></HashLink></h1>
                 <ul>
                     <Link to="/"><li>Home</li></Link>
                     <Link to="/sign-up"><li>Create account</li></Link>
@@ -65,7 +66,7 @@ function Navigation() {
             </div>
 
             <div className="mobileNavSecond">
-                <h1 className="logoNavMobileSecond"><a href="/">JustTyp<span></span></a></h1>
+                <h1 className="logoNavMobileSecond"><HashLink to="/">JustTyp<span></span></HashLink></h1>
                 <ul>
                     <Link to="/"><li>Home</li></Link>
                     <Link to="/sign-up"><li>Create account</li></Link>

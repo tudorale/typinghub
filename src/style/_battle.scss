@@ -156,7 +156,8 @@
           display: flex;
           position: relative;
           top: 20px;
-          a button {
+          a button,
+          button {
             padding: 0px 8px !important;
             @extend %button-styles;
           }

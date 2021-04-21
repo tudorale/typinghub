@@ -14,11 +14,11 @@ const Battle = React.memo((props: any) => {
   let HEADER;
 
   if (category === "random") {
-    HEADER = "Random"; // 5 - 20
-  } else if (category === "normal") {
-    HEADER = "Normal"; // 30 - 50
-  } else if (category === "hard") {
-    HEADER = "Hard"; // 60 - 80
+    HEADER = "Random"; // 20-40
+  } else if (category === "quotes") {
+    HEADER = "Quotes"; // 60-80
+  } else if (category === "custom") {
+    HEADER = "Custom"; // 20-40
   } else {
     HEADER = category;
   }
@@ -193,7 +193,6 @@ const Battle = React.memo((props: any) => {
   let date = new Date();
   let h = date.getHours();
   let min = date.getMinutes();
-  let s = date.getSeconds();
   let y = date.getFullYear();
   let m = date.getMonth() + 1;
   let d = date.getDate();
@@ -229,7 +228,7 @@ const Battle = React.memo((props: any) => {
           Math.round((symbols / allSymbols) * 100) >= 70
             ? [
                 ...userData.randomHistory,
-                { wpm: wpm, time: `${h}:${min}:${s} ${d}/${m}/${y}` },
+                { wpm: wpm, time: `${h}:${min} ${d}/${m}/${y}` },
               ]
             : userData.randomHistory,
       });
@@ -266,7 +265,7 @@ const Battle = React.memo((props: any) => {
           Math.round((symbols / allSymbols) * 100) >= 70
             ? [
                 ...userData.quotesHistory,
-                { wpm: wpm, time: `${h}:${min}:${s} ${d}/${m}/${y}` },
+                { wpm: wpm, time: `${h}:${min} ${d}/${m}/${y}` },
               ]
             : userData.quotesHistory,
       });
@@ -303,7 +302,7 @@ const Battle = React.memo((props: any) => {
           Math.round((symbols / allSymbols) * 100) >= 70
             ? [
                 ...userData.customHistory,
-                { wpm: wpm, time: `${h}:${min}:${s} ${d}/${m}/${y}` },
+                { wpm: wpm, time: `${h}:${min} ${d}/${m}/${y}` },
               ]
             : userData.customHistory,
       });
@@ -422,6 +421,10 @@ const Battle = React.memo((props: any) => {
         "The text length must be at least 100 characters and max 250 characters."
       );
     }
+  };
+
+  const newTest = () => {
+    window.location.reload();
   };
 
   return (
@@ -551,9 +554,8 @@ const Battle = React.memo((props: any) => {
                   <div className="testOver">
                     <p>This test is over.</p>
                     <div className="testOverButtons">
-                      <a href={`/speed/${category}`}>
-                        <button>New test on {HEADER}</button>
-                      </a>
+                      <button onClick={newTest}>New test on {HEADER}</button>
+
                       <Link to="/play">
                         <button>Go home</button>
                       </Link>

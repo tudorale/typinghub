@@ -94,7 +94,9 @@ function Profile() {
                   {userData.pro ? <img src={Pro} /> : ""}
                   <span className="jtId">{userData.justTypeID}</span>
                 </h1>
-                <p className="descriptionProfile">{userData.description}</p>
+                <div className="descriptionProfile">
+                  <p>{userData.description}</p>
+                </div>
                 <p className="pointsProfile">
                   {userData.points} Points ({userData.rank})
                 </p>
@@ -178,9 +180,7 @@ function Profile() {
                 </span>
               </p>
 
-              {randomData.length >= 2 &&
-              quotesData.length >= 2 &&
-              customData.length >= 2 ? (
+              {randomData.length >= 2 && quotesData.length >= 2 ? (
                 <>
                   <Statistics
                     labels={randomDataTime}
@@ -198,18 +198,25 @@ function Profile() {
                     pointColor="#d91ccc"
                   />
 
-                  <Statistics
-                    labels={customDataTime}
-                    wpm={customData}
-                    title="WPM on Custom Category"
-                    lineColor="#5ce820"
-                    pointColor="#e82077"
-                  />
+                  {customData.length >= 2 ? (
+                    <Statistics
+                      labels={customDataTime}
+                      wpm={customData}
+                      title="WPM on Custom Category"
+                      lineColor="#5ce820"
+                      pointColor="#e82077"
+                    />
+                  ) : (
+                    <p style={{ marginTop: "30px" }}>
+                      You Didn't play enough for the "custom" category to
+                      display the statistics.
+                    </p>
+                  )}
                 </>
               ) : (
                 <p className="restriction">
-                  You have to take 2 tests on each category to unlock the
-                  statistics.
+                  You have to take 2 tests on "random" and "quotes" category to
+                  unlock the statistics.
                 </p>
               )}
             </div>

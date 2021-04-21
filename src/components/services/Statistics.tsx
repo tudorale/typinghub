@@ -14,7 +14,8 @@ function Statistics(props: any) {
               backgroundColor: props.pointColor,
               fill: false,
               borderColor: props.lineColor,
-              tension: 0.1,
+              tension: 0,
+              pointBorderColor: props.pointColor,
             },
           ],
         }}
@@ -24,6 +25,22 @@ function Statistics(props: any) {
           maintainAspectRatio: false,
           legend: {
             display: "none",
+          },
+          scales: {
+            xAxes: [
+              {
+                gridLines: {
+                  color: "#19171d",
+                },
+              },
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  color: "#19171d",
+                },
+              },
+            ],
           },
         }}
       />

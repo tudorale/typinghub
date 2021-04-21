@@ -84,7 +84,9 @@ const User = (props: any) => {
 
   return (
     <>
-      <HTML title={`JustType - ${userData.username} page`} />
+      <HTML
+        title={`JustType - ${userData ? userData.username : "User"} page`}
+      />
 
       {user ? (
         <div className="userPageWrapper">
@@ -101,9 +103,9 @@ const User = (props: any) => {
                       {userData.pro ? <img src={Pro} /> : null}
                       <span>{userData.justTypeID}</span>
                     </h1>
-                    <p className="userPageDescription">
-                      {userData.description}
-                    </p>
+                    <div className="userPageDescription">
+                      <p>{userData.description}</p>
+                    </div>
                     <p className="userPagePoints">{`${userData.points} Points (${userData.rank})`}</p>
                   </div>
                 </div>
@@ -181,9 +183,7 @@ const User = (props: any) => {
                     </span>
                   </p>
 
-                  {randomData.length >= 2 &&
-                  quotesData.length >= 2 &&
-                  customData.length >= 2 ? (
+                  {randomData.length >= 2 && quotesData.length >= 2 ? (
                     <>
                       <Statistics
                         labels={randomDataTime}
@@ -201,13 +201,20 @@ const User = (props: any) => {
                         pointColor="#d91ccc"
                       />
 
-                      <Statistics
-                        labels={customDataTime}
-                        wpm={customData}
-                        title="WPM on Custom Category"
-                        lineColor="#5ce820"
-                        pointColor="#e82077"
-                      />
+                      {customData.length >= 2 ? (
+                        <Statistics
+                          labels={customDataTime}
+                          wpm={customData}
+                          title="WPM on Custom Category"
+                          lineColor="#5ce820"
+                          pointColor="#e82077"
+                        />
+                      ) : (
+                        <p style={{ marginTop: "30px" }}>
+                          This user didn't play enough in the "custom" category
+                          to unlock the statistics.
+                        </p>
+                      )}
                     </>
                   ) : (
                     <p className="restriction">

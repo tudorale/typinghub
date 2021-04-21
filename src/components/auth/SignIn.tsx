@@ -3,6 +3,7 @@ import "../../style/css/main.css";
 import fire from "../services/Firebase";
 import { Link } from "react-router-dom";
 import Html from "../subComponents/Html";
+import { useHistory } from "react-router-dom";
 
 function SignIn() {
   // states
@@ -20,6 +21,8 @@ function SignIn() {
       l.style.fontSize = "1rem";
     }
   };
+
+  const history = useHistory();
 
   const handleBlur = (input: string, label: string, pxDown: string): void => {
     let l = document.querySelector<HTMLElement>(`${label}`)!;
@@ -67,7 +70,8 @@ function SignIn() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        window.location.href = "/play";
+        // window.location.href = "/play";
+        history.push("/play");
       })
       .catch((error) => {
         setButtonStatus("Sign In");

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../style/css/main.css";
 import { Link, useHistory } from "react-router-dom";
 import Firebase, { db } from "../services/Firebase";
+import { HashLink } from "react-router-hash-link";
 
 function LoggedNav(props: any) {
   // states
@@ -108,9 +109,9 @@ function LoggedNav(props: any) {
 
       <div className="navbarLogged">
         <h1 className="logoNavLogged">
-          <a href="/">
+          <HashLink to="/">
             JustTyp<span></span>
-          </a>
+          </HashLink>
         </h1>
 
         <div className="navContent">
@@ -119,8 +120,6 @@ function LoggedNav(props: any) {
               <li>{props.name}</li>
             </Link>
           </ul>
-
-          {/* {props.play ? <a href={props.path}>{props.name}</a> */}
 
           <Link to="/profile">
             <img
@@ -202,9 +201,9 @@ function LoggedNav(props: any) {
 
       <div className="mobileNavLogged">
         <h1 className="logoNavMobileLogged">
-          <a href="/">
+          <HashLink to="/">
             JustTyp<span></span>
-          </a>
+          </HashLink>
         </h1>
 
         <div className="navContentMobile">
