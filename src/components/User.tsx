@@ -96,7 +96,7 @@ const User = (props: any) => {
             {userData ? (
               <div className="userPageGrid">
                 <div className="userSectionOne">
-                  <img src={userData.profileImage} />
+                  <img src={userData.profileImage} alt="" />
                   <div className="userPageInfo">
                     <h1>
                       {userData.username}

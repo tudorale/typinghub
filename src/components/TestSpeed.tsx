@@ -573,25 +573,11 @@ const Battle = React.memo((props: any) => {
                     <p className="infoResult">
                       {displayPoints === 5
                         ? `You have to get over 
-                                                            ${
-                                                              category ===
-                                                              "random"
-                                                                ? "30"
-                                                                : ""
-                                                            }
-                                                            ${
-                                                              category ===
-                                                              "quotes"
-                                                                ? "50"
-                                                                : ""
-                                                            }
-                                                            ${
-                                                              category ===
-                                                              "custom"
-                                                                ? "30"
-                                                                : ""
-                                                            }
-                                                            WPM for this category to get the normal amount of points.`
+                          ${category === "random" ? "30" : ""}
+                          ${category === "quotes" ? "50" : ""}
+                          ${category === "custom" ? "30" : ""}
+                                                            
+                          WPM for this category to get the normal amount of points.`
                         : null}
                     </p>
                     <p className="notAllowed">

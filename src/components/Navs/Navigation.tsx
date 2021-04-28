@@ -45,15 +45,21 @@ function Navigation() {
           </HashLink>
         </h1>
         <ul>
-          <HashLink smooth to="#what">
-            <li>What?</li>
-          </HashLink>
-          <HashLink smooth to="#about">
-            <li>About</li>
-          </HashLink>
-          <HashLink smooth to="#contact">
-            <li>Contact</li>
-          </HashLink>
+          <li>
+            <HashLink smooth to="#what">
+              What?
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to="#about">
+              About
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to="#contact">
+              Contact
+            </HashLink>
+          </li>
         </ul>
 
         <Link to="/sign-in">

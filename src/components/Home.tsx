@@ -252,7 +252,7 @@ function Home() {
                   they taken also the users can go on your profile if they want,
                   the leaderboard will be based on the points that you get from
                   tests. At the end of the month the user with the most points
-                  will get PRO membership <span>*</span>.
+                  will get PRO membership for a month <span>*</span>.
                   <br /> <br />
                   <span>*</span> - if the winner already has a membership he
                   will get +200 points.

@@ -10,11 +10,11 @@ import HTML from "./subComponents/Html";
 
 function Play() {
   // states
-  const [user, setUser] = useState<any>("");
+  const [user, setUser] = useState<firebase.default.User>();
   const [chat, setChat] = useState<any>();
-  const [message, setMessage] = useState("");
-  const [userData, setUserData] = useState<any>("");
-  const [users, setUsers] = useState<any>([]);
+  const [message, setMessage] = useState<string>("");
+  const [userData, setUserData] = useState<any>();
+  const [users, setUsers] = useState<Array<Object>>([]);
   const [timer, setTimer] = useState<number>(0);
 
   // checking if the user is logged in or not and adding values to states
@@ -35,7 +35,7 @@ function Play() {
           .then((result) => {
             setUserData(result.data());
 
-            if (!userData.pro) {
+            if (!userData?.pro) {
               let spin = document.querySelector(
                 ".chatSpinner"
               ) as HTMLDivElement;
@@ -95,11 +95,11 @@ function Play() {
       if (message !== "" && message.length <= 200) {
         setTimer(3000); // 3 seconds cooldown
         let userMessage = {
-          author: user.displayName,
-          authorImage: user.photoURL,
+          author: user?.displayName,
+          authorImage: user?.photoURL,
           message: filter.clean(message),
           time: `${h}:${min}:${s} ${d}/${m}/${y}`,
-          id: user.uid,
+          id: user?.uid,
           justTypeID: userData?.justTypeID,
         };
 
@@ -330,6 +330,7 @@ function Play() {
                                           <img
                                             src={x.authorImage}
                                             className="profileImageChat"
+                                            alt=""
                                           />
                                         </Link>
                                         <Link to={`/user/${x.author}`}>
@@ -338,6 +339,7 @@ function Play() {
                                             <img
                                               src={Pro}
                                               className="proImage"
+                                              alt=""
                                             />{" "}
                                             <span>{x.justTypeID}</span>
                                           </p>
@@ -411,13 +413,17 @@ function Play() {
                               key={Math.random() * 9999999999999999999}
                             >
                               <Link to={`/user/${d.username}`}>
-                                <img className="lbImage" src={d.profileImage} />
+                                <img
+                                  className="lbImage"
+                                  alt=""
+                                  src={d.profileImage}
+                                />
                               </Link>
                               <Link to={`/user/${d.username}`}>
                                 <p className="lbUser">
                                   {d.username}{" "}
                                   {d.pro ? (
-                                    <img src={Pro} className="lbPro" />
+                                    <img src={Pro} alt="" className="lbPro" />
                                   ) : null}
                                 </p>
                               </Link>

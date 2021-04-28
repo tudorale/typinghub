@@ -87,6 +87,7 @@ function Profile() {
                     ? user?.photoURL
                     : "https://firebasestorage.googleapis.com/v0/b/justtype-preview.appspot.com/o/profileimage.jpg?alt=media&token=ff56cecc-ffce-42c5-8079-bcc806e70348"
                 }
+                alt=""
               />
               <div className="userInfo">
                 <h1>
@@ -208,14 +209,14 @@ function Profile() {
                     />
                   ) : (
                     <p style={{ marginTop: "30px" }}>
-                      You Didn't play enough for the "custom" category to
-                      display the statistics.
+                      You didn't play enough in the "custom" category to display
+                      the statistics.
                     </p>
                   )}
                 </>
               ) : (
                 <p className="restriction">
-                  You have to take 2 tests on "random" and "quotes" category to
+                  You have to take 2 tests in "random" and "quotes" category to
                   unlock the statistics.
                 </p>
               )}

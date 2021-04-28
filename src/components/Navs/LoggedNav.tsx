@@ -129,6 +129,7 @@ function LoggedNav(props: any) {
                   : "https://firebasestorage.googleapis.com/v0/b/justtype-preview.appspot.com/o/profileimage.jpg?alt=media&token=ff56cecc-ffce-42c5-8079-bcc806e70348"
               }
               className="profileImageMobile"
+              alt=""
             />
           </Link>
 
@@ -225,6 +226,7 @@ function LoggedNav(props: any) {
                   : "https://firebasestorage.googleapis.com/v0/b/justtype-preview.appspot.com/o/profileimage.jpg?alt=media&token=ff56cecc-ffce-42c5-8079-bcc806e70348"
               }
               className="profileImageMobile"
+              alt=""
             />
           </Link>
 
