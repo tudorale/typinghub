@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import NotLogged from "./subComponents/NotLogged";
 import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Firebase, { db } from "./services/Firebase";
 import { Link } from "react-router-dom";
 import HTML from "./subComponents/Html";
-
+import UserContext from "./services/UserContext";
 const Battle = React.memo((props: any) => {
   const randomWords = require("random-words");
   const axios = require("axios");
@@ -23,8 +23,9 @@ const Battle = React.memo((props: any) => {
     HEADER = category;
   }
 
-  const [user, setUser] = useState<any>("");
-  const [userData, setUserData] = useState<any>("");
+  const userStatus = useContext(UserContext);
+  const { user, setUser, userData, setUserData } = userStatus;
+
   const [countdown, setCountdown] = useState<number>(5);
   const [timer, setTimer] = useState<number>(60);
   const [userInput, setUserInput] = useState<string>("");

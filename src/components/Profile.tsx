@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Firebase, { db } from "./services/Firebase";
@@ -7,10 +7,11 @@ import Pro from "../images/pro.jpg";
 import HTML from "./subComponents/Html";
 import NotLogged from "./subComponents/NotLogged";
 import Statistics from "./services/Statistics";
-
+import UserContext from "./services/UserContext";
 function Profile() {
-  const [user, setUser] = useState<any>("");
-  const [userData, setUserData] = useState<any>("");
+  const userStatus = useContext(UserContext);
+  const { user, setUser, userData, setUserData } = userStatus;
+
   const [randomData, setRandomData] = useState<number[]>([]);
   const [quotesData, setQuotesData] = useState<number[]>([]);
   const [customData, setCustomData] = useState<number[]>([]);

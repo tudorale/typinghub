@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import HTML from "./subComponents/Html";
 import Navigation from "./Navs/InfoNav";
 import "../style/css/main.css";
@@ -6,14 +6,16 @@ import Firebase, { db } from "./services/Firebase";
 import { Link } from "react-router-dom";
 import ProBadge from "../images/pro.jpg";
 import PayPal from "./services/PayPal";
+import UserContext from "./services/UserContext";
 
 function Pro() {
-  const [user, setUser] = useState<any>(null);
+  const userStatus = useContext(UserContext);
+  const { user, setUser, userData, setUserData} = userStatus;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [buttonStatus, setButtonStatus] = useState("Log In");
   const [error, setError] = useState("");
-  const [userData, setUserData] = useState<any>();
 
   useEffect(() => {
     let spinner = document.querySelector(

@@ -26,20 +26,21 @@ function App() {
       <div className="website">
         <Router>
           <Switch>
+            <Route path="/profile" exact component={Profile} />
+            <Route exact path="/user/:username" component={User} />
+            <Route exact path="/speed/:category" component={TestSpeed} />
+            <Route exact path="/info" component={Info} />
+            <Route exact path="/pro" component={Pro} />
+            <Route path="/play" exact component={Play} />
+            <Route path="/account-settings" exact component={AccountSettings} />
+
             <Route path="/" exact component={Home} />
             <Route path="/sign-up" exact component={SignUp} />
             <Route path="/sign-in" exact component={SignIn} />
             <Route path="/recover-password" exact component={Recover} />
             <Route path="/terms-and-conditions" exact component={Terms} />
             <Route path="/privacy-policy" exact component={Privacy} />
-            <Route path="/play" exact component={Play} />
-            <Route path="/account-settings" exact component={AccountSettings} />
             <Route path="/delete-account" exact component={DeleteAccount} />
-            <Route path="/profile" exact component={Profile} />
-            <Route exact path="/user/:username" component={User} />
-            <Route exact path="/speed/:category" component={TestSpeed} />
-            <Route exact path="/info" component={Info} />
-            <Route exact path="/pro" component={Pro} />
             <Route component={Page404} />
           </Switch>
         </Router>

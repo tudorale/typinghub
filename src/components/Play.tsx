@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Pro from "../images/pro.jpg";
@@ -7,15 +7,17 @@ import { Link } from "react-router-dom";
 import Card from "./subComponents/Card";
 import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
+import UserContext from "./services/UserContext";
 
 function Play() {
   // states
-  const [user, setUser] = useState<firebase.default.User>();
   const [chat, setChat] = useState<any>();
   const [message, setMessage] = useState<string>("");
-  const [userData, setUserData] = useState<any>();
   const [users, setUsers] = useState<Array<Object>>([]);
   const [timer, setTimer] = useState<number>(0);
+
+  const userStatus = useContext(UserContext);
+  const { user, setUser, userData, setUserData } = userStatus;
 
   // checking if the user is logged in or not and adding values to states
   useEffect(() => {

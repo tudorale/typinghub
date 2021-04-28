@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Firebase, { db } from "./services/Firebase";
 import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import { useHistory } from "react-router-dom";
-
+import UserContext from "./services/UserContext";
 function AccountSettings() {
-  const [user, setUser] = useState<any>(undefined);
-  const [userData, setUserData] = useState<any>("");
+  const userStatus = useContext(UserContext);
+  const { user, setUser, userData, setUserData } = userStatus;
 
   const [newUsername, setNewUsername] = useState("");
   const [usernameStatus, setUsernameStatus] = useState("");

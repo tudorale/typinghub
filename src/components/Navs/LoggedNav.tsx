@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../../style/css/main.css";
 import { Link, useHistory } from "react-router-dom";
 import Firebase, { db } from "../services/Firebase";
 import { HashLink } from "react-router-hash-link";
+import UserContext from "../services/UserContext";
 
 function LoggedNav(props: any) {
   // states
-  const [user, setUser] = useState<any>("");
   const [notifications, setNotifications] = useState<any>("");
+
+  const userStatus = useContext(UserContext);
+  const { user, setUser } = userStatus;
 
   // ui stuff & checking if the user is logged in
   useEffect(() => {
