@@ -179,7 +179,6 @@ function Play() {
     <>
       <HTML title="JustType - Main page" />
 
-      <div className="slowNetworkSpinner"></div>
       {user ? (
         <div className="extraWrapper">
           <Nav path="/account-settings" name="Account Settings" />
@@ -448,6 +447,8 @@ function Play() {
       ) : (
         <NotLogged />
       )}
+
+      <div className="slowNetworkSpinner"></div>
     </>
   );
 }

@@ -9,7 +9,7 @@ import Statistics from "./services/Statistics";
 import UserContext from "./services/UserContext";
 const User = (props: any) => {
   const username = props.match.params.username;
-  const [status, setStatus] = useState("Loading...");
+  const [status, setStatus] = useState("");
 
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
