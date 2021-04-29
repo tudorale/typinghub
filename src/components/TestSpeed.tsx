@@ -72,7 +72,6 @@ const Battle = React.memo((props: any) => {
     setRandomTip(tips[Math.floor(Math.random() * 9)]);
 
     Firebase.auth().onAuthStateChanged((usr: any) => {
-      let spinner = document.querySelector(".battleSpinner") as HTMLDivElement;
       let mustLogged = document.querySelector(".notLoggedIn") as HTMLDivElement;
 
       if (usr) {
@@ -119,13 +118,8 @@ const Battle = React.memo((props: any) => {
             }, 1000);
           }
         }
-
-        if (spinner) {
-          spinner.style.display = "none";
-        }
       } else {
-        if (spinner && mustLogged) {
-          spinner.style.display = "none";
+        if (mustLogged) {
           mustLogged.style.display = "block";
         }
       }
@@ -436,7 +430,6 @@ const Battle = React.memo((props: any) => {
       category === "quotes" ||
       category === "custom" ? (
         <>
-          <div className="battleSpinner"></div>
           {user ? (
             <div className="battleExtraWrapper">
               <Nav path="/play" name="Main" />
@@ -582,7 +575,7 @@ const Battle = React.memo((props: any) => {
                         : null}
                     </p>
                     <p className="notAllowed">
-                      {Math.round((symbols / allSymbols) * 100) <= 70
+                      {Math.round((symbols / allSymbols) * 100) < 70
                         ? "You have an accuracy that is less than 70%, your score will not be saved."
                         : ""}
                     </p>
