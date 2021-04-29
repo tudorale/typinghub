@@ -16,6 +16,14 @@ function Info() {
           see how.
         </p>
 
+        <h2>Monthly prize for the first user in the leaderboard</h2>
+        <p>
+          At the end of each month the first place from the leaderboard will get
+          a free pro membership for a month, if the player has already pro
+          membership he will get +200 points for his account. The monthly prize
+          will start when in the leaderboard will be more than 7 active players.
+        </p>
+
         <h2>What data are we storing?</h2>
         <p>
           We are storing the majority of data that is displayed after a test is

@@ -375,6 +375,14 @@
               font-size: 1.75rem;
               font-weight: 500;
             }
+            .topInfo {
+              // may change the position for the 4th section
+              font-size: 1rem;
+              color: white;
+              a {
+                color: $text-color;
+              }
+            }
             .top10 {
               grid-area: top10;
               background-color: $card-background;

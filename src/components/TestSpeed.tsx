@@ -50,7 +50,7 @@ const Battle = React.memo((props: any) => {
   const tips = [
     "You can use CTRL + Backspace (Win) to delete a whole word.",
     "Try to type without looking at the keyboard, look at your screen, you will type faster!",
-    "Use your all 10 fingers when you type, you will type faster.",
+    "Use your at least 7 fingers when you type, you will type faster.",
     "Is better to type correctly and a bit slower than wrong and faster.",
     "If you have to type an uppercase letter use SHIFT + key instead of CapsLock.",
     "Maintain a good and a comfortable position of your body.",
