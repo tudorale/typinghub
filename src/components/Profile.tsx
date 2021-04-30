@@ -93,7 +93,7 @@ function Profile() {
               <div className="userInfo">
                 <h1>
                   <span className="usern">{user.displayName}</span>
-                  {userData.pro ? <img src={Pro} /> : ""}
+                  {userData.pro ? <img src={Pro} alt="" /> : ""}
                   <span className="jtId">{userData.justTypeID}</span>
                 </h1>
                 <div className="descriptionProfile">

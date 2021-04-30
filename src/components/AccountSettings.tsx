@@ -423,12 +423,9 @@ function AccountSettings() {
             <button onClick={() => handleSetImage()}>Change image</button>
           </div>
 
-          <div className="hisDescription">
-            <p className="description">
-              Description:{" "}
-              <span>{userData ? userData.description : "Loading..."}</span>
-            </p>
-          </div>
+         
+            <p className="description">Your description</p>
+          
 
           <label htmlFor="description" className="dLabel">
             Set description

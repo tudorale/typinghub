@@ -426,10 +426,11 @@ function Play() {
                               </Link>
                               <Link to={`/user/${d.username}`}>
                                 <p className="lbUser">
-                                  {d.username}{" "}
+                                  <span>{d.username}</span>{" "}
                                   {d.pro ? (
                                     <img src={Pro} alt="" className="lbPro" />
-                                  ) : null}
+                                  ) : null}{" "}
+                                  <span className="lbId">{d.justTypeID}</span>
                                 </p>
                               </Link>
                               <p className="lbPoints">

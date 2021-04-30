@@ -27,7 +27,7 @@ $input-color: $card-background;
     .profilePicture {
       margin-left: 20px;
       position: relative;
-      margin-top: 20px;
+      margin-top: 35px;
       p {
         margin-left: 0px;
       }
@@ -41,7 +41,6 @@ $input-color: $card-background;
       }
       button {
         @extend %button-styles;
-        margin-top: 10px;
       }
       .status {
         color: rgb(134, 134, 134);
@@ -59,6 +58,7 @@ $input-color: $card-background;
       position: absolute;
       color: rgb(85, 85, 85);
     }
+
     textarea {
       margin-left: 20px;
       margin-top: 10px;
@@ -74,17 +74,14 @@ $input-color: $card-background;
       padding-top: 27px;
       color: white;
     }
-    .hisDescription {
-      .description span {
-        padding-right: 30px;
-        position: relative;
-        word-break: break-word;
-      }
+
+    .description {
+      padding-top: 25px;
     }
 
     .descriptionSpinner {
       position: relative;
-      top: 4px;
+      top: 12px;
       left: 250px;
       display: none;
       margin-bottom: -35px;
@@ -116,6 +113,7 @@ $input-color: $card-background;
       margin-top: 10px;
       margin-bottom: 20px;
     }
+
     .settingsContent {
       display: flex;
       margin-top: -5px;
