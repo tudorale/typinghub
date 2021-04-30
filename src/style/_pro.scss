@@ -6,10 +6,11 @@
 }
 
 .loginBox {
-  position: absolute;
+  position: relative;
   color: white;
   top: 80px;
   left: 20px;
+  width: 98%;
   display: none;
   form {
     margin-top: 20px;
@@ -59,8 +60,9 @@
 .proBox {
   color: white;
   font-size: 1rem;
-  position: absolute;
+  position: relative;
   top: 80px;
+  width: 98%;
   left: 20px;
   margin-bottom: 30px;
   h1 {

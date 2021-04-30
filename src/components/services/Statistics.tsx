@@ -7,14 +7,15 @@ function Statistics(props: any) {
       <Line
         data={{
           labels: props.labels,
+
           datasets: [
             {
               label: props.title,
               data: props.wpm,
               backgroundColor: props.pointColor,
               fill: false,
+              lineTension: 0,
               borderColor: props.lineColor,
-              tension: 0,
               pointBorderColor: props.pointColor,
             },
           ],
@@ -23,14 +24,17 @@ function Statistics(props: any) {
         width={1600}
         options={{
           maintainAspectRatio: false,
-          legend: {
-            display: "none",
+          layout: {
+            padding: 5,
           },
           scales: {
             xAxes: [
               {
                 gridLines: {
                   color: "#19171d",
+                },
+                ticks: {
+                  display: false,
                 },
               },
             ],

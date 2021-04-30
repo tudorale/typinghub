@@ -312,7 +312,7 @@ function Play() {
                               You must be a PRO user to chat!
                             </p>
                             <p className="buyProChat">
-                              <Link to="/pro-membership">Buy Pro</Link>
+                              <Link to="/pro">Buy Pro</Link>
                             </p>
                           </>
                         ) : (
@@ -405,7 +405,10 @@ function Play() {
                 <div className="rowTwo">
                   <div className="section-five">
                     <h1 className="topHeader">Top 10</h1>
-                    <p className="topInfo">The monthly prize is not active yet, for more info check <Link to="/info">this</Link>.</p>
+                    <p className="topInfo">
+                      The monthly prize is not active yet, for more info check{" "}
+                      <Link to="/info">this</Link>.
+                    </p>
                     <div className="top10">
                       {users.length >= 1 ? (
                         users.map((d: any) => {

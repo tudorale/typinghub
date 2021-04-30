@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@paypal/react-paypal-js": "^6.0.0",
+    "@types/chart.js": "^2.9.32",
     "@types/react-helmet": "^6.1.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-router-hash-link": "^1.2.1",

@@ -10,7 +10,7 @@ import UserContext from "./services/UserContext";
 
 function Pro() {
   const userStatus = useContext(UserContext);
-  const { user, setUser, userData, setUserData} = userStatus;
+  const { user, setUser, userData, setUserData } = userStatus;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -104,6 +104,7 @@ function Pro() {
     <>
       <HTML title="JustType - Pro membership" />
       <Navigation />
+      <div className="loadingSpinnerPro"></div>
       {user ? (
         <div className="proBox">
           <h1>JustType Pro Membership</h1>
@@ -172,8 +173,6 @@ function Pro() {
           </form>
         </div>
       )}
-
-      <div className="loadingSpinnerPro"></div>
     </>
   );
 }
