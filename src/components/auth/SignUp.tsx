@@ -18,6 +18,7 @@ function SignUp() {
   const history = useHistory();
 
   // ui functions
+
   const handleFocus = (label: string, pxUp: string): void => {
     let l = document.querySelector<HTMLElement>(`${label}`)!;
 
