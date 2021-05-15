@@ -13,7 +13,7 @@
   <li>Pro Membership 💵</li>
 </ul>
 
-<h4>Future updates in their order</h4>
+<h4>Future updates</h4>
  <ul>
   <li>Achievements system</li>
   <li>Friendship system 👥</li>
