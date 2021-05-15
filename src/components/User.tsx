@@ -10,7 +10,7 @@ import UserContext from "./services/UserContext";
 const User = (props: any) => {
   const username = props.match.params.username;
   const [status, setStatus] = useState("");
-
+  const [haveAUser, setHaveAUser] = useState<boolean>(false);
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
 
@@ -27,6 +27,8 @@ const User = (props: any) => {
   useEffect(() => {
     let spinner = document.querySelector(".userPageSpinner") as HTMLDivElement;
     let notLoggedIn = document.querySelector(".notLoggedIn") as HTMLDivElement;
+
+    setHaveAUser(false);
 
     Firebase.auth().onAuthStateChanged((usr) => {
       if (usr) {
@@ -46,9 +48,11 @@ const User = (props: any) => {
                 .where("username", "==", username)
                 .get()
                 .then((query: any) => {
+                  setHaveAUser(true);
                   query.forEach((doc: any) => {
                     setUserData(doc.data());
                     setStatus("");
+
                     setRandomData(
                       doc.data().randomHistory.map((w: any) => w.wpm)
                     );
@@ -81,12 +85,14 @@ const User = (props: any) => {
         spinner.style.display = "none";
       }
     });
+
+    return () => setHaveAUser(false);
   }, []);
 
   return (
     <>
       <HTML
-        title={`JustType - ${userData ? userData.username : "User"} page`}
+        title={`JustType - ${haveAUser && username ? username : "User"} page`}
       />
 
       {user ? (
@@ -94,7 +100,7 @@ const User = (props: any) => {
           <Nav path="/play" name="Main" />
           <div className="userPageContent">
             <p className="userPageStatus">{status}</p>
-            {userData ? (
+            {haveAUser && userData ? (
               <div className="userPageGrid">
                 <div className="userSectionOne">
                   <img src={userData.profileImage} alt="" />
@@ -224,6 +230,8 @@ const User = (props: any) => {
                   )}
                 </div>
               </div>
+            ) : status === "" ? (
+              <div className="userPageSpinnerTwo"></div>
             ) : null}
           </div>
         </div>

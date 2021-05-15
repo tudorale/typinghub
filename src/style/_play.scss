@@ -437,7 +437,7 @@
                 grid-template-columns: 55px auto auto;
                 grid-template-rows: auto auto;
                 grid-column-gap: 10px;
-                margin-top: 30px;
+                margin-top: 20px;
                 width: 100%;
                 padding: 10px 0px;
                 padding-right: 60px;
@@ -459,7 +459,7 @@
                 .lbUser {
                   font-size: 1.2rem;
                   font-weight: 500;
-                  margin-top: -7px;
+                  margin-top: -5px;
                   width: fit-content;
                   grid-area: lbuser;
                   .lbId {
@@ -478,7 +478,7 @@
                 .lbPoints {
                   grid-area: lbpoints;
                   font-size: 0.9rem;
-                  margin-top: 5px;
+                  margin-top: 7px;
                 }
               }
 
