@@ -18,6 +18,9 @@
       color: white;
       background-color: $card-background;
     }
+    input::placeholder {
+      color: $placeholder-color;
+    }
     button {
       @extend %button-styles;
       font-size: 1rem !important;

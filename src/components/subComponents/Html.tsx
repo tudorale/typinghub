@@ -7,7 +7,7 @@ function Html(props: any) {
       <style>
         {`
                  body {
-                    background-color: #0e0b11;       
+                    background-color: #0b101b;       
                   }
                 `}
       </style>

@@ -9,10 +9,6 @@ function DeleteAccount() {
   const [buttonStatus, setButtonStatus] = useState("Delete account");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    Firebase.auth().signOut();
-  }, []);
-
   const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let btn = document.querySelector("#btn") as HTMLButtonElement;

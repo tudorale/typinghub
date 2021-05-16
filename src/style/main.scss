@@ -20,14 +20,6 @@
 @import "info";
 @import "pro";
 
-::-moz-selection {
-  background: $text-color;
-}
-
-::selection {
-  background: $text-color;
-}
-
 %button-styles {
   padding: 0px 15px;
   height: 40px;

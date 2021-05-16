@@ -155,7 +155,7 @@
       .notificationsWrapper {
         width: 400px;
         height: 500px;
-        background-color: #201f25;
+        background-color: $lighter-card;
         border-radius: 5px;
         position: absolute;
         transition: all 500ms ease;
@@ -206,7 +206,7 @@
             font-weight: 500;
             span {
               font-size: 0.9rem;
-              color: lightgrey;
+              color: $grey-color;
             }
           }
 
@@ -215,7 +215,7 @@
             margin-top: 5px;
             span {
               font-size: 0.8rem;
-              color: lightgrey;
+              color: $grey-color;
             }
           }
         }

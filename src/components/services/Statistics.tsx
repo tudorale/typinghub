@@ -31,7 +31,7 @@ function Statistics(props: any) {
             xAxes: [
               {
                 gridLines: {
-                  color: "#19171d",
+                  color: "#111825",
                 },
                 ticks: {
                   display: false,
@@ -41,7 +41,7 @@ function Statistics(props: any) {
             yAxes: [
               {
                 gridLines: {
-                  color: "#19171d",
+                  color: "#111825",
                 },
               },
             ],

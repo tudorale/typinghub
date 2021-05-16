@@ -40,7 +40,7 @@
       }
       .lengthText {
         margin-top: 10px;
-        color: rgb(85, 85, 85);
+        color: $grey-color;
         margin-bottom: 10px;
       }
     }
@@ -62,7 +62,7 @@
       .neededWrapper {
         input {
           width: 100%;
-          height: 40px;
+          height: 45px;
           text-align: start;
           padding-top: 0px;
           margin-bottom: 15px;
@@ -71,12 +71,11 @@
           border: none;
           padding: 10px;
           border-bottom: 2px solid $main-color;
-          border-radius: 4px;
           font-size: 1.1rem;
           color: white;
         }
-        input[placeholder] {
-          color: rgb(119, 119, 119);
+        input::placeholder {
+          color: $placeholder-color;
         }
         .quote {
           display: flex;
@@ -109,7 +108,7 @@
           }
           .abandon {
             a {
-              color: rgb(104, 104, 104);
+              color: $grey-color-darker;
               transition: all 350ms linear;
               &:hover {
                 color: lightgrey;
@@ -121,7 +120,7 @@
         .rightInfo {
           margin-top: 5px;
           font-size: 1rem;
-          color: rgb(119, 119, 119);
+          color: $grey-color-darker;
           p {
             margin-top: 10px;
           }
@@ -129,8 +128,8 @@
       }
 
       .randomTip {
-        color: rgb(119, 119, 119);
-        font-size: 1.05rem;
+        color: $grey-color-darker;
+        font-size: 1.1rem;
         position: relative;
         float: left;
         top: 30px;
@@ -175,9 +174,9 @@
         }
 
         p {
-          font-size: 1.1rem;
+          font-size: 1.06rem;
           margin-top: 10px;
-          color: rgb(104, 104, 104);
+          color: $grey-color-darker;
           span {
             color: $text-color;
           }
@@ -188,7 +187,7 @@
 
         .givenPoints {
           margin-top: 5px;
-          color: rgb(104, 104, 104);
+          color: $grey-color-darker;
           margin-bottom: -5px;
         }
         .infoResult {
@@ -201,7 +200,7 @@
 
 @keyframes blinkBlink {
   from {
-    color: rgb(104, 104, 104);
+    color: $grey-color-darker;
   }
   to {
     color: white;
