@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../style/css/main.css";
 import Firebase, { db } from "./Firebase";
 import { Link } from "react-router-dom";
+import Helmet from "react-helmet";
 
 declare global {
   interface Window {
@@ -63,18 +64,20 @@ function PayPal() {
   }, []);
 
   return (
-    <div className="paypal">
-      <div className="ppButtons" ref={paypalRef}></div>
-      <p className="ppStatus">{paypalStatus}</p>
-      <div className="redirectedButtons">
-        <Link to="/play">
-          <button>Main Page</button>
-        </Link>
-        <Link to="/profile">
-          <button>Your Profile</button>
-        </Link>
+    <>
+      <div className="paypal">
+        <div className="ppButtons" ref={paypalRef}></div>
+        <p className="ppStatus">{paypalStatus}</p>
+        <div className="redirectedButtons">
+          <Link to="/play">
+            <button>Main Page</button>
+          </Link>
+          <Link to="/profile">
+            <button>Your Profile</button>
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
