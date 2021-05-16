@@ -7,6 +7,8 @@ import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import Statistics from "./services/Statistics";
 import UserContext from "./services/UserContext";
+import Linkify from "react-linkify";
+
 const User = (props: any) => {
   const username = props.match.params.username;
   const [status, setStatus] = useState("");
@@ -110,9 +112,11 @@ const User = (props: any) => {
                       {userData.pro ? <img src={Pro} /> : null}
                       <span>{userData.justTypeID}</span>
                     </h1>
-                    <div className="userPageDescription">
-                      <p>{userData.description}</p>
-                    </div>
+                    <Linkify>
+	                    <div className="userPageDescription">
+	                      {userData.description}
+	                    </div>
+                    </Linkify>
                     <p className="userPagePoints">{`${userData.points} Points (${userData.rank})`}</p>
                   </div>
                 </div>

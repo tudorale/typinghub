@@ -48,6 +48,7 @@ function AccountSettings() {
             },
             (result) => {
               setUserData(result.data());
+             
             }
           );
       } else {
@@ -436,6 +437,7 @@ function AccountSettings() {
               setDescription(e.target.value);
               setDescriptionStatus("");
             }}
+            
             maxLength={250}
             onFocus={() =>
               handleFocusDescription("#description", ".dLabel", "15", "0.9")

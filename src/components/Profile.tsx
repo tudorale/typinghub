@@ -8,6 +8,8 @@ import HTML from "./subComponents/Html";
 import NotLogged from "./subComponents/NotLogged";
 import Statistics from "./services/Statistics";
 import UserContext from "./services/UserContext";
+import Linkify from "react-linkify";
+
 function Profile() {
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
@@ -96,9 +98,12 @@ function Profile() {
                   {userData.pro ? <img src={Pro} alt="" /> : ""}
                   <span className="jtId">{userData.justTypeID}</span>
                 </h1>
-                <div className="descriptionProfile">
-                  <p>{userData.description}</p>
-                </div>
+                <Linkify>
+                  <div className="descriptionProfile">
+                    {userData.description}
+                  </div>
+                </Linkify>   
+                
                 <p className="pointsProfile">
                   {userData.points} Points ({userData.rank})
                 </p>
