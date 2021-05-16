@@ -1,11 +1,9 @@
 .pageNotFound {
   color: white;
-  position: absolute;
-  top: 50%;
   width: 500px;
-  left: 50%;
   text-align: center;
-  transform: translate(-50%, -50%);
+  margin: 0px auto;
+  margin-top: 100px;
   h1 {
     font-size: 3rem;
     margin-bottom: 30px;
@@ -27,14 +25,14 @@
   }
 }
 
-@media only screen and (max-width: 510px) {
+@media only screen and (max-width: 550px) {
   .pageNotFound {
     width: 100%;
     padding: 0 20px;
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .pageNotFound .buttonsNotFound {
     flex-direction: column;
     justify-content: start;

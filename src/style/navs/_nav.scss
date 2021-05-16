@@ -44,7 +44,7 @@
     font-size: 1.1rem;
     float: right;
     margin: 18px;
-    margin-right: 200px;
+    margin-right: 180px;
     margin-top: 20px;
     a {
       text-decoration: none;
@@ -70,8 +70,9 @@
     outline: none;
     float: right;
     margin: 13px;
-    position: relative;
-    left: 470px;
+    margin-left: 0px;
+    position: absolute;
+    right: 0;
     transition: all 300ms linear;
     &:hover {
       background-color: $text-color;

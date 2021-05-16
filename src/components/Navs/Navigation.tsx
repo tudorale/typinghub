@@ -60,6 +60,11 @@ function Navigation() {
               Contact
             </HashLink>
           </li>
+          <li>
+            <HashLink smooth to="/play">
+              Speed Test
+            </HashLink>
+          </li>
         </ul>
 
         <Link to="/sign-in">
@@ -106,6 +111,11 @@ function Navigation() {
           <HashLink smooth to="#contact">
             <li>Contact</li>
           </HashLink>
+          <li>
+            <HashLink smooth to="/play">
+              Speed Test
+            </HashLink>
+          </li>
         </ul>
 
         <Link to="/sign-in">

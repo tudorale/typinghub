@@ -1,0 +1,31 @@
+.notLoggedIn {
+  margin: 20px;
+  display: none;
+  width: 500px;
+  margin: 0px auto;
+  margin-top: 100px;
+  text-align: center;
+  p {
+    color: white;
+    font-size: 1.2rem;
+    padding-right: 10px;
+  }
+
+  .buttons {
+    display: flex;
+    width: 250px;
+    margin: 20px auto;
+    justify-content: space-between;
+    button {
+      @extend %button-styles;
+      margin-top: 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .notLoggedIn {
+    width: auto;
+    padding: 0 20px;
+  }
+}

@@ -3,8 +3,7 @@ import "../style/css/main.css";
 import emailjs from "emailjs-com";
 import Nav from "./Navs/Navigation";
 import { Link } from "react-router-dom";
-import Firebase from "./services/Firebase";
-import Progress from "../images/progress.png";
+import Progress from "../images/progress.jpg";
 import { HashLink } from "react-router-hash-link";
 
 declare global {
@@ -35,10 +34,6 @@ function Home() {
       clearInterval(interval.current);
     }
   }, [timer]);
-
-  useEffect(() => {
-    Firebase.auth().signOut();
-  }, []);
 
   const handleFocus = (label: string, pxUp: string): void => {
     let l = document.querySelector<HTMLElement>(`${label}`)!;
