@@ -14,6 +14,7 @@ declare global {
 
 function Home() {
   // ui stuff
+  const config = require("../config.json")
   const [emailStatus, setEmailStatus] = useState<string>("");
   const [timer, setTimer] = useState<number>(0);
 
@@ -279,11 +280,11 @@ function Home() {
             <h1>About</h1>
 
             <p>
-              <span>JustType</span> is a <span>free to use platform</span> where
+              <span>{config.name}</span> is a <span>free to use platform</span> where
               you can improve your typing speed by taking tests in three
               categories, random, quotes, and custom, by playing you are getting
               points and you can get into the leaderboard!.
-              <span> JustType</span> was started on 1 May 2021 by
+              <span> {config.name}</span> was started on 1 May 2021 by
               <span> Tudor Alexandru</span> and it will be the next biggest
               competitive platform for people like me who love to type at the
               computer. You can play for free and if you want to support me you
@@ -388,11 +389,11 @@ function Home() {
         <div className="footer">
           <h1 className="logo">
             <HashLink to="/#top">
-              JustTyp<span></span>
+              TypingHu<span></span>
             </HashLink>
           </h1>
 
-          <p className="rights">© JustType 2021, All rights reserved</p>
+          <p className="rights">© {config.name} 2021, All rights reserved</p>
 
           <div className="links">
             <Link to="/terms-and-conditions">Terms and Conditions</Link>

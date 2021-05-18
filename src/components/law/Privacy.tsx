@@ -5,12 +5,13 @@ import { Helmet } from "react-helmet";
 import { HashLink } from "react-router-hash-link";
 
 function Privacy() {
+  const config = require("../../config.json")
   return (
     <>
       <Nav />
       <div className="privacyWrapper">
         <Helmet>
-          <title>JustType - Privacy Policy</title>
+          <title>{config.name} | Privacy Policy</title>
         </Helmet>
         <h1>Privacy Policy</h1>
         <p style={{ textDecoration: "underline" }}>
@@ -57,7 +58,7 @@ function Privacy() {
             <p>
               <strong>Website</strong> (referred to as either &quot;the
               Website&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot;
-              in this Agreement) refers to JustType.
+              in this Agreement) refers to {config.name}.
             </p>
           </li>
           <li>
@@ -117,7 +118,7 @@ function Privacy() {
           </li>
           <li>
             <p>
-              <strong>Website</strong> refers to JustType, accessible from{" "}
+              <strong>Website</strong> refers to {config.name}, accessible from{" "}
               <a href="/" rel="external nofollow noopener" target="_blank">
                 here
               </a>
@@ -439,7 +440,7 @@ function Privacy() {
         <ul>
           <li>
             By visiting this page on our website:{" "}
-            <HashLink to="/#contact">www.justtype.com/#contact</HashLink>
+            <HashLink to="/#contact">www.{config.name}.com/#contact</HashLink>
           </li>
         </ul>
       </div>

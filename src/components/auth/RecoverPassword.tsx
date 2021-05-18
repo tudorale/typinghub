@@ -56,10 +56,10 @@ function Recover() {
       btn.removeAttribute("disabled");
     }
   };
-
+  const config = require("../../config.json")
   return (
     <div className="recover">
-      <Html title="JustType - Recover password"></Html>
+      <Html title={`${config.name} | Recover password`}></Html>
       <h1>
         <a href="/">Forgot password?</a>
       </h1>

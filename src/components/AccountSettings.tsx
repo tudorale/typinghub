@@ -377,10 +377,11 @@ function AccountSettings() {
         setLayoutStatus(err.message);
       });
   };
+  const config = require("../config.json")
 
   return (
     <>
-      <HTML title="JustType - Account settings" />
+      <HTML title={`${config.name} | Account settings`} />
 
       <div className="networkSpinner"></div>
 
@@ -581,7 +582,7 @@ function AccountSettings() {
 
             <div className="deleteAccount">
               <p>
-                If you want to delete your JustType account press the button
+                If you want to delete your {config.name} account press the button
                 below, by pressing that button you will be redirected to a
                 special page, from that page you will delete your account and
                 your data will be deleted from our databse, if you want to play

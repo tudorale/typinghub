@@ -4,12 +4,13 @@ import Navigation from "./Navs/InfoNav";
 import "../style/css/main.css";
 
 function Info() {
+  const config = require("../config.json")
   return (
     <>
-      <HTML title="JustType - Informations" />
+      <HTML title={`${config.name} | Informations`} />
       <Navigation />
       <div className="informations">
-        <h1>JustType Informations, Systems, Updates</h1>
+        <h1>{config.name} Informations, Systems, Updates</h1>
         <p>
           First of all, we are using a normal, common system for the calculation
           of your data, such as WPM, CPM, Accuracy, below on the page you will
@@ -91,7 +92,7 @@ function Info() {
           does that number and why does exist?
         </p>
         <p>
-          That number is what we called JustType ID that is unique for each
+          That number is what we called {config.name} ID that is unique for each
           user, with that ID you can keep track of someone's profile, for
           example if the user changes his username in the chat you will not see
           the updated name instead you will see the old one but the ID will stay

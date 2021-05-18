@@ -3,9 +3,10 @@ import "../style/css/main.css";
 import { Link } from "react-router-dom";
 import HTML from "./subComponents/Html";
 function Page404() {
+  const config = require("../config.json")
   return (
     <>
-      <HTML title="JustType - Page not found" />
+      <HTML title={`${config.name} | Page not found`} />
       <div className="pageNotFound">
         <h1>ERROR 404</h1>
         <p>

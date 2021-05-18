@@ -102,7 +102,7 @@ function Play() {
           message: filter.clean(message),
           time: `${h}:${min}:${s} ${d}/${m}/${y}`,
           id: user?.uid,
-          justTypeID: userData?.justTypeID,
+          typingHubID: userData?.typingHubID,
         };
 
         db.collection("chat")
@@ -174,10 +174,10 @@ function Play() {
       }
     });
   }, [userData]);
-
+  const config = require("../config.json")
   return (
     <>
-      <HTML title="JustType - Main page" />
+      <HTML title={`${config.name} | Main page`}/>
 
       {user ? (
         <div className="extraWrapper">
@@ -342,7 +342,7 @@ function Play() {
                                               className="proImage"
                                               alt=""
                                             />{" "}
-                                            <span>{x.justTypeID}</span>
+                                            <span>{x.typingHubID}</span>
                                           </p>
                                         </Link>
                                         <p className="message">
@@ -430,7 +430,7 @@ function Play() {
                                   {d.pro ? (
                                     <img src={Pro} alt="" className="lbPro" />
                                   ) : null}{" "}
-                                  <span className="lbId">{d.justTypeID}</span>
+                                  <span className="lbId">{d.typingHubID}</span>
                                 </p>
                               </Link>
                               <p className="lbPoints">

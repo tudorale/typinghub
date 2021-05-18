@@ -124,14 +124,14 @@ function SignUp() {
                     payment: {},
                     notifications: [
                       {
-                        sender: "JustType",
+                        sender: `{config.name}`,
                         id: Math.floor(Math.random() * 999999999),
                         message:
                           "This is the section where you will recieve notifications from us, from events, and so on.",
                         time: `${h}:${min}:${s} ${d}/${m}/${y}`,
                       },
                     ],
-                    justTypeID: `#${Math.floor(Math.random() * 9999)}`,
+                    typingHubID: `#${Math.floor(Math.random() * 9999)}`,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     profileImage:
                       "https://firebasestorage.googleapis.com/v0/b/justtype-preview.appspot.com/o/profileimage.jpg?alt=media&token=ff56cecc-ffce-42c5-8079-bcc806e70348",
@@ -160,9 +160,11 @@ function SignUp() {
     }
   };
 
+  const config = require("../../config.json")
+
   return (
     <>
-      <Html title="JustType - Sign Up"></Html>
+      <Html title={`${config.name} | Sign Up`}></Html>
 
       <div className="signup">
         <h1>

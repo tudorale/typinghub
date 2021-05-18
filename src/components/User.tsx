@@ -10,6 +10,7 @@ import UserContext from "./services/UserContext";
 import Linkify from "react-linkify";
 
 const User = (props: any) => {
+  const config = require("../config.json")
   const username = props.match.params.username;
   const [status, setStatus] = useState("");
   const [haveAUser, setHaveAUser] = useState<boolean>(false);
@@ -94,7 +95,7 @@ const User = (props: any) => {
   return (
     <>
       <HTML
-        title={`JustType - ${haveAUser && username ? username : "User"} page`}
+        title={`${config.name} | ${haveAUser && username ? username : "User"} page`}
       />
 
       {user ? (
@@ -110,7 +111,7 @@ const User = (props: any) => {
                     <h1>
                       {userData.username}
                       {userData.pro ? <img src={Pro} /> : null}
-                      <span>{userData.justTypeID}</span>
+                      <span>{userData.typingHubID}</span>
                     </h1>
                     <Linkify>
 	                    <div className="userPageDescription">

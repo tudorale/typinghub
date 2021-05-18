@@ -113,7 +113,7 @@ function LoggedNav(props: any) {
       <div className="navbarLogged">
         <h1 className="logoNavLogged">
           <HashLink to="/">
-            JustTyp<span></span>
+           TypingHu<span></span>
           </HashLink>
         </h1>
 
@@ -206,7 +206,7 @@ function LoggedNav(props: any) {
       <div className="mobileNavLogged">
         <h1 className="logoNavMobileLogged">
           <HashLink to="/">
-            JustTyp<span></span>
+           TypingHu<span></span>
           </HashLink>
         </h1>
 

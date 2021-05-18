@@ -421,10 +421,11 @@ const Battle = React.memo((props: any) => {
   const newTest = () => {
     window.location.reload();
   };
+  const config = require("../config.json")
 
   return (
     <>
-      <HTML title="JustType - Test your speed" />
+      <HTML title={`${config.name} | Test your speed`} />
 
       {category === "random" ||
       category === "quotes" ||

@@ -362,7 +362,7 @@
               font-weight: 500;
             }
             .topInfo {
-              // may change the position for the 4th section
+              
               font-size: 1rem;
               color: white;
               a {
@@ -413,7 +413,8 @@
                   font-size: 2rem;
                   margin-right: 35px;
                   margin-top: 3px;
-                  color: rgb(116, 116, 116);
+                  color: $grey-color;
+                  
                 }
               }
 
@@ -475,7 +476,7 @@
 
             .top10::-webkit-scrollbar {
               width: 10px;
-              background-color: #1d1d1d;
+              background-color: $grey-color-darker;
               border-radius: 10px;
             }
 

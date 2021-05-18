@@ -41,7 +41,7 @@ function Navigation() {
       <div className="navbar">
         <h1 className="logoNav">
           <HashLink to="/#">
-            JustTyp<span></span>
+            TypingHu<span></span>
           </HashLink>
         </h1>
         <ul>
@@ -98,7 +98,7 @@ function Navigation() {
       <div className="mobileNav">
         <h1 className="logoNavMobile">
           <HashLink to="/">
-            JustTyp<span></span>
+            TypingHu<span></span>
           </HashLink>
         </h1>
         <ul>

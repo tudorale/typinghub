@@ -74,9 +74,11 @@ function Profile() {
     });
   }, [userData]);
 
+  const config = require("../config.json")
+
   return (
     <>
-      <HTML title="JustType - Your profile" />
+      <HTML title={`${config.name} | Your profile`}/>
 
       {userData ? (
         <div className="profileWrapper">
@@ -96,7 +98,7 @@ function Profile() {
                 <h1>
                   <span className="usern">{user.displayName}</span>
                   {userData.pro ? <img src={Pro} alt="" /> : ""}
-                  <span className="jtId">{userData.justTypeID}</span>
+                  <span className="jtId">{userData.typingHubID}</span>
                 </h1>
                 <Linkify>
                   <div className="descriptionProfile">

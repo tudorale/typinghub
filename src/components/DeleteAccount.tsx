@@ -51,10 +51,10 @@ function DeleteAccount() {
         btn?.removeAttribute("disabled");
       });
   };
-
+  const config = require("../config.json")
   return (
     <div>
-      <HTML title="JustType - Delete your account" />
+      <HTML title={`${config.name} | Delete your account`} />
       <div className="deleteYourAccount">
         <p>
           For security purposes you will need to re-enter your credentials to

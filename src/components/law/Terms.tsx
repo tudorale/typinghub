@@ -4,14 +4,14 @@ import Nav from "../Navs/SecondNav";
 import { Helmet } from "react-helmet";
 
 function Terms() {
-  const COMPANY = "JustType";
+  const config = require("../../config.json")
 
   return (
     <>
       <Nav></Nav>
       <div className="termsWrapper">
         <Helmet>
-          <title>JustType - Terms and Conditions</title>
+          <title>{config.name} | Terms and Conditions</title>
         </Helmet>
         <div className="termsContent">
           <h1>Important!</h1>
@@ -47,7 +47,7 @@ function Terms() {
           <h1>2. Intellectual Property Rights</h1>
           <p>
             Other than content you own, which you may have opted to include on
-            this Website, under these Terms, {COMPANY} and/or its licensors own
+            this Website, under these Terms, {config.name} and/or its licensors own
             all rights to the intellectual property and material contained in
             this Website, and all such rights are reserved. You are granted a
             limited license only, subject to the restrictions provided in these
@@ -87,7 +87,7 @@ function Terms() {
           </ol>
           <p>
             Certain areas of this Website are restricted from access by you and{" "}
-            {COMPANY} may further restrict access by you to any areas of this
+            {config.name} may further restrict access by you to any areas of this
             Website, at any time, in its sole and absolute discretion. Any user
             ID and password you may have for this Website are confidential and
             you must maintain confidentiality of such information.
@@ -98,18 +98,18 @@ function Terms() {
             In these Website Standard Terms And Conditions, “Your Content” shall
             mean any audio, video, text, images or other material you choose to
             display on this Website. With respect to Your Content, by displaying
-            it, you grant {COMPANY} a non-exclusive, worldwide, irrevocable,
+            it, you grant {config.name} a non-exclusive, worldwide, irrevocable,
             royalty-free, sublicensable license to use, reproduce, adapt,
             publish, translate and distribute it in any and all media. Your
             Content must be your own and must not be infringing on any third
-            party’s rights. {COMPANY} reserves the right to remove any of Your
+            party’s rights. {config.name} reserves the right to remove any of Your
             Content from this Website at any time, and for any reason, without
             notice.
           </p>
 
           <h1>5. No warranties</h1>
           <p>
-            This Website is provided “as is,” with all faults, and {COMPANY}{" "}
+            This Website is provided “as is,” with all faults, and {config.name}{" "}
             makes no express or implied representations or warranties, of any
             kind related to this Website or the materials contained on this
             Website. Additionally, nothing contained on this Website shall be
@@ -127,10 +127,10 @@ function Terms() {
 
           <h1>7. Limitation of liability</h1>
           <p>
-            In no event shall {COMPANY} , nor any of its officers, directors and
+            In no event shall {config.name} , nor any of its officers, directors and
             employees, be liable to you for anything arising out of or in any
             way connected with your use of this Website, whether such liability
-            is under contract, tort or otherwise, and {COMPANY} , including its
+            is under contract, tort or otherwise, and {config.name} , including its
             officers, directors and employees shall not be liable for any
             indirect, consequential or special liability arising out of or in
             any way related to your use of this Website.
@@ -138,7 +138,7 @@ function Terms() {
 
           <h1>8. Indemnification</h1>
           <p>
-            You hereby indemnify to the fullest extent {COMPANY} from and
+            You hereby indemnify to the fullest extent {config.name} from and
             against any and all liabilities, costs, demands, causes of action,
             damages and expenses (including reasonable attorney’s fees) arising
             out of or in any way related to your breach of any of the provisions
@@ -156,7 +156,7 @@ function Terms() {
 
           <h1>10. Variation of Terms</h1>
           <p>
-            {COMPANY} is permitted to revise these Terms at any time as it sees
+            {config.name} is permitted to revise these Terms at any time as it sees
             fit, and by using this Website you are expected to review such Terms
             on a regular basis to ensure you understand all terms and conditions
             governing use of this Website.
@@ -164,7 +164,7 @@ function Terms() {
 
           <h1>11. Assignment</h1>
           <p>
-            {COMPANY} shall be permitted to assign, transfer, and subcontract
+            {config.name} shall be permitted to assign, transfer, and subcontract
             its rights and/or obligations under these Terms without any
             notification or consent required. However, .you shall not be
             permitted to assign, transfer, or subcontract any of your rights
@@ -174,7 +174,7 @@ function Terms() {
           <h1>12. Entire Agreement</h1>
           <p>
             These Terms, including any legal notices and disclaimers contained
-            on this Website, constitute the entire agreement between {COMPANY}{" "}
+            on this Website, constitute the entire agreement between {config.name}{" "}
             and you in relation to your use of this Website, and supersede all
             prior agreements and understandings with respect to the same.
           </p>

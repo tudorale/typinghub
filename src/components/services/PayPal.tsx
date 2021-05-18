@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../style/css/main.css";
 import Firebase, { db } from "./Firebase";
 import { Link } from "react-router-dom";
-import Helmet from "react-helmet";
+
 
 declare global {
   interface Window {
@@ -14,6 +14,7 @@ function PayPal() {
   const [paypalStatus, setPaypalStatus] = useState("");
   const paypalRef = React.useRef(null);
   const PRO_AMOUNT = 4.99;
+  const config = require("../../config.json")
 
   useEffect(() => {
     const user = Firebase.auth().currentUser;
@@ -25,7 +26,7 @@ function PayPal() {
             intent: "CAPTURE",
             purchase_units: [
               {
-                description: "Permanent Pro Membership for JustType",
+                description: `Permanent Pro Membership for ${config.name}`,
                 amount: {
                   currency_code: "USD",
                   value: PRO_AMOUNT,

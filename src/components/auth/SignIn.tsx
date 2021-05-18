@@ -79,10 +79,10 @@ function SignIn() {
         setError(error.message);
       });
   };
-
+  const config = require("../../config.json")
   return (
     <div className="signin">
-      <Html title="JustType - Sign In"></Html>
+      <Html title={`${config.name} | Sign In`}></Html>
       <h1>
         <a href="/">Sign In</a>
       </h1>

@@ -108,14 +108,16 @@ function Pro() {
       });
   };
 
+  const config = require("../config.json")
+
   return (
     <>
-      <HTML title="JustType - Pro membership" />
+      <HTML title={`${config.name} | Pro membership`} />
       <Navigation />
       <div className="loadingSpinnerPro"></div>
       {user ? (
         <div className="proBox">
-          <h1>JustType Pro Membership</h1>
+          <h1>{config.name} Pro Membership</h1>
           <h2>What you will get?</h2>
           <p>- Global chat access</p>
           <p>

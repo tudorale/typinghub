@@ -1,4 +1,4 @@
-<h1>JustType  :computer:</h1>
+<h1>TypingHub  :computer:</h1>
 
 <h3>The next biggest competitive platform for typists</h3>
 
