@@ -48,4 +48,5 @@ The application code is visible on this repository and will be updated on every 
 <h2>Notes</h2>
 <ul>
  <li>Contact directly the creator at tudorbussines77@gmail.com or on the official <a href="https://tudorale.github.io/portfolio/">website</a></li>
+ <li>Old name for this project - JustType, changed because rights and domain reason</li>
 </ul>
