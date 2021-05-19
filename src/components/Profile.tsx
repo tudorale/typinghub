@@ -120,6 +120,9 @@ function Profile() {
                 Keyboard Layout: <span>{userData.keyboardLayout}</span>
               </p>
               <p>
+                Account created at: <span>{user.metadata.creationTime}</span>
+              </p>
+              <p>
                 Best: <span>{userData.bestWPM} WPM</span>
               </p>
               <p>
