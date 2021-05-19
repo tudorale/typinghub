@@ -168,7 +168,7 @@ function SignUp() {
 
       <div className="signup">
         <h1>
-          <a href="/">Sign Up</a>
+          <Link to="/">Sign Up</Link>
         </h1>
 
         <form onSubmit={handleCreateAccount}>

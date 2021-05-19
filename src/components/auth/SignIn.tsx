@@ -84,7 +84,7 @@ function SignIn() {
     <div className="signin">
       <Html title={`${config.name} | Sign In`}></Html>
       <h1>
-        <a href="/">Sign In</a>
+        <Link to="/">Sign In</Link>
       </h1>
 
       <form onSubmit={handleSignIn}>

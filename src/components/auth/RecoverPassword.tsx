@@ -61,7 +61,7 @@ function Recover() {
     <div className="recover">
       <Html title={`${config.name} | Recover password`}></Html>
       <h1>
-        <a href="/">Forgot password?</a>
+        <Link to="/">Forgot password?</Link>
       </h1>
 
       <form onSubmit={handleRecover}>
