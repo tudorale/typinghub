@@ -459,7 +459,8 @@ function AccountSettings() {
 
           <p>Set your keyboard layout</p>
           <select name="layouts" onChange={keyboardLayout}>
-            <option>Not set</option>
+            <option>Layouts</option>
+            <option value="Not Set">Not set</option>
             <option value="QWERTY">QWERTY</option>
             <option value="Dvorak">Dvorak</option>
             <option value="AZERTY">AZERTY</option>
