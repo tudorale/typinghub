@@ -45,7 +45,7 @@ I will take any help from a passionate developer, if you have an idea or if you 
 4. Make a pull request to the `staging` branch
 5. Wait for a response
 
-<h2>Branches<h2>
+<h2>Branches</h2>
 
 Name | Description |
 --- | --- |
