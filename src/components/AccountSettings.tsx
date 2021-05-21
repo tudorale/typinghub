@@ -6,6 +6,7 @@ import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import { useHistory } from "react-router-dom";
 import UserContext from "./services/UserContext";
+import * as config from "../config.json";
 
 function AccountSettings() {
   const userStatus = useContext(UserContext);
@@ -301,11 +302,14 @@ function AccountSettings() {
 
           storageRef.put(image).then(() => {
             setImageStatus("Uploading...");
-            storageRef.getDownloadURL().then((url) => {
+            storageRef.getDownloadURL().then( async (url) => {
+
               let imageURL = url;
+
               db.collection("users").doc(currentUser?.uid).update({
                 profileImage: url,
               });
+
               currentUser
                 ?.updateProfile({
                   photoURL: imageURL,
@@ -337,6 +341,42 @@ function AccountSettings() {
       setImageStatus("Select an image");
     }
   };
+
+  const handleResetImage = () => {
+    let allImages = Firebase.storage().ref().child(`users/` + currentUser?.uid);
+    
+    if(userData.profileImage === config.profileURL){
+      setImageStatus("You have to set an image before reseting it.")
+    }else{
+
+      // delete every image from his storage
+      allImages.listAll().then((res) => {
+        let files = res.items;
+        for (let i = 0; i < files.length; i++) {
+          files[i].delete().then(() => {
+            console.log("done")
+          });         
+        }
+      });
+
+      // updating with the default TypingHub image
+      currentUser
+        ?.updateProfile({
+          photoURL: config.profileURL,
+        })
+        .then(() => {
+          setImage("");
+          setImageStatus(
+            "Your profile image was reseted, it may take a few seconds to update."
+          );
+        });
+
+      db.collection("users").doc(currentUser?.uid).update({
+        profileImage: config.profileURL,
+      });
+    }
+
+  }
 
   const handleDescription = () => {
     if (description !== "") {
@@ -383,7 +423,6 @@ function AccountSettings() {
         setLayoutStatus(err.message);
       });
   };
-  const config = require("../config.json")
 
   return (
     <>
@@ -429,6 +468,7 @@ function AccountSettings() {
             <input type="file" className="image" onChange={handleImage} />
             <p className="status">{imageStatus}</p>
             <button onClick={() => handleSetImage()}>Change image</button>
+            <button onClick={() => handleResetImage()} style={{marginLeft: "15px"}}>Reset image</button>
           </div>
 
          
