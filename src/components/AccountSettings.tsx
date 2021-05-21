@@ -6,6 +6,8 @@ import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import { useHistory } from "react-router-dom";
 import UserContext from "./services/UserContext";
+import * as config from "../config.json";
+
 function AccountSettings() {
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
@@ -119,15 +121,22 @@ function AccountSettings() {
   // all usernames from the databse
   let usernames: any[] = [];
 
+  let Filter = require("bad-words"),
+    filter = new Filter();
+
   const handleUsername = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     // one time only to change username for non-pro members
+
     let spinner = document.querySelector(".loadingSpinner") as HTMLDivElement;
     let RegExpression = /^[a-zA-Z0-9 _\s]*$/;
-    if (!userData.changedUsername) {
-      spinner.style.display = "block";
 
+    const changeIt = () => {
+ 
+      // security checkers
       if (RegExpression.test(newUsername)) {
+
         if (newUsername.length >= 4 && newUsername.length <= 20) {
           db.collection("users")
             .get()
@@ -137,13 +146,13 @@ function AccountSettings() {
               });
             })
             .then(() => {
-              if (usernames.includes(newUsername)) {
+              if (usernames.includes(newUsername) || usernames.includes(newUsername.toLowerCase()) || usernames.includes(newUsername.toUpperCase())) {
                 setUsernameStatus("This username is already in use.");
                 spinner.style.display = "none";
               } else {
                 currentUser
                   ?.updateProfile({
-                    displayName: newUsername,
+                    displayName: filter.clean(newUsername),
                   })
                   .then(() => {
                     spinner.style.display = "none";
@@ -160,7 +169,7 @@ function AccountSettings() {
                   });
 
                 db.collection("users").doc(user.uid).update({
-                  username: newUsername,
+                  username: filter.clean(newUsername),
                 });
               }
             });
@@ -169,61 +178,32 @@ function AccountSettings() {
             "Your username must be more than 4 characters and less than 20 characters."
           );
         }
+      
       } else {
         setUsernameStatus(
           "Invalid username, use only letters, numbers and underscores"
         );
       }
-    } else {
-      if (!userData.pro) {
+    }
+
+    // check if the user already changed their name
+    if (!userData.changedUsername) {
+      spinner.style.display = "block";
+
+      changeIt();
+
+    }else { // if he did change his username before
+
+      spinner.style.display = "block";
+
+      if (!userData.pro) { // if he doesn't have pro, cannot change
         setUsernameStatus(
           "You can not change your username, you already did that."
         );
       }
-      if (userData.pro) {
-        if (RegExpression.test(newUsername)) {
-          if (newUsername.length >= 4 && newUsername.length <= 20) {
-            spinner.style.display = "block";
 
-            db.collection("users")
-              .get()
-              .then((user) => {
-                user.forEach((data) => {
-                  usernames.push(data.data().username);
-                });
-              })
-              .then(() => {
-                if (usernames.includes(newUsername)) {
-                  setUsernameStatus("This username is already in use.");
-                  spinner.style.display = "none";
-                } else {
-                  currentUser
-                    ?.updateProfile({
-                      displayName: newUsername,
-                    })
-                    .then(() => {
-                      spinner.style.display = "none";
-                      setUsernameStatus("Your username has been changed.");
-                    })
-                    .catch((err) => {
-                      spinner.style.display = "none";
-                      setUsernameStatus(err.message);
-                    });
-                  db.collection("users").doc(user.uid).update({
-                    username: newUsername,
-                  });
-                }
-              });
-          } else {
-            setUsernameStatus(
-              "Your username must be more than 4 characters and less than 20 characters."
-            );
-          }
-        } else {
-          setUsernameStatus(
-            "Invalid username, use only letters, numbers and underscores"
-          );
-        }
+      if (userData.pro) { // if he has pro he can change it whenever he/she wants
+        changeIt();
       }
     }
   };
@@ -295,11 +275,14 @@ function AccountSettings() {
 
           storageRef.put(image).then(() => {
             setImageStatus("Uploading...");
-            storageRef.getDownloadURL().then((url) => {
+            storageRef.getDownloadURL().then( async (url) => {
+
               let imageURL = url;
+
               db.collection("users").doc(currentUser?.uid).update({
                 profileImage: url,
               });
+
               currentUser
                 ?.updateProfile({
                   photoURL: imageURL,
@@ -331,6 +314,42 @@ function AccountSettings() {
       setImageStatus("Select an image");
     }
   };
+
+  const handleResetImage = () => {
+    let allImages = Firebase.storage().ref().child(`users/` + currentUser?.uid);
+    
+    if(userData.profileImage === config.profileURL){
+      setImageStatus("You have to set an image before reseting it.")
+    }else{
+
+      // delete every image from his storage
+      allImages.listAll().then((res) => {
+        let files = res.items;
+        for (let i = 0; i < files.length; i++) {
+          files[i].delete().then(() => {
+            console.log("done")
+          });         
+        }
+      });
+
+      // updating with the default TypingHub image
+      currentUser
+        ?.updateProfile({
+          photoURL: config.profileURL,
+        })
+        .then(() => {
+          setImage("");
+          setImageStatus(
+            "Your profile image was reseted, it may take a few seconds to update."
+          );
+        });
+
+      db.collection("users").doc(currentUser?.uid).update({
+        profileImage: config.profileURL,
+      });
+    }
+
+  }
 
   const handleDescription = () => {
     if (description !== "") {
@@ -377,7 +396,6 @@ function AccountSettings() {
         setLayoutStatus(err.message);
       });
   };
-  const config = require("../config.json")
 
   return (
     <>
@@ -423,6 +441,7 @@ function AccountSettings() {
             <input type="file" className="image" onChange={handleImage} />
             <p className="status">{imageStatus}</p>
             <button onClick={() => handleSetImage()}>Change image</button>
+            <button onClick={() => handleResetImage()} style={{marginLeft: "15px"}}>Reset image</button>
           </div>
 
          
