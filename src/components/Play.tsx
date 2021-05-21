@@ -49,8 +49,6 @@ function Play() {
 
         spinner.style.display = "none";
 
-        // leaderboard
-
         // chat messages
 
         db.collection("chat")

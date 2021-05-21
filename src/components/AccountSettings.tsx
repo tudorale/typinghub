@@ -6,6 +6,7 @@ import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import { useHistory } from "react-router-dom";
 import UserContext from "./services/UserContext";
+
 function AccountSettings() {
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
@@ -119,9 +120,14 @@ function AccountSettings() {
   // all usernames from the databse
   let usernames: any[] = [];
 
+  let Filter = require("bad-words"),
+    filter = new Filter();
+
   const handleUsername = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     // one time only to change username for non-pro members
+
     let spinner = document.querySelector(".loadingSpinner") as HTMLDivElement;
     let RegExpression = /^[a-zA-Z0-9 _\s]*$/;
     if (!userData.changedUsername) {
@@ -137,13 +143,13 @@ function AccountSettings() {
               });
             })
             .then(() => {
-              if (usernames.includes(newUsername)) {
+              if (usernames.includes(newUsername) || usernames.includes(newUsername.toLowerCase()) || usernames.includes(newUsername.toUpperCase())) {
                 setUsernameStatus("This username is already in use.");
                 spinner.style.display = "none";
               } else {
                 currentUser
                   ?.updateProfile({
-                    displayName: newUsername,
+                    displayName: filter.clean(newUsername),
                   })
                   .then(() => {
                     spinner.style.display = "none";
@@ -160,7 +166,7 @@ function AccountSettings() {
                   });
 
                 db.collection("users").doc(user.uid).update({
-                  username: newUsername,
+                  username: filter.clean(newUsername),
                 });
               }
             });
