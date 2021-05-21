@@ -131,10 +131,12 @@ function AccountSettings() {
 
     let spinner = document.querySelector(".loadingSpinner") as HTMLDivElement;
     let RegExpression = /^[a-zA-Z0-9 _\s]*$/;
-    if (!userData.changedUsername) {
-      spinner.style.display = "block";
 
+    const changeIt = () => {
+ 
+      // security checkers
       if (RegExpression.test(newUsername)) {
+
         if (newUsername.length >= 4 && newUsername.length <= 20) {
           db.collection("users")
             .get()
@@ -176,61 +178,32 @@ function AccountSettings() {
             "Your username must be more than 4 characters and less than 20 characters."
           );
         }
+      
       } else {
         setUsernameStatus(
           "Invalid username, use only letters, numbers and underscores"
         );
       }
-    } else {
-      if (!userData.pro) {
+    }
+
+    // check if the user already changed their name
+    if (!userData.changedUsername) {
+      spinner.style.display = "block";
+
+      changeIt();
+
+    }else { // if he did change his username before
+
+      spinner.style.display = "block";
+
+      if (!userData.pro) { // if he doesn't have pro, cannot change
         setUsernameStatus(
           "You can not change your username, you already did that."
         );
       }
-      if (userData.pro) {
-        if (RegExpression.test(newUsername)) {
-          if (newUsername.length >= 4 && newUsername.length <= 20) {
-            spinner.style.display = "block";
 
-            db.collection("users")
-              .get()
-              .then((user) => {
-                user.forEach((data) => {
-                  usernames.push(data.data().username);
-                });
-              })
-              .then(() => {
-                if (usernames.includes(newUsername)) {
-                  setUsernameStatus("This username is already in use.");
-                  spinner.style.display = "none";
-                } else {
-                  currentUser
-                    ?.updateProfile({
-                      displayName: newUsername,
-                    })
-                    .then(() => {
-                      spinner.style.display = "none";
-                      setUsernameStatus("Your username has been changed.");
-                    })
-                    .catch((err) => {
-                      spinner.style.display = "none";
-                      setUsernameStatus(err.message);
-                    });
-                  db.collection("users").doc(user.uid).update({
-                    username: newUsername,
-                  });
-                }
-              });
-          } else {
-            setUsernameStatus(
-              "Your username must be more than 4 characters and less than 20 characters."
-            );
-          }
-        } else {
-          setUsernameStatus(
-            "Invalid username, use only letters, numbers and underscores"
-          );
-        }
+      if (userData.pro) { // if he has pro he can change it whenever he/she wants
+        changeIt();
       }
     }
   };
