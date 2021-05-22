@@ -49,7 +49,7 @@ I will take any help from a passionate developer, if you have an idea or if you 
 
 Name | Description |
 --- | --- |
-staging | development, pr's, new features |
+staging | development, PRs, new features |
 production | production code, latest code|
 gh-pages | preview hosting, dynamic code |
 
@@ -57,7 +57,8 @@ gh-pages | preview hosting, dynamic code |
 Icons: <a href="https://tablericons.com/">Tabler icons</a>
 
 <h2>Run the application on your local machine</h2>
-The application code is visible on this repository and will be updated on every change, but the Firebase implementation will not pe published for security reasons, if you want to test the application locally you may want to add the Firebase integration on your own.
+
+The application code is visible on this repository, and will be updated when new big changes are made, on the `production` branch but the Firebase implementation will not pe published for security reasons, if you want to test the application locally you may want to add the Firebase integration on your own.
 
 <h2>Notes</h2>
 <ul>
