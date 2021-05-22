@@ -49,8 +49,8 @@ I will take any help from a passionate developer, if you have an idea or if you 
 
 Name | Description |
 --- | --- |
-main | production, latest code |
-staging | development, new features, testing |
+staging | development, pr's, new features |
+production | production code, latest code|
 gh-pages | preview hosting, dynamic code |
 
 <h2>Appreciations</h2>
