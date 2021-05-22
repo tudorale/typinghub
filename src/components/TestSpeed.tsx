@@ -6,6 +6,8 @@ import Firebase, { db } from "./services/Firebase";
 import { Link } from "react-router-dom";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
+import { HashLink } from "react-router-hash-link";
+
 const Battle = React.memo((props: any) => {
   const randomWords = require("random-words");
   const axios = require("axios");
@@ -118,6 +120,7 @@ const Battle = React.memo((props: any) => {
             }, 1000);
           }
         }
+
       } else {
         if (mustLogged) {
           mustLogged.style.display = "block";
@@ -126,7 +129,7 @@ const Battle = React.memo((props: any) => {
     });
   }, []);
 
-  // start the test
+  // refs for timers
   const id = React.useRef<any>();
   const idTimer = React.useRef<any>();
   const idSeconds = React.useRef<any>();
@@ -185,6 +188,7 @@ const Battle = React.memo((props: any) => {
   }, [started]);
 
   let givenPoints = 0;
+
   let date = new Date();
   let h = date.getHours();
   let min = date.getMinutes();
@@ -387,6 +391,7 @@ const Battle = React.memo((props: any) => {
   }, [wpm, finished]);
 
   const handleCustomText = () => {
+
     let content = document.querySelector(".customText") as HTMLDivElement;
     let textarea = document.querySelector("#custom") as HTMLTextAreaElement;
     let btn = document.querySelector("#btn") as HTMLButtonElement;
@@ -396,11 +401,13 @@ const Battle = React.memo((props: any) => {
 
     if (customText.length >= 100 && customText.length <= 250) {
       if (regEx.test(customText)) {
+
         setQuote(customText);
         btn.setAttribute("disabled", "");
         textarea.setAttribute("readonly", "");
         countdown.style.display = "block";
         content.style.display = "none";
+
         setTimeout(() => {
           id.current = setInterval(() => {
             setCountdown((s) => s - 1);
@@ -421,6 +428,7 @@ const Battle = React.memo((props: any) => {
   const newTest = () => {
     window.location.reload();
   };
+
   const config = require("../config.json")
 
   return (
@@ -465,47 +473,27 @@ const Battle = React.memo((props: any) => {
                 <div className="testWrapper">
                   <div className="neededWrapper">
                     <div className="quote">
-                      {quote.split("").map((word, index) => {
-                        let color;
-                        if (index < userInput.length) {
-                          color =
-                            word === userInput[index]
-                              ? CORRECT_COLOR
-                              : WRONG_COLOR;
-
-                          if (word === " ") {
-                            if (userInput[index] !== word) {
-                              word = userInput[index];
-                            }
-                          }
-                        }
-
-                        if (index === userInput.length) {
+                      {
+                        quote.split(/(\S+\s+)/).map((word, index) => {
                           return (
-                            <span
-                              key={index}
-                              className={"word"}
-                              style={{
-                                color: color,
-                                fontWeight: 700,
-                                textDecoration: "underline",
-                              }}
-                            >
-                              {word === " " ? " " : word}
-                            </span>
-                          );
-                        }
+                            <div className="word" key={index}>
+                              {
+                                word.split("").map((letter, i) => {
 
-                        return (
-                          <span
-                            key={index}
-                            className={"word"}
-                            style={{ color: color }}
-                          >
-                            {word === " " ? " " : word}
-                          </span> // is weird isn't it? is not a normal space is &nbsp; using alt + 2 2 5
-                        );
-                      })}
+                                  let color = "red"
+
+                                  return (
+                                    <span className="letterText" key={i}>
+                                      {letter === " " ? " " : letter}
+                                    </span>
+                                  )
+                                  
+                                })
+                              }
+                            </div>
+                          )
+                        })
+                      }
                     </div>
 
                     <input
@@ -647,7 +635,7 @@ const Battle = React.memo((props: any) => {
       ) : (
         <p className="categoryNotExist">
           This category ({category}) does not exist, sorry!{" "}
-          <a href="/play">Play</a>
+          <HashLink to="/play">Play</HashLink>
         </p>
       )}
     </>
