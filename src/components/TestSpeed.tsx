@@ -481,12 +481,22 @@ const Battle = React.memo((props: any) => {
                               {
                                 word.split("").map((letter, i) => {
 
+
+                                  // not working, indicating the index letter from each word
+                                  // if(i === userInput.length){
+                                  //   return (
+                                  //     <span className="letter" style={{color: "green"}} key={i}>
+                                  //       {letter === " " ? " " : letter} 
+                                  //     </span>
+                                  //   )
+                                  // } 
+
                                   return (
                                     <span className="letter" key={i}>
-                                      {letter === " " ? " " : letter} {/* replacing normal space with &nbsp to actually displat the space*/}
+                                      {letter === " " ? " " : letter} 
                                     </span>
                                   )
-                                  
+                                  // ^ replacing normal space with &nbsp to actually display the empty space
                                 })
                               }
                             </div>
