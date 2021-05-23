@@ -45,19 +45,20 @@ I will take any help from a passionate developer, if you have an idea or if you 
 4. Make a pull request to the `staging` branch
 5. Wait for a response
 
-<h2>Branches<h2>
+<h2>Branches</h2>
 
 Name | Description |
 --- | --- |
-main | production, latest code |
-staging | development, new features, testing |
+staging | development, PRs, new features |
+production | production code, latest code|
 gh-pages | preview hosting, dynamic code |
 
 <h2>Appreciations</h2>
 Icons: <a href="https://tablericons.com/">Tabler icons</a>
 
 <h2>Run the application on your local machine</h2>
-The application code is visible on this repository and will be updated on every change, but the Firebase implementation will not pe published for security reasons, if you want to test the application locally you may want to add the Firebase integration on your own.
+
+The application code is visible on this repository, and will be updated when new big changes are made, on the `production` branch but the Firebase implementation will not pe published for security reasons, if you want to test the application locally you may want to add the Firebase integration on your own.
 
 <h2>Notes</h2>
 <ul>

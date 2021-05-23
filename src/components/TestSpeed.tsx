@@ -376,6 +376,7 @@ const Battle = React.memo((props: any) => {
 
     setWrongSymbols(checkWrongSymbols(userInput));
     isFinished(userInput);
+
   }, [userInput]);
 
   useEffect(() => {
@@ -480,11 +481,9 @@ const Battle = React.memo((props: any) => {
                               {
                                 word.split("").map((letter, i) => {
 
-                                  let color = "red"
-
                                   return (
-                                    <span className="letterText" key={i}>
-                                      {letter === " " ? " " : letter}
+                                    <span className="letter" key={i}>
+                                      {letter === " " ? " " : letter} {/* replacing normal space with &nbsp to actually displat the space*/}
                                     </span>
                                   )
                                   
