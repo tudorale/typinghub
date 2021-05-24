@@ -276,16 +276,11 @@
               }
 
               .chatContent::-webkit-scrollbar {
-                width: 10px;
-                background-color: #1d1d1d;
-                border-radius: 10px;
+                @extend %scrollbar;
               }
 
               .chatContent::-webkit-scrollbar-thumb {
-                width: 10px;
-                background-color: $main-color;
-                border-radius: 10px;
-                height: 30px;
+                @extend %scrollbar-thumb;
               }
 
               .chatLocked {
@@ -468,16 +463,11 @@
             }
 
             .top10::-webkit-scrollbar {
-              width: 10px;
-              background-color: $grey-color-darker;
-              border-radius: 10px;
+              @extend %scrollbar;
             }
 
             .top10::-webkit-scrollbar-thumb {
-              width: 10px;
-              background-color: $main-color;
-              border-radius: 10px;
-              height: 30px;
+              @extend %scrollbar-thumb;
             }
           }
 
@@ -506,34 +496,56 @@
               position: relative;
               color: white;
               height: 610px;
-              overflow: auto;
+              
               .indication{
                 font-size: 1.1rem;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
               }
-              .text-1{
-                width: 100%;
-                padding: 10px 10px;
-                border-radius: 5px;
-                background-color: $lighter-card;
-                p{
-                  font-size: 1rem;
-                }
-                .author{
-                  font-size: .9rem;
-                  color: $grey-color-darker;
-                  margin-bottom: 10px;
+              .textsWrapper{
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+                height: 84%;
+                .text:nth-child(1){
+                  margin-top: 0px;
                 }
                 .text{
-                  font-size: 1.2rem;
-                  margin-bottom: 15px;
+                  width: 100%;
+                  margin-top: 20px;
+                  padding: 10px 10px;
+                  border-radius: 5px;
+                  background-color: $lighter-card;
+                  p{
+                    font-size: 1rem;
+                  }
+                  .author{
+                    font-size: .9rem;
+                    color: $grey-color-darker;
+                    margin-bottom: 10px;
+                    a{
+                      color: $grey-color;
+                      text-decoration: none;
+                    }
+                  }
+                  .playingText{
+                    font-size: 1.2rem;
+                    margin-bottom: 15px;
+                  }
+                  a button{
+                    @extend %button-styles;
+                    font-size: 1rem !important;
+                    padding: 0 10px !important;
+                    height: 35px !important;
+                  }
                 }
-                a button{
-                  @extend %button-styles;
-                  font-size: 1rem !important;
-                  padding: 0 10px !important;
-                  height: 35px !important;
-                }
+              }
+
+              .textsWrapper::-webkit-scrollbar {
+                @extend %scrollbar;
+              }
+  
+              .textsWrapper::-webkit-scrollbar-thumb {
+                @extend %scrollbar-thumb;
               }
             }
           }

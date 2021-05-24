@@ -37,6 +37,19 @@
   }
 }
 
+%scrollbar{
+  width: 9px;
+  background-color: $grey-color-darker;
+  border-radius: 10px;
+}
+
+%scrollbar-thumb{
+  width: 9px;
+  background-color: $main-color;
+  border-radius: 10px;
+  height: 30px;
+}
+
 %loadingSpinner {
   border: 6px solid rgb(236, 236, 236);
   border-radius: 50%;

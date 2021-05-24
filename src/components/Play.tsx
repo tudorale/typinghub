@@ -442,10 +442,32 @@ function Play() {
                     <h1 className="playZoneHeader">Play Zone</h1>
                     <div className="playZone">
                       <p className="indication">Test your speed on custom texts made by the comunity users, upvote or downvote their texts to give it a feedback.</p>
-                      <div className="text-1">
-                        <p className="author">Created by John Doe</p>
-                        <p className="text">Lorem Ipsum</p>
-                        <Link to="/"><button>Take test</button></Link>
+                      <div className="textsWrapper">
+                        <div className="text">
+                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
+                          <p className="playingText">Lorem Ipsum</p>
+                          <Link to="/"><button>Take test</button></Link>
+                        </div>
+                        <div className="text">
+                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
+                          <p className="playingText">Lorem Ipsum</p>
+                          <Link to="/"><button>Take test</button></Link>
+                        </div>
+                        <div className="text">
+                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
+                          <p className="playingText">Lorem Ipsum</p>
+                          <Link to="/"><button>Take test</button></Link>
+                        </div>
+                        <div className="text">
+                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
+                          <p className="playingText">Lorem Ipsum</p>
+                          <Link to="/"><button>Take test</button></Link>
+                        </div>
+                        <div className="text">
+                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
+                          <p className="playingText">Lorem Ipsum</p>
+                          <Link to="/"><button>Take test</button></Link>
+                        </div>
                       </div>
                     </div>
                   </div>

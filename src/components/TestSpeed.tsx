@@ -8,7 +8,7 @@ import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
 import { HashLink } from "react-router-hash-link";
 
-const Battle = React.memo((props: any) => {
+const TestSpeed = React.memo((props: any) => {
   const randomWords = require("random-words");
   const axios = require("axios");
 
@@ -441,9 +441,9 @@ const Battle = React.memo((props: any) => {
       category === "custom" ? (
         <>
           {user ? (
-            <div className="battleExtraWrapper">
+            <div className="testSpeedExtraWrapper">
               <Nav path="/play" name="Main" />
-              <div className="battleWrapper">
+              <div className="testSpeedWrapper">
                 {category === "custom" ? (
                   <div className="customText">
                     <p>
@@ -668,4 +668,4 @@ const Battle = React.memo((props: any) => {
   );
 });
 
-export default Battle;
+export default TestSpeed;
