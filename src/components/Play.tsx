@@ -403,10 +403,6 @@ function Play() {
                 <div className="rowTwo">
                   <div className="section-five">
                     <h1 className="topHeader">Top 10</h1>
-                    <p className="topInfo">
-                      The monthly prize is not active yet, for more info check{" "}
-                      <Link to="/info">this</Link>.
-                    </p>
                     <div className="top10">
                       {users.length >= 1 ? (
                         users.map((d: any) => {
@@ -440,6 +436,17 @@ function Play() {
                       ) : (
                         <div className="lbSpinner"></div>
                       )}
+                    </div>
+                  </div>
+                  <div className="section-six">
+                    <h1 className="playZoneHeader">Play Zone</h1>
+                    <div className="playZone">
+                      <p className="indication">Test your speed on custom texts made by the comunity users, upvote or downvote their texts to give it a feedback.</p>
+                      <div className="text-1">
+                        <p className="author">Created by John Doe</p>
+                        <p className="text">Lorem Ipsum</p>
+                        <Link to="/"><button>Take test</button></Link>
+                      </div>
                     </div>
                   </div>
                 </div>

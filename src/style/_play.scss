@@ -345,6 +345,7 @@
         }
         .rowTwo {
           grid-area: rowTwo;
+
           .section-five {
             grid-area: sectionFive;
             display: grid;
@@ -360,14 +361,6 @@
               grid-area: topHeader;
               font-size: 1.75rem;
               font-weight: 500;
-            }
-            .topInfo {
-              
-              font-size: 1rem;
-              color: white;
-              a {
-                color: $text-color;
-              }
             }
             .top10 {
               grid-area: top10;
@@ -485,6 +478,63 @@
               background-color: $main-color;
               border-radius: 10px;
               height: 30px;
+            }
+          }
+
+          .section-six{
+            grid-area: sectionSix;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+              "playZoneHeader"
+              "playZone";
+            grid-gap: 30px;
+            margin-top: 30px;
+            .playZoneHeader {
+              color: white;
+              grid-area: playZoneHeader;
+              font-size: 1.75rem;
+              font-weight: 500;
+            }
+
+            .playZone{
+              grid-area: playZone;
+              background-color: $card-background;
+              border-radius: 5px;
+              padding: 20px;
+              position: relative;
+              color: white;
+              height: 610px;
+              overflow: auto;
+              .indication{
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+              }
+              .text-1{
+                width: 100%;
+                padding: 10px 10px;
+                border-radius: 5px;
+                background-color: $lighter-card;
+                p{
+                  font-size: 1rem;
+                }
+                .author{
+                  font-size: .9rem;
+                  color: $grey-color-darker;
+                  margin-bottom: 10px;
+                }
+                .text{
+                  font-size: 1.2rem;
+                  margin-bottom: 15px;
+                }
+                a button{
+                  @extend %button-styles;
+                  font-size: 1rem !important;
+                  padding: 0 10px !important;
+                  height: 35px !important;
+                }
+              }
             }
           }
         }
