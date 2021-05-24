@@ -474,35 +474,52 @@ const Battle = React.memo((props: any) => {
                 <div className="testWrapper">
                   <div className="neededWrapper">
                     <div className="quote">
-                      {
-                        quote.split(/(\S+\s+)/).map((word, index) => {
-                          return (
-                            <div className="word" key={index}>
-                              {
-                                word.split("").map((letter, i) => {
 
+                    {quote.split("").map((letter, index) => {
 
-                                  // not working, indicating the index letter from each word
-                                  // if(i === userInput.length){
-                                  //   return (
-                                  //     <span className="letter" style={{color: "green"}} key={i}>
-                                  //       {letter === " " ? " " : letter} 
-                                  //     </span>
-                                  //   )
-                                  // } 
+                      let color;
 
-                                  return (
-                                    <span className="letter" key={i}>
-                                      {letter === " " ? " " : letter} 
-                                    </span>
-                                  )
-                                  // ^ replacing normal space with &nbsp to actually display the empty space
-                                })
-                              }
-                            </div>
-                          )
-                        })
+                      if (index < userInput.length) {
+                        color =
+                          letter === userInput[index]
+                            ? CORRECT_COLOR
+                            : WRONG_COLOR;
+
+                        if (letter === " ") { // if user have to type a space and he is not doing it it will appear the key that he typed
+                          if (userInput[index] !== letter) {
+                            letter = userInput[index];
+                          }
+                        }
                       }
+
+                      if (index === userInput.length) { // code for the current letter that user have to type
+                        return (
+                          <span
+                            key={index}
+                            className={"letter"}
+                            style={{
+                              color: color,
+                              fontWeight: 700,
+                              textDecoration: "underline",
+                            }}
+                          >
+                            {letter === " " ? " " : letter} {/* *** */}
+                          </span>
+                        );
+                      }
+
+                      return (
+                        <span
+                          key={index}
+                          className={"letter"}
+                          style={{ color: color }}
+                        >
+                          {letter === " " ? " " : letter}
+                        </span> // *** is weird isn't it? is not a normal space is &nbsp; using alt + 2 2 5 using that so it will appear as a space into the DOM
+                      );
+
+                    })}
+
                     </div>
 
                     <input
