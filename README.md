@@ -17,7 +17,7 @@
  <ul>
   <li>Achievements system</li>
   <li>Friendship system 👥</li>
-  <li>Public texts made by users (Play Zone) ⌨️</li>
+  <li>Public texts made by users (Play Zone) ⌨️ - On working </li>
   <li>Private messaging 💬</li>
   <li>Battles between users ⚔️</li>
  </ul>
