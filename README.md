@@ -17,11 +17,16 @@
  <ul>
   <li>Achievements system</li>
   <li>Friendship system 👥</li>
-  <li>Public texts made by users (Play Zone) ⌨️ - On working </li>
   <li>Private messaging 💬</li>
   <li>Battles between users ⚔️</li>
  </ul>
  
+ <h4>Currently working on:</h4>
+ <ul>
+  <li>Public texts made by users (Play Zone) ⌨️ </li>
+  <li>Improving code structure</li>
+ </ul>
+  
 <h2>What we used?</h2>
  
 Systems | Technology |
