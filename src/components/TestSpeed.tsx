@@ -8,6 +8,15 @@ import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
 import { HashLink } from "react-router-hash-link";
 
+interface reviewText{
+  author: string,
+  text: string,
+  time?: string,
+  testsTaken: number,
+  id?: string,
+  typingHubID?: string,
+}
+
 const TestSpeed = React.memo((props: any) => {
   const randomWords = require("random-words");
   const axios = require("axios");
@@ -433,8 +442,10 @@ const TestSpeed = React.memo((props: any) => {
   };
 
   const handlePlayZone = () => {
+  
     const regEx = /^[a-zA-Z0-9\.\,\;\?\'\"\(\)\!\$\-\& \s]*$/;
 
+  
     if (customText.length >= 100 && customText.length <= 250) {
       if (regEx.test(customText)) {
 
@@ -453,18 +464,39 @@ const TestSpeed = React.memo((props: any) => {
           .doc("review")
           .get()
           .then((doc: any) => {
-            let firestoreData = doc.data().wrapper;
-            firestoreData.push(playZoneText);
+            let firestoreData = doc.data().queue;
 
-            // update the queue with new text
-            db.collection("playzone")
+            if(firestoreData.length >= 1){
+              firestoreData.map((data: reviewText) => {
+                if(data.author === user?.displayName){
+                 setCustomError("You already sent a text for a review, you can not send another.")
+                }else{
+                  // update the queue with new text
+                  firestoreData.push(playZoneText)
+
+                  db.collection("playzone")
+                  .doc("review")
+                  .update({
+                    queue: firestoreData,
+                  })
+                  .then(() => {
+                    setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
+                  });
+                }
+             })
+            }else{
+              // if empty queue
+              firestoreData.push(playZoneText)
+              db.collection("playzone")
               .doc("review")
               .update({
-                wrapper: firestoreData,
+                queue: firestoreData,
               })
               .then(() => {
                 setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
               });
+            }
+            
           });
 
       } else {
