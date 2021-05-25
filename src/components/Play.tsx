@@ -464,7 +464,7 @@ function Play() {
                             texts.map((d: any) => {
                               return (
                                 <div className="text" key={Math.random() * 999}>
-                                  <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author}</Link></p>
+                                  <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
                                   <p className="playingText">{d.text}</p>
                                   <Link to="/"><button>Take test</button></Link>
                                   <p className="testsTaken">Tests taken: {d.testsTaken}</p>

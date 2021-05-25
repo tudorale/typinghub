@@ -432,6 +432,53 @@ const TestSpeed = React.memo((props: any) => {
     window.location.reload();
   };
 
+  const handlePlayZone = () => {
+    const regEx = /^[a-zA-Z0-9\.\,\;\?\'\"\(\)\!\$\-\& \s]*$/;
+
+    if (customText.length >= 100 && customText.length <= 250) {
+      if (regEx.test(customText)) {
+
+        // add text to review
+        let playZoneText = {
+          author: user?.displayName,
+          text: customText,
+          time: `${h}:${min} ${d}/${m}/${y}`,
+          testsTaken: 0,
+          id: user?.uid,
+          typingHubID: userData?.typingHubID,
+        };
+
+        // get the texts in queue
+        db.collection("playzone")
+          .doc("review")
+          .get()
+          .then((doc: any) => {
+            let firestoreData = doc.data().wrapper;
+            firestoreData.push(playZoneText);
+
+            // update the queue with new text
+            db.collection("playzone")
+              .doc("review")
+              .update({
+                wrapper: firestoreData,
+              })
+              .then(() => {
+                setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
+              });
+          });
+
+      } else {
+        setCustomError(
+          "You can only use lowercase, uppercase letters, numbers, punctuation and some symbols such as: () ? ! - $ & "
+        );
+      }
+    } else {
+      setCustomError(
+        "The text length must be at least 100 characters and max 250 characters."
+      );
+    }
+  }
+
   const config = require("../config.json")
 
   return (
@@ -463,6 +510,9 @@ const TestSpeed = React.memo((props: any) => {
                     ></textarea>
                     <button id="btn" onClick={handleCustomText}>
                       Go
+                    </button>
+                    <button id="playZone" onClick={handlePlayZone}>
+                      Add to Play Zone
                     </button>
                     <p className="lengthText">{customText.length}/250</p>
                     <p>{customError}</p>

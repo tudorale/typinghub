@@ -35,13 +35,18 @@
         font-size: 1.05rem;
       }
       button {
-        width: 100px;
         @extend %button-styles;
+        width: fit-content;
       }
+      
       .lengthText {
         margin-top: 10px;
         color: $grey-color;
         margin-bottom: 10px;
+      }
+
+      #playZone{
+        margin-top: 15px;
       }
     }
 
