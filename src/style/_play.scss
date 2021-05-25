@@ -500,6 +500,10 @@
               .indication{
                 font-size: 1.1rem;
                 margin-bottom: 20px;
+                a{
+                  color: $text-color;
+                  text-decoration: none;
+                }
               }
               .textsWrapper{
                 display: flex;
@@ -530,6 +534,17 @@
                   .playingText{
                     font-size: 1.2rem;
                     margin-bottom: 15px;
+                    max-height: 70px;
+                    overflow: auto;
+                    &::-webkit-scrollbar {
+                      @extend %scrollbar;
+                      width: 6px !important;
+                    }
+        
+                    &::-webkit-scrollbar-thumb {
+                      @extend %scrollbar-thumb;
+                      width: 6px !important;
+                    }
                   }
                   a button{
                     @extend %button-styles;
@@ -537,6 +552,15 @@
                     padding: 0 10px !important;
                     height: 35px !important;
                   }
+                  .testsTaken{
+                    float: right;
+                    position: relative;
+                    top: 18px;
+                  }
+                }
+
+                .playZoneSpinner{
+                  @extend %loadingSpinner;
                 }
               }
 

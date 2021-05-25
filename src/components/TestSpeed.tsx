@@ -28,7 +28,7 @@ const TestSpeed = React.memo((props: any) => {
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
 
-  const [countdown, setCountdown] = useState<number>(5);
+  const [countdown, setCountdown] = useState<number | null>(null);
   const [timer, setTimer] = useState<number>(60);
   const [userInput, setUserInput] = useState<string>("");
 
@@ -113,10 +113,11 @@ const TestSpeed = React.memo((props: any) => {
               ".countdown"
             ) as HTMLHeadingElement;
             countdown.style.display = "none";
-            setCountdown(5);
+            
           } else {
+            setCountdown(5)
             id.current = setInterval(() => {
-              setCountdown((s) => s - 1);
+              setCountdown((s: any) => s - 1);
             }, 1000);
           }
         }
@@ -407,11 +408,12 @@ const TestSpeed = React.memo((props: any) => {
         btn.setAttribute("disabled", "");
         textarea.setAttribute("readonly", "");
         countdown.style.display = "block";
+        setCountdown(5)
         content.style.display = "none";
 
         setTimeout(() => {
           id.current = setInterval(() => {
-            setCountdown((s) => s - 1);
+            setCountdown((s: any) => s - 1);
           }, 1000);
         }, 500);
       } else {

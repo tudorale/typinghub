@@ -16,6 +16,8 @@ function Play() {
   const [users, setUsers] = useState<Array<Object>>([]);
   const [timer, setTimer] = useState<number>(0);
 
+  const [texts, setTexts] = useState<Array<Object> | undefined >(undefined);
+
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
 
@@ -46,6 +48,18 @@ function Play() {
               }
             }
           });
+
+        // texts
+        db.collection("playzone")
+          .doc("texts")
+          .onSnapshot(
+            {
+              includeMetadataChanges: true,
+            },
+            (doc: any) => {
+              setTexts(doc.data().wrapper); 
+            }
+          );
 
         spinner.style.display = "none";
 
@@ -438,36 +452,28 @@ function Play() {
                       )}
                     </div>
                   </div>
+                  
                   <div className="section-six">
                     <h1 className="playZoneHeader">Play Zone</h1>
                     <div className="playZone">
-                      <p className="indication">Test your speed on custom texts made by the comunity users, upvote or downvote their texts to give it a feedback.</p>
+                      <p className="indication">Test your speed on custom texts made by the comunity users or <Link to="/speed/custom">add</Link> your own custom text.</p>
                       <div className="textsWrapper">
-                        <div className="text">
-                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
-                          <p className="playingText">Lorem Ipsum</p>
-                          <Link to="/"><button>Take test</button></Link>
-                        </div>
-                        <div className="text">
-                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
-                          <p className="playingText">Lorem Ipsum</p>
-                          <Link to="/"><button>Take test</button></Link>
-                        </div>
-                        <div className="text">
-                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
-                          <p className="playingText">Lorem Ipsum</p>
-                          <Link to="/"><button>Take test</button></Link>
-                        </div>
-                        <div className="text">
-                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
-                          <p className="playingText">Lorem Ipsum</p>
-                          <Link to="/"><button>Take test</button></Link>
-                        </div>
-                        <div className="text">
-                          <p className="author">Created by <Link to="/user/JohnDoe">JohnDoe</Link></p>
-                          <p className="playingText">Lorem Ipsum</p>
-                          <Link to="/"><button>Take test</button></Link>
-                        </div>
+                        
+                        {
+                          texts ? 
+                            texts.map((d: any) => {
+                              return (
+                                <div className="text" key={Math.random() * 999}>
+                                  <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author}</Link></p>
+                                  <p className="playingText">{d.text}</p>
+                                  <Link to="/"><button>Take test</button></Link>
+                                  <p className="testsTaken">Tests taken: {d.testsTaken}</p>
+                                </div>
+                              )
+                            })
+                          : <div className="playZoneSpinner"></div>
+                        }
+                       
                       </div>
                     </div>
                   </div>
