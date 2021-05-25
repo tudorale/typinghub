@@ -25,6 +25,11 @@ function Info() {
           will start when in the leaderboard will be more than 7 active players.
         </p>
 
+        <h2>Play Zone</h2>
+        <p>The Play Zone is found on the main page of the platform, there you can play the custom texts from the comunity users or you can add your own text by going to the "Custom Text" category and press the button "Add to Play Zone"</p>
+        <p>After you press the button, your text will be sent in a queue review, an admin will take a look at your text before publishing it to the Play Zone, we do this because someone can send inappropriate texts. A review can take up to a day.</p>  
+
+
         <h2>What data are we storing?</h2>
         <p>
           We are storing the majority of data that is displayed after a test is
@@ -86,7 +91,7 @@ function Info() {
           just lying to yourself, so keep that in mind.
         </p>
 
-        <h2>Good to know #1</h2>
+        <h2>{config.name} ID</h2>
         <p>
           You will see some numbers next to someone's name, like #1234, what
           does that number and why does exist?
