@@ -144,6 +144,9 @@ function Profile() {
                 Change your account settings{" "}
                 <Link to="/account-settings">here</Link>
               </p>
+              {
+                userData.role === "admin" ? <p className="profileNote">You are a TypingHub admin, check the <Link to="/admin-panel">admin panel</Link></p> : null
+              }
               {userData ? (
                 !userData.pro ? (
                   <p className="wantPro">

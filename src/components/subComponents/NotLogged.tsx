@@ -1,10 +1,10 @@
 import React from "react";
 import "../../style/css/main.css";
 import { Link } from "react-router-dom";
-const NotLogged = () => {
+const NotLogged = (props: any) => {
   return (
     <div className="notLoggedIn">
-      <p>We are so sorry but you must be logged in to view this page</p>
+      <p>{props.adminRequest ? "You need to be an admin to view this page" : "We are so sorry but you must be logged in to view this page"}</p>
       <div className="buttons">
         <Link to="/sign-in">
           <button>Sign In</button>

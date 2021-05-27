@@ -10,7 +10,7 @@ function LoggedNav(props: any) {
   const [notifications, setNotifications] = useState<any>("");
 
   const userStatus = useContext(UserContext);
-  const { user, setUser } = userStatus;
+  const { user, setUser} = userStatus;
 
   // ui stuff & checking if the user is logged in
   useEffect(() => {
