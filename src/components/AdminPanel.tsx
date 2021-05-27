@@ -11,6 +11,7 @@ import UserContext from "./services/UserContext";
 function AdminPanel() {
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
+  const [users, setUsers] = useState<number>(0)
 
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((usr) => {
@@ -31,6 +32,14 @@ function AdminPanel() {
             setUserData(doc.data());
             if(doc.data().role !== "admin"){
                 notLoggedIn.style.display = "block"
+            }else if(doc.data().role === "admin"){
+
+                // get number of accounts
+                db.collection('users').get().then((docs) => {
+                    docs.forEach(() => {
+                        setUsers(u => u + 1)                
+                    })
+                })
             }
             spinner.style.display = "none";
           })
@@ -53,7 +62,15 @@ function AdminPanel() {
 
       {userData && userData.role === "admin" ? (
         <div className="panelWrapper">
-          
+            <Nav path="/play" name="Main Page" />
+            <div className="panelContent">
+                <h1>Admin Panel</h1>
+                <div className="panelInfo">
+                    <h2>Informations</h2>
+                    <p>TypingHub Accounts: {users}</p>
+                    <p>Play Zone reviews in Queue: </p>
+                </div>
+            </div>
         </div>
       ) : (
         <NotLogged adminRequest={true}/>
