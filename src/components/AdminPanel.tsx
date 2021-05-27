@@ -14,6 +14,7 @@ function AdminPanel() {
   const [users, setUsers] = useState<number>(0);
   const [reviews, setReviews] = useState<number>(0);
   const [texts, setTexts] = useState<number>(0);
+  const [reviewsQueue, setReviewsQueue] = useState<Array<Object>>()
 
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((usr) => {
@@ -47,6 +48,7 @@ function AdminPanel() {
                 db.collection("playzone").doc("review").get().then((data: any) => {
                     if(data){
                         setReviews(data.data().queue.length)
+                        setReviewsQueue(data.data().queue)
                     }
                 })
 
@@ -86,6 +88,27 @@ function AdminPanel() {
                     <p>TypingHub Accounts: <span>{users}</span></p>
                     <p>Play Zone reviews in Queue: <span>{reviews}</span></p>
                     <p>Play Zone texts: <span>{texts}</span></p>
+                </div>
+
+                <div className="panelReviews">
+                    <h2>Reviews in Queue</h2>
+                        {
+                          reviewsQueue ? 
+                            reviewsQueue.map((d: any) => {
+                              return (
+                                <div className="text" key={Math.random() * 999}>
+                                  <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
+                                  <p className="playingText">{d.text}</p>
+                                  <div className="buttons">
+                                    <button>Accept</button>
+                                    <button>Decline</button>
+                                  </div>
+                                  <p className="sendAt">Sent at: {d.time}</p>
+                                </div>
+                              )
+                            })
+                          : <div className="playZoneSpinner"></div>
+                        }
                 </div>
             </div>
         </div>

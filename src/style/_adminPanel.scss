@@ -5,7 +5,7 @@
         h1{
             font-size: 1.8rem;
         }
-        .panelInfo{
+        .panelInfo, .panelReviews{
             h2{
                 font-size: 1.5rem;
                 margin-top: 20px;
@@ -17,6 +17,65 @@
                     color: $text-color;
                 }
             }
+        }
+
+        .panelReviews{
+            margin-top: 30px;
+            .text:nth-child(1){
+                margin-top: 0px;
+              }
+              .text{
+                width: 100%;
+                margin-top: 20px;
+                padding: 10px 10px;
+                border-radius: 5px;
+                background-color: $lighter-card;
+                p{
+                  font-size: 1rem;
+                }
+                .author{
+                  font-size: .9rem;
+                  color: $grey-color-darker;
+                  margin-bottom: 10px;
+                  a{
+                    color: $grey-color;
+                    text-decoration: none;
+                  }
+                }
+                .playingText{
+                  font-size: 1.2rem;
+                  margin-bottom: 15px;
+                  max-height: 70px;
+                  overflow: auto;
+                  &::-webkit-scrollbar {
+                    @extend %scrollbar;
+                    width: 6px !important;
+                  }
+      
+                  &::-webkit-scrollbar-thumb {
+                    @extend %scrollbar-thumb;
+                    width: 6px !important;
+                  }
+                }
+                
+                .buttons{
+                    button{
+                        @extend %button-styles;
+                        font-size: 1rem !important;
+                        padding: 0 10px !important;
+                        height: 35px !important;
+                    }
+                    button:nth-child(2){
+                        margin-left: 15px;
+                    }
+                }
+                
+                .sendAt{
+                  float: right;
+                  position: relative;
+                  top: 15px;
+                }
+              }
         }
     }
 }
