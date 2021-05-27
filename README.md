@@ -24,6 +24,7 @@
  <h4>Currently working on:</h4>
  <ul>
   <li>Public texts made by users (Play Zone) ⌨️ </li>
+  <li>Admin roles and panel</li>
   <li>Improving code structure</li>
  </ul>
   
