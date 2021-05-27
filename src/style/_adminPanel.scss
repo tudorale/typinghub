@@ -2,5 +2,21 @@
     .panelContent{
         margin: 20px;
         color: white;
+        h1{
+            font-size: 1.8rem;
+        }
+        .panelInfo{
+            h2{
+                font-size: 1.5rem;
+                margin-top: 20px;
+            }
+            p{
+                margin-top: 7px;
+                font-size: 1.05rem;
+                span{
+                    color: $text-color;
+                }
+            }
+        }
     }
 }

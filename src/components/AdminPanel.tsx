@@ -11,7 +11,9 @@ import UserContext from "./services/UserContext";
 function AdminPanel() {
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
-  const [users, setUsers] = useState<number>(0)
+  const [users, setUsers] = useState<number>(0);
+  const [reviews, setReviews] = useState<number>(0);
+  const [texts, setTexts] = useState<number>(0);
 
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((usr) => {
@@ -40,6 +42,20 @@ function AdminPanel() {
                         setUsers(u => u + 1)                
                     })
                 })
+
+                // get reviews queue from play zone
+                db.collection("playzone").doc("review").get().then((data: any) => {
+                    if(data){
+                        setReviews(data.data().queue.length)
+                    }
+                })
+
+                // get the play zone texts
+                db.collection("playzone").doc("texts").get().then((data: any) => {
+                    if(data){
+                        setTexts(data.data().wrapper.length)
+                    }
+                })
             }
             spinner.style.display = "none";
           })
@@ -67,8 +83,9 @@ function AdminPanel() {
                 <h1>Admin Panel</h1>
                 <div className="panelInfo">
                     <h2>Informations</h2>
-                    <p>TypingHub Accounts: {users}</p>
-                    <p>Play Zone reviews in Queue: </p>
+                    <p>TypingHub Accounts: <span>{users}</span></p>
+                    <p>Play Zone reviews in Queue: <span>{reviews}</span></p>
+                    <p>Play Zone texts: <span>{texts}</span></p>
                 </div>
             </div>
         </div>

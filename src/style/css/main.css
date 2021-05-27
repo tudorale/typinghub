@@ -4719,6 +4719,24 @@
   color: white;
 }
 
+.panelWrapper .panelContent h1 {
+  font-size: 1.8rem;
+}
+
+.panelWrapper .panelContent .panelInfo h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.panelWrapper .panelContent .panelInfo p {
+  margin-top: 7px;
+  font-size: 1.05rem;
+}
+
+.panelWrapper .panelContent .panelInfo p span {
+  color: #802cff;
+}
+
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button, .accountSettingsWrapper .subWrapper .profilePicture button, .accountSettingsWrapper .subWrapper .usernameButton, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newEmail form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newPassword form button,
