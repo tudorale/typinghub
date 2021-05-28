@@ -461,16 +461,18 @@ function Play() {
                         
                         {
                           texts ? 
-                            texts.map((d: any) => {
-                              return (
-                                <div className="text" key={Math.random() * 999}>
-                                  <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
-                                  <p className="playingText">{d.text}</p>
-                                  <Link to="/"><button>Take test</button></Link>
-                                  <p className="testsTaken">Tests taken: {d.testsTaken}</p>
-                                </div>
-                              )
-                            })
+                            texts.length >= 1 ?
+                              texts.map((d: any) => {
+                                return (
+                                  <div className="text" key={Math.random() * 999}>
+                                    <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
+                                    <p className="playingText">{d.text}</p>
+                                    <Link to="/"><button>Take test</button></Link>
+                                    <p className="testsTaken">Tests taken: {d.testsTaken}</p>
+                                  </div>
+                                )
+                              })
+                            : <p className="textsInfo">There are no texts so far, <Link to="/speed/custom">add</Link> your own.</p>
                           : <div className="playZoneSpinner"></div>
                         }
                        

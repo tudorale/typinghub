@@ -510,6 +510,13 @@
                 flex-direction: column;
                 overflow: auto;
                 height: 84%;
+                .textsInfo{
+                  font-size: 1.1rem;
+                  a{
+                    color: $text-color;
+                    text-decoration: none;
+                  }
+                }
                 .text:nth-child(1){
                   margin-top: 0px;
                 }
@@ -532,7 +539,7 @@
                     }
                   }
                   .playingText{
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     margin-bottom: 15px;
                     max-height: 70px;
                     overflow: auto;

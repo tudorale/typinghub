@@ -2710,6 +2710,15 @@
   height: 84%;
 }
 
+.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .textsInfo {
+  font-size: 1.1rem;
+}
+
+.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .textsInfo a {
+  color: #802cff;
+  text-decoration: none;
+}
+
 .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text:nth-child(1) {
   margin-top: 0px;
 }
@@ -2738,7 +2747,7 @@
 }
 
 .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 15px;
   max-height: 70px;
   overflow: auto;
