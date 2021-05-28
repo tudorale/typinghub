@@ -7,6 +7,15 @@ import HTML from "./subComponents/Html";
 import NotLogged from "./subComponents/NotLogged";
 import UserContext from "./services/UserContext";
 
+interface reviewText{
+    author: string,
+    text: string,
+    time?: string,
+    testsTaken: number,
+    id?: string,
+    typingHubID?: string,
+}
+
 
 function AdminPanel() {
   const userStatus = useContext(UserContext);
@@ -14,7 +23,7 @@ function AdminPanel() {
   const [users, setUsers] = useState<number>(0);
   const [reviews, setReviews] = useState<number>(0);
   const [texts, setTexts] = useState<number>(0);
-  const [reviewsQueue, setReviewsQueue] = useState<Array<Object>>()
+  const [reviewsQueue, setReviewsQueue] = useState<Array<reviewText>>([])
 
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((usr) => {
@@ -45,19 +54,31 @@ function AdminPanel() {
                 })
 
                 // get reviews queue from play zone
-                db.collection("playzone").doc("review").get().then((data: any) => {
+                db.collection("playzone")
+                .doc("review")
+                .onSnapshot(
+                  {
+                    includeMetadataChanges: true,
+                  },
+                  (data: any) => {
                     if(data){
-                        setReviews(data.data().queue.length)
-                        setReviewsQueue(data.data().queue)
+                      setReviews(data.data().queue.length)
+                      setReviewsQueue(data.data().queue)
                     }
-                })
+                  }
+                );
 
                 // get the play zone texts
-                db.collection("playzone").doc("texts").get().then((data: any) => {
+                db.collection("playzone").doc("texts").onSnapshot(
+                  {
+                    includeMetadataChanges: true,
+                  },
+                  (data: any) => {
                     if(data){
-                        setTexts(data.data().wrapper.length)
+                      setTexts(data.data().wrapper.length)
                     }
-                })
+                  }
+                )
             }
             spinner.style.display = "none";
           })
@@ -74,6 +95,36 @@ function AdminPanel() {
 
   const config = require("../config.json")
 
+  const handleAccept = (id: string) => {
+    for(let i = 0; i < reviewsQueue.length; i++){
+        if(reviewsQueue[i].id === id){
+            let newArray = reviewsQueue[i];
+
+            // add the text to the play zone
+            db.collection("playzone").doc("texts").get().then((data: any) => {
+              let firestoreData = data.data().wrapper;
+              firestoreData.push(newArray);
+              db.collection("playzone").doc("texts").update({
+                wrapper: firestoreData
+              }).then(() => {
+                  // then remove the text from the reviews queue
+                  reviewsQueue.splice(i);
+                  db.collection("playzone").doc("review").update({
+                    queue: reviewsQueue
+                  }).then(() => {
+                    console.log("process done")
+                  })
+              })
+            })
+
+        }
+    }
+  }
+
+  const handleDecline = () => {
+      
+  }
+ 
   return (
     <>
       <HTML title={`${config.name} | Admin Panel`}/>
@@ -94,19 +145,21 @@ function AdminPanel() {
                     <h2>Reviews in Queue</h2>
                         {
                           reviewsQueue ? 
-                            reviewsQueue.map((d: any) => {
-                              return (
-                                <div className="text" key={Math.random() * 999}>
-                                  <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
-                                  <p className="playingText">{d.text}</p>
-                                  <div className="buttons">
-                                    <button>Accept</button>
-                                    <button>Decline</button>
-                                  </div>
-                                  <p className="sendAt">Sent at: {d.time}</p>
-                                </div>
-                              )
-                            })
+                            reviewsQueue.length >= 1 ?
+                                reviewsQueue.map((d: any) => {
+                                return (
+                                    <div className="text" key={Math.random() * 999}>
+                                    <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
+                                    <p className="playingText">{d.text}</p>
+                                    <div className="buttons">
+                                        <button onClick={() => handleAccept(d.id)}>Accept</button>
+                                        <button onClick={handleDecline}>Decline</button>
+                                    </div>
+                                    <p className="sendAt">Sent at: {d.time}</p>
+                                    </div>
+                                )
+                                })
+                            : <p>No reviews in queue, good job</p>
                           : <div className="playZoneSpinner"></div>
                         }
                 </div>

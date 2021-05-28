@@ -4741,13 +4741,9 @@
   margin-top: 30px;
 }
 
-.panelWrapper .panelContent .panelReviews .text:nth-child(1) {
-  margin-top: 0px;
-}
-
 .panelWrapper .panelContent .panelReviews .text {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 10px 10px;
   border-radius: 5px;
   background-color: #141d31;
@@ -4797,6 +4793,10 @@
   float: right;
   position: relative;
   top: 15px;
+}
+
+.panelWrapper .panelContent .panelReviews .text:nth-child(1) {
+  margin-top: 0px;
 }
 
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button, .accountSettingsWrapper .subWrapper .profilePicture button, .accountSettingsWrapper .subWrapper .usernameButton, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button,

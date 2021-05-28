@@ -20,13 +20,10 @@
         }
 
         .panelReviews{
-            margin-top: 30px;
-            .text:nth-child(1){
-                margin-top: 0px;
-              }
-              .text{
+            margin-top: 30px;   
+            .text{
                 width: 100%;
-                margin-top: 20px;
+                margin-top: 50px;
                 padding: 10px 10px;
                 border-radius: 5px;
                 background-color: $lighter-card;
@@ -75,7 +72,11 @@
                   position: relative;
                   top: 15px;
                 }
-              }
+            }
+            
+            .text:nth-child(1){
+              margin-top: 0px;
+            }
         }
     }
 }
