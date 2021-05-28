@@ -445,69 +445,72 @@ const TestSpeed = React.memo((props: any) => {
   
     const regEx = /^[a-zA-Z0-9\.\,\;\?\'\"\(\)\!\$\-\& \s]*$/;
 
-  
-    if (customText.length >= 100 && customText.length <= 250) {
-      if (regEx.test(customText)) {
+    if(userData.points >= 700){
+      if (customText.length >= 100 && customText.length <= 250) {
+        if (regEx.test(customText)) {
 
-        // add text to review
-        let playZoneText = {
-          author: user?.displayName,
-          text: customText,
-          time: `${h}:${min} ${d}/${m}/${y}`,
-          testsTaken: 0,
-          id: user?.uid,
-          typingHubID: userData?.typingHubID,
-        };
+          // add text to review
+          let playZoneText = {
+            author: user?.displayName,
+            text: customText,
+            time: `${h}:${min} ${d}/${m}/${y}`,
+            testsTaken: 0,
+            id: user?.uid,
+            typingHubID: userData?.typingHubID,
+          };
 
-        // get the texts in queue
-        db.collection("playzone")
-          .doc("review")
-          .get()
-          .then((doc: any) => {
-            let firestoreData = doc.data().queue;
+          // get the texts in queue
+          db.collection("playzone")
+            .doc("review")
+            .get()
+            .then((doc: any) => {
+              let firestoreData = doc.data().queue;
 
-            if(firestoreData.length >= 1){
-              firestoreData.map((data: reviewText) => {
-                if(data.author === user?.displayName){
-                 setCustomError("You already sent a text for a review, you can not send another.")
-                }else{
-                  // update the queue with new text
-                  firestoreData.push(playZoneText)
+              if(firestoreData.length >= 1){
+                firestoreData.map((data: reviewText) => {
+                  if(data.author === user?.displayName){
+                  setCustomError("You already sent a text for a review, you can not send another.")
+                  }else{
+                    // update the queue with new text
+                    firestoreData.push(playZoneText)
 
-                  db.collection("playzone")
-                  .doc("review")
-                  .update({
-                    queue: firestoreData,
-                  })
-                  .then(() => {
-                    setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
-                  });
-                }
-             })
-            }else{
-              // if empty queue
-              firestoreData.push(playZoneText)
-              db.collection("playzone")
-              .doc("review")
-              .update({
-                queue: firestoreData,
+                    db.collection("playzone")
+                    .doc("review")
+                    .update({
+                      queue: firestoreData,
+                    })
+                    .then(() => {
+                      setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
+                    });
+                  }
               })
-              .then(() => {
-                setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
-              });
-            }
-            
-          });
+              }else{
+                // if empty queue
+                firestoreData.push(playZoneText)
+                db.collection("playzone")
+                .doc("review")
+                .update({
+                  queue: firestoreData,
+                })
+                .then(() => {
+                  setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
+                });
+              }
+              
+            });
 
+        } else {
+          setCustomError(
+            "You can only use lowercase, uppercase letters, numbers, punctuation and some symbols such as: () ? ! - $ & "
+          );
+        }
       } else {
         setCustomError(
-          "You can only use lowercase, uppercase letters, numbers, punctuation and some symbols such as: () ? ! - $ & "
+          "The text length must be at least 100 characters and max 250 characters."
         );
       }
-    } else {
-      setCustomError(
-        "The text length must be at least 100 characters and max 250 characters."
-      );
+    }else{
+      setCustomError("You need at least 700 points to add a text to the play zone.")
     }
   }
 

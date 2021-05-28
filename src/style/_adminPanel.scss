@@ -47,11 +47,13 @@
                   &::-webkit-scrollbar {
                     @extend %scrollbar;
                     width: 6px !important;
+                    height: 6px !important;
                   }
       
                   &::-webkit-scrollbar-thumb {
                     @extend %scrollbar-thumb;
                     width: 6px !important;
+                    height: 6px !important;
                   }
                 }
                 
@@ -74,7 +76,7 @@
                 }
             }
 
-            .text:nth-child(2){
+            .text:nth-child(3){
               margin-top: 20px;
             }
         }

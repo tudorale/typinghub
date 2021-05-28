@@ -24,6 +24,7 @@ function AdminPanel() {
   const [reviews, setReviews] = useState<number>(0);
   const [texts, setTexts] = useState<number>(0);
   const [reviewsQueue, setReviewsQueue] = useState<Array<reviewText>>([])
+  const [actionStatus, setActionStatus] = useState<string>("");
 
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((usr) => {
@@ -112,7 +113,9 @@ function AdminPanel() {
                   db.collection("playzone").doc("review").update({
                     queue: reviewsQueue
                   }).then(() => {
-                    console.log("process done")
+                    setActionStatus("Status: The text was added to the playzone and removed from review queue.")
+                  }).catch(() => {
+                    setActionStatus("Status: An error occured, please refresh the page.")
                   })
               })
             })
@@ -130,7 +133,10 @@ function AdminPanel() {
           db.collection("playzone").doc("review").update({
             queue: reviewsQueue
           }).then(() => {
-            console.log("process done")
+            setActionStatus("Status: The text was removed from the review queue.")
+          })
+          .catch(() => {
+            setActionStatus("Status: An error occured, please refresh the page.")
           })
       }
     }
@@ -154,6 +160,7 @@ function AdminPanel() {
 
                 <div className="panelReviews">
                     <h2>Reviews in Queue</h2>
+                    <p>{actionStatus}</p>
                         {
                           reviewsQueue ? 
                             reviewsQueue.length >= 1 ?
