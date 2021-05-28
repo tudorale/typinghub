@@ -121,8 +121,19 @@ function AdminPanel() {
     }
   }
 
-  const handleDecline = () => {
-      
+  const handleDecline = (id: string) => {
+    for(let i = 0; i < reviewsQueue.length; i++){
+      if(reviewsQueue[i].id === id){
+          reviewsQueue.splice(i); // remove the object with index i
+
+          // delete from firestore
+          db.collection("playzone").doc("review").update({
+            queue: reviewsQueue
+          }).then(() => {
+            console.log("process done")
+          })
+      }
+    }
   }
  
   return (
@@ -153,7 +164,7 @@ function AdminPanel() {
                                     <p className="playingText">{d.text}</p>
                                     <div className="buttons">
                                         <button onClick={() => handleAccept(d.id)}>Accept</button>
-                                        <button onClick={handleDecline}>Decline</button>
+                                        <button onClick={() => handleDecline(d.id)}>Decline</button>
                                     </div>
                                     <p className="sendAt">Sent at: {d.time}</p>
                                     </div>

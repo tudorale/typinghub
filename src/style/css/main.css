@@ -4795,8 +4795,8 @@
   top: 15px;
 }
 
-.panelWrapper .panelContent .panelReviews .text:nth-child(1) {
-  margin-top: 0px;
+.panelWrapper .panelContent .panelReviews .text:nth-child(2) {
+  margin-top: 20px;
 }
 
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button, .accountSettingsWrapper .subWrapper .profilePicture button, .accountSettingsWrapper .subWrapper .usernameButton, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button,
