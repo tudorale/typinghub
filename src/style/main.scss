@@ -42,13 +42,14 @@
   width: 9px;
   background-color: $grey-color-darker;
   border-radius: 10px;
+  height: 6px;
 }
 
 %scrollbar-thumb{
   width: 9px;
   background-color: $main-color;
   border-radius: 10px;
-  height: 30px;
+  height: 6px;
 }
 
 %loadingSpinner {

@@ -766,7 +766,7 @@
   }
 }
 
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 780px) {
   .content .footer {
     height: 350px;
   }
@@ -778,16 +778,19 @@
     top: 285px;
     display: block;
   }
+  .content .footer .footer_buttons {
+    left: 0;
+    margin-top: 60px;
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
   .content .subHero_content .contact form {
     padding: 0px;
   }
   .content .subHero_content .contact p {
     padding: 0px;
-  }
-  .content .footer .footer_buttons {
-    left: 0;
-    margin-top: 60px;
-    margin-left: 15px;
   }
   .content .subHero_content .contact form {
     -ms-grid-columns: auto;
@@ -895,6 +898,36 @@
   }
   .content .footer .footer_buttons .footerButton svg {
     width: 35px;
+  }
+  .content .footer {
+    height: 390px;
+  }
+  .content .footer .footer_buttons {
+    left: 0;
+    margin-top: 0px;
+    margin-left: 15px;
+  }
+  .content .footer .rights {
+    top: 270px;
+    font-size: .9rem;
+    word-break: break-all;
+    width: 300px;
+  }
+  .content .footer .links {
+    left: 15px;
+    top: 285px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-size: 1rem;
+  }
+  .content .footer .links a:nth-child(2) {
+    margin-left: 0px;
+    margin-top: 10px;
   }
   .content .footer .footer_buttons .join svg {
     width: 33px;
@@ -4830,13 +4863,14 @@
   width: 9px;
   background-color: #92a9d6;
   border-radius: 10px;
+  height: 6px;
 }
 
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar-thumb, .panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar-thumb {
   width: 9px;
   background-color: #5c17c4;
   border-radius: 10px;
-  height: 30px;
+  height: 6px;
 }
 
 .slowNetworkSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .lbSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .playZoneSpinner, .loadingSpinnerProfile, .accountSettingsWrapper .subWrapper .descriptionSpinner, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form .loadingSpinner,
