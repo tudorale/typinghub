@@ -467,7 +467,17 @@ function Play() {
                                   <div className="text" key={Math.random() * 999}>
                                     <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
                                     <p className="playingText">{d.text}</p>
-                                    <Link to="/"><button>Take test</button></Link>
+                                    <Link
+                                    to={{
+                                      pathname: "/speed/custom",
+                                      state: {
+                                        playingText: d.text,
+                                        playzone: true
+                                      },
+                                      }}
+                                    >
+                                    <button>Take test</button>
+                                    </Link>
                                     <p className="testsTaken">Tests taken: {d.testsTaken}</p>
                                   </div>
                                 )

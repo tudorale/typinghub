@@ -3,7 +3,7 @@ import NotLogged from "./subComponents/NotLogged";
 import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Firebase, { db } from "./services/Firebase";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
 import { HashLink } from "react-router-hash-link";
@@ -30,7 +30,7 @@ const TestSpeed = React.memo((props: any) => {
     HEADER = "Quotes"; // 60-80
   } else if (category === "custom") {
     HEADER = "Custom"; // 20-40
-  } else {
+  }else {
     HEADER = category;
   }
 
@@ -74,6 +74,9 @@ const TestSpeed = React.memo((props: any) => {
 
   const [customText, setCustomText] = useState("");
   const [customError, setCustomError] = useState("");
+
+  // get the text for playzone category
+  const location = useLocation<any>();
 
   function randomPoints(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -123,6 +126,28 @@ const TestSpeed = React.memo((props: any) => {
             ) as HTMLHeadingElement;
             countdown.style.display = "none";
             
+            if(location.state.playzone){
+              setCustomText(location.state.playingText)
+              setQuote(location.state.playingText);
+
+              let content = document.querySelector(".customText") as HTMLDivElement;
+              let textarea = document.querySelector("#custom") as HTMLTextAreaElement;
+              let btn = document.querySelector("#btn") as HTMLButtonElement;
+              let countdown = document.querySelector(".countdown") as HTMLHeadingElement;
+              
+              btn.setAttribute("disabled", "");
+              textarea.setAttribute("readonly", "");
+              countdown.style.display = "block";
+              setCountdown(5)
+              content.style.display = "none";
+
+              setTimeout(() => {
+                id.current = setInterval(() => {
+                  setCountdown((s: any) => s - 1);
+                }, 1000);
+              }, 500);
+            }
+
           } else {
             setCountdown(5)
             id.current = setInterval(() => {
@@ -522,7 +547,7 @@ const TestSpeed = React.memo((props: any) => {
 
       {category === "random" ||
       category === "quotes" ||
-      category === "custom" ? (
+      category === "custom"  ? (
         <>
           {user ? (
             <div className="testSpeedExtraWrapper">
@@ -541,6 +566,7 @@ const TestSpeed = React.memo((props: any) => {
                       }}
                       maxLength={250}
                       minLength={150}
+                      value={customText}
                       id="custom"
                     ></textarea>
                     <button id="btn" onClick={handleCustomText}>
