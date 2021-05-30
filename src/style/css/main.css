@@ -2761,7 +2761,7 @@
   width: 6px !important;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button {
+.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text button {
   font-size: 1rem !important;
   padding: 0 10px !important;
   height: 35px !important;
@@ -4110,7 +4110,7 @@
 }
 
 .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .neededWrapper .rightInfo .abandon a:hover {
-  color: lightgrey;
+  color: #a8bde7;
 }
 
 .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .neededWrapper .leftInfo,
@@ -4907,7 +4907,7 @@
   margin-top: 20px;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button, .accountSettingsWrapper .subWrapper .profilePicture button, .accountSettingsWrapper .subWrapper .usernameButton, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button,
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text button, .accountSettingsWrapper .subWrapper .profilePicture button, .accountSettingsWrapper .subWrapper .usernameButton, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newEmail form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newPassword form button,
 .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount form button, .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount button, .testSpeedExtraWrapper .testSpeedWrapper .customText button, .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons a button,
@@ -4925,7 +4925,7 @@
   transition: all 300ms ease-in;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button:hover, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button:hover, .accountSettingsWrapper .subWrapper .profilePicture button:hover, .accountSettingsWrapper .subWrapper .usernameButton:hover, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button:hover,
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button:hover, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text button:hover, .accountSettingsWrapper .subWrapper .profilePicture button:hover, .accountSettingsWrapper .subWrapper .usernameButton:hover, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button:hover,
 .accountSettingsWrapper .subWrapper .settingsContent .newEmail form button:hover,
 .accountSettingsWrapper .subWrapper .settingsContent .newPassword form button:hover, .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount button:hover, .testSpeedExtraWrapper .testSpeedWrapper .customText button:hover,
 .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button:hover, .deleteYourAccount form button:hover, .pageNotFound .buttonsNotFound button:hover, .loginBox form button:hover, .proBox .paypal .redirectedButtons a button:hover, .notLoggedIn .buttons button:hover, .panelWrapper .panelContent .panelReviews .text .buttons button:hover, .panelWrapper .panelContent .panelNotifications button:hover {
