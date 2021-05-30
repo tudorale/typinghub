@@ -3,11 +3,12 @@ import NotLogged from "./subComponents/NotLogged";
 import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Firebase, { db } from "./services/Firebase";
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
 import { HashLink } from "react-router-hash-link";
 import {reviewText} from "./subComponents/Interfaces";
+import PlayZoneContext from "./services/PlayZoneContext";
 
 const TestSpeed = React.memo((props: any) => {
   const randomWords = require("random-words");
@@ -69,17 +70,18 @@ const TestSpeed = React.memo((props: any) => {
 
   const [statusResult, setStatusResult] = useState("");
 
-  // get the text for playzone category
-  const location = useLocation<{playzone: boolean, playingText: string}>();
-
-  const {playzone, playingText} = location.state;
+  // get the text for playzone category from context
+  const playZoneStatus = useContext(PlayZoneContext);
+  const {playzone, playingText, setPlayzone, setPlayingText} = playZoneStatus;
 
   function randomPoints(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   useEffect(() => {
+    console.log("rerender")
     setRandomTip(tips[Math.floor(Math.random() * 9)]);
+
     Firebase.auth().onAuthStateChanged((usr: any) => {
       let mustLogged = document.querySelector(".notLoggedIn") as HTMLDivElement;
 
@@ -125,16 +127,10 @@ const TestSpeed = React.memo((props: any) => {
               setCustomText(playingText)
               setQuote(playingText);
 
-              let content = document.querySelector(".customText") as HTMLDivElement;
-              let textarea = document.querySelector("#custom") as HTMLTextAreaElement;
-              let btn = document.querySelector("#btn") as HTMLButtonElement;
               let countdown = document.querySelector(".countdown") as HTMLHeadingElement;
-              
-              btn.setAttribute("disabled", "");
-              textarea.setAttribute("readonly", "");
               countdown.style.display = "block";
+              
               setCountdown(5)
-              content.style.display = "none";
 
               setTimeout(() => {
                 id.current = setInterval(() => {
@@ -157,7 +153,12 @@ const TestSpeed = React.memo((props: any) => {
         }
       }
     });
-  }, []);
+
+    return () => {
+      setPlayzone(false);
+      setPlayingText("")
+    }
+  }, [user]);
 
   // refs for timers
   const id = React.useRef<any>();
@@ -521,7 +522,7 @@ const TestSpeed = React.memo((props: any) => {
             <div className="testSpeedExtraWrapper">
               <Nav path="/play" name="Main" />
               <div className="testSpeedWrapper">
-                {category === "custom" ? (
+                {category === "custom" && !playzone ? (
                   <div className="customText">
                     <p>
                       Enter your text below, make sure you follow the rules of

@@ -3,11 +3,12 @@ import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Pro from "../images/pro.jpg";
 import Firebase, { db } from "./services/Firebase";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Card from "./subComponents/Card";
 import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
+import PlayZoneContext from "./services/PlayZoneContext";
 import {chatMessage} from "./subComponents/Interfaces";
 
 function Play() {
@@ -21,6 +22,9 @@ function Play() {
 
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
+
+  const playZoneStatus = useContext(PlayZoneContext);
+  const {setPlayzone, setPlayingText} = playZoneStatus;
 
   // checking if the user is logged in or not and adding values to states
   useEffect(() => {
@@ -86,6 +90,7 @@ function Play() {
         }
       }
     });
+
   }, []);
 
   // date for the messages
@@ -187,7 +192,16 @@ function Play() {
       }
     });
   }, [userData]);
+
   const config = require("../config.json")
+
+  const history = useHistory();
+
+  const handleText = (text: string) => {
+    setPlayzone(true);
+    setPlayingText(text);
+    history.push("/speed/custom")
+  }
   return (
     <>
       <HTML title={`${config.name} | Main page`}/>
@@ -468,18 +482,7 @@ function Play() {
                                   <div className="text" key={Math.random() * 999}>
                                     <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
                                     <p className="playingText">{d.text}</p>
-                                    <Link
-                                    to={{
-                                      pathname: "/speed/custom",
-                                      state: {
-                                        playingText: d.text,
-                                        playzone: true
-                                      },
-                                      }}
-                                    >
-                                    <button>Take test</button>
-                                    </Link>
-                                    
+                                    <button onClick={() => handleText(d.text)}>Take test</button>  
                                   </div>
                                 )
                               })
