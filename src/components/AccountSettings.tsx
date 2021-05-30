@@ -44,15 +44,11 @@ function AccountSettings() {
 
         db.collection("users")
           .doc(usr.uid)
-          .onSnapshot(
-            {
-              includeMetadataChanges: true,
-            },
-            (result) => {
-              setUserData(result.data());
-             
-            }
-          );
+          .get()
+          .then((doc: any) => {
+            setUserData(doc.data());
+          })
+
       } else {
         let contentNot = document.querySelector(
           ".notLoggedIn"

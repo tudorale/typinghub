@@ -90,14 +90,10 @@ const TestSpeed = React.memo((props: any) => {
 
         db.collection("users")
           .doc(usr.uid)
-          .onSnapshot(
-            {
-              includeMetadataChanges: true,
-            },
-            (doc: any) => {
-              setUserData(doc.data());
-            }
-          );
+          .get()
+          .then((doc: any) => {
+            setUserData(doc.data());
+          })
 
         if (category === "random") {
           setQuote(randomWords({ exactly: randomPoints(20, 25), join: " " }));
@@ -158,7 +154,7 @@ const TestSpeed = React.memo((props: any) => {
       setPlayzone(false);
       setPlayingText("")
     }
-  }, [user]);
+  }, []);
 
   // refs for timers
   const id = React.useRef<any>();
