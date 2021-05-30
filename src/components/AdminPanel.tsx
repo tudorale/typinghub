@@ -11,9 +11,8 @@ interface reviewText{
     author: string,
     text: string,
     time?: string,
-    testsTaken: number,
-    id?: string,
-    typingHubID?: string,
+    id: string,
+    typingHubID: string,
 }
 
 

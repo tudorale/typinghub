@@ -12,9 +12,8 @@ interface reviewText{
   author: string,
   text: string,
   time?: string,
-  testsTaken: number,
-  id?: string,
-  typingHubID?: string,
+  id: string,
+  typingHubID: string,
 }
 
 const TestSpeed = React.memo((props: any) => {
@@ -76,7 +75,9 @@ const TestSpeed = React.memo((props: any) => {
   const [customError, setCustomError] = useState("");
 
   // get the text for playzone category
-  const location = useLocation<any>();
+  const location = useLocation<{playzone: boolean, playingText: string}>();
+
+  const {playzone, playingText} = location.state;
 
   function randomPoints(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -84,7 +85,6 @@ const TestSpeed = React.memo((props: any) => {
 
   useEffect(() => {
     setRandomTip(tips[Math.floor(Math.random() * 9)]);
-
     Firebase.auth().onAuthStateChanged((usr: any) => {
       let mustLogged = document.querySelector(".notLoggedIn") as HTMLDivElement;
 
@@ -126,9 +126,9 @@ const TestSpeed = React.memo((props: any) => {
             ) as HTMLHeadingElement;
             countdown.style.display = "none";
             
-            if(location.state.playzone){
-              setCustomText(location.state.playingText)
-              setQuote(location.state.playingText);
+            if(playzone){
+              setCustomText(playingText)
+              setQuote(playingText);
 
               let content = document.querySelector(".customText") as HTMLDivElement;
               let textarea = document.querySelector("#custom") as HTMLTextAreaElement;
@@ -340,6 +340,30 @@ const TestSpeed = React.memo((props: any) => {
               ]
             : userData.customHistory,
       });
+    
+    
+      if(playzone){
+        db.collection("playzone").doc("texts").get().then((data:any) => {
+          let allTexts = data.data().wrapper;
+          for(let i = 0; i<allTexts.length; i++){
+            if(allTexts[i].text === playingText){
+              
+              let newObj = {
+                ...allTexts[i],
+                testsTaken: allTexts[i].testsTaken + 1
+              } 
+              let newArr = allTexts;
+              newArr.splice(i)
+              newArr.push(newObj);
+  
+              db.collection("playzone").doc("texts").update({
+                wrapper: newArr, // array with nr. of etests updated
+              })
+            
+            }
+          }
+        })
+      }
   };
 
   const finishedRace = () => {
@@ -479,7 +503,6 @@ const TestSpeed = React.memo((props: any) => {
             author: user?.displayName,
             text: customText,
             time: `${h}:${min} ${d}/${m}/${y}`,
-            testsTaken: 0,
             id: user?.uid,
             typingHubID: userData?.typingHubID,
           };

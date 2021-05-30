@@ -478,7 +478,7 @@ function Play() {
                                     >
                                     <button>Take test</button>
                                     </Link>
-                                    <p className="testsTaken">Tests taken: {d.testsTaken}</p>
+                                    
                                   </div>
                                 )
                               })
