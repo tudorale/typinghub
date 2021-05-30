@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 import firebase from "firebase/app";
 import Html from "../subComponents/Html";
 import { useHistory } from "react-router-dom";
+import {userInterface} from "../subComponents/Interfaces";
 
 function SignUp() {
   // states
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
-  const [buttonStatus, setButtonStatus] = useState("Sign Up");
-
+  const [buttonStatus, setButtonStatus] = useState<string>("Sign Up");
   const history = useHistory();
 
   // ui functions
@@ -67,8 +67,6 @@ function SignUp() {
   // local array with every username from database
   let usernames: string[] = [];
 
-  let date = new Date();
-
   // create account logic and check if the usernames is already taken
   const handleCreateAccount = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -93,34 +91,37 @@ function SignUp() {
               .auth()
               .createUserWithEmailAndPassword(email, password)
               .then((cred: any) => {
+
+                const uData: userInterface = {
+                  id: cred.user.uid,
+                  username: username,
+                  races: 0,
+                  role: "user",
+                  points: 0,
+                  description: "No description",
+                  pro: false,
+                  rank: "Beginner",
+                  bestWPM: "0",
+                  lastWPM: "0",
+                  keyboardLayout: "Not set",
+                  randomTests: 0,
+                  quotesTests: 0,
+                  customTests: 0,
+                  randomHistory: [],
+                  quotesHistory: [],
+                  customHistory: [],
+                  changedUsername: false,
+                  payment: {},
+                  typingHubID: `#${Math.floor(Math.random() * 9999)}`,
+                  timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                  profileImage:
+                    "https://firebasestorage.googleapis.com/v0/b/justtype-preview.appspot.com/o/profileimage.jpg?alt=media&token=ff56cecc-ffce-42c5-8079-bcc806e70348",
+                }
+
                 return db
                   .collection("users")
                   .doc(cred.user.uid)
-                  .set({
-                    id: cred.user.uid,
-                    username: username,
-                    races: 0,
-                    role: "user",
-                    points: 0,
-                    description: "No description",
-                    pro: false,
-                    rank: "Beginner",
-                    bestWPM: "0",
-                    lastWPM: "0",
-                    keyboardLayout: "Not set",
-                    randomTests: 0,
-                    quotesTests: 0,
-                    customTests: 0,
-                    randomHistory: [],
-                    quotesHistory: [],
-                    customHistory: [],
-                    changedUsername: false,
-                    payment: {},
-                    typingHubID: `#${Math.floor(Math.random() * 9999)}`,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                    profileImage:
-                      "https://firebasestorage.googleapis.com/v0/b/justtype-preview.appspot.com/o/profileimage.jpg?alt=media&token=ff56cecc-ffce-42c5-8079-bcc806e70348",
-                  });
+                  .set(uData);
               })
               .then(() => {
                 let usr = fire.auth().currentUser;

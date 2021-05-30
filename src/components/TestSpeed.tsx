@@ -7,14 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
 import { HashLink } from "react-router-hash-link";
-
-interface reviewText{
-  author: string,
-  text: string,
-  time?: string,
-  id: string,
-  typingHubID: string,
-}
+import {reviewText} from "./subComponents/Interfaces";
 
 const TestSpeed = React.memo((props: any) => {
   const randomWords = require("random-words");
@@ -499,7 +492,7 @@ const TestSpeed = React.memo((props: any) => {
         if (regEx.test(customText)) {
 
           // add text to review
-          let playZoneText = {
+          let playZoneText: reviewText = {
             author: user?.displayName,
             text: customText,
             time: `${h}:${min} ${d}/${m}/${y}`,

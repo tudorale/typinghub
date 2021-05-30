@@ -6,15 +6,7 @@ import { Link } from "react-router-dom";
 import HTML from "./subComponents/Html";
 import NotLogged from "./subComponents/NotLogged";
 import UserContext from "./services/UserContext";
-
-interface reviewText{
-    author: string,
-    text: string,
-    time?: string,
-    id: string,
-    typingHubID: string,
-}
-
+import {reviewText, notification} from "./subComponents/Interfaces";
 
 function AdminPanel() {
   const userStatus = useContext(UserContext);
@@ -157,7 +149,7 @@ function AdminPanel() {
 
   const handleNotification = () => {
 
-    let newNotification = {
+    let newNotification: notification = {
       id: Math.random() * 9999,
       message: notificationText,
       sender: notificationSender,

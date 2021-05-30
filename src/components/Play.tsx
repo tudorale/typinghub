@@ -8,6 +8,7 @@ import Card from "./subComponents/Card";
 import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
+import {chatMessage} from "./subComponents/Interfaces";
 
 function Play() {
   // states
@@ -108,7 +109,7 @@ function Play() {
     if (timer === 0) {
       if (message !== "" && message.length <= 200) {
         setTimer(3000); // 3 seconds cooldown
-        let userMessage = {
+        let userMessage: chatMessage = {
           author: user?.displayName,
           authorImage: user?.photoURL,
           message: filter.clean(message),
