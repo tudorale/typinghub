@@ -3092,6 +3092,7 @@
   transition: all 500ms ease;
   z-index: -100;
   opacity: 0;
+  overflow: auto;
   right: 0;
   margin-top: 10px;
   margin-right: 25px;
@@ -3137,6 +3138,7 @@
   width: 95%;
   color: white;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .navbarLogged .navContent .notifications .notificationsWrapper .notification .sender {
@@ -3157,6 +3159,10 @@
 .navbarLogged .navContent .notifications .notificationsWrapper .notification .notificationMessage span {
   font-size: 0.8rem;
   color: #a8bde7;
+}
+
+.navbarLogged .navContent .notifications .notificationsWrapper .notification:nth-child(2) {
+  margin-top: 0px;
 }
 
 .mobileNavLogged {
@@ -4863,6 +4869,11 @@
   margin-top: 20px;
 }
 
+.panelWrapper .panelContent .panelNotifications p {
+  margin-top: 7px;
+  font-size: 1.05rem;
+}
+
 .panelWrapper .panelContent .panelNotifications input {
   padding: 10px;
   border: none;
@@ -4919,14 +4930,14 @@
   background-color: #802cff;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar, .panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar {
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar, .navbarLogged .navContent .notifications .notificationsWrapper::-webkit-scrollbar, .panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar {
   width: 9px;
   background-color: #92a9d6;
   border-radius: 10px;
   height: 6px;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar-thumb, .panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar-thumb {
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar-thumb, .navbarLogged .navContent .notifications .notificationsWrapper::-webkit-scrollbar-thumb, .panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar-thumb {
   width: 9px;
   background-color: #5c17c4;
   border-radius: 10px;

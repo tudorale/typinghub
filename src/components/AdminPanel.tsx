@@ -20,10 +20,16 @@ function AdminPanel() {
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
   const [users, setUsers] = useState<number>(0);
+
   const [reviews, setReviews] = useState<number>(0);
   const [texts, setTexts] = useState<number>(0);
+
   const [reviewsQueue, setReviewsQueue] = useState<Array<reviewText>>([])
   const [actionStatus, setActionStatus] = useState<string>("");
+
+  const [notificationText, setNotificationText] = useState<string>("");
+  const [notificationSender, setNotificationSender] = useState<string>("");
+  const [notificationStatus, setNotificationStatus] = useState<string>("");
 
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((usr) => {
@@ -141,8 +147,37 @@ function AdminPanel() {
     }
   }
 
+  let date = new Date();
+  let h = date.getHours();
+  let min = date.getMinutes();
+  let s = date.getSeconds();
+  let y = date.getFullYear();
+  let m = date.getMonth() + 1;
+  let d = date.getDate();
+
   const handleNotification = () => {
 
+    let newNotification = {
+      id: Math.random() * 9999,
+      message: notificationText,
+      sender: notificationSender,
+      time: `${h}:${min}:${s} ${d}/${m}/${y}`,
+    }
+
+    db.collection("notifications").doc("global").get().then((data: any) => {
+      let notifications = data.data().wrapper;
+      notifications.push(newNotification);
+
+      db.collection("notifications").doc("global").update({
+        wrapper: notifications,
+      }).then(() => {
+        setNotificationStatus("The notification was send to all the users.")
+        setNotificationText("")
+        setNotificationSender("")
+      }).catch(() => {
+        setNotificationStatus("An error occured, refresh the page and try again.")
+      })
+    })
   }
  
   return (
@@ -187,9 +222,10 @@ function AdminPanel() {
             
                 <div className="panelNotifications">
                   <h2>Send a global notification</h2>
+                  <p>{notificationStatus}</p>
 
-                  <input placeholder="Text" id="text" />
-                  <input placeholder="Sender" id="sender" />
+                  <input placeholder="Text" id="text" onChange={e => setNotificationText(e.target.value)} />
+                  <input placeholder="Sender" id="sender" onChange={e => setNotificationSender(e.target.value)} />
 
                   <button className="sendButton" onClick={handleNotification}>Send notification</button>
                 </div>

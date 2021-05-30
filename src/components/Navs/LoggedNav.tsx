@@ -30,15 +30,15 @@ function LoggedNav(props: any) {
   useEffect(() => {
     let isMounted = true; // fixing a bug
     if (user) {
-      db.collection("users")
-        .doc(user?.uid)
+      db.collection("notifications")
+        .doc("global")
         .onSnapshot(
           {
             includeMetadataChanges: true,
           },
           (doc: any) => {
             if (isMounted) {
-              setNotifications(doc.data().notifications);
+              setNotifications(doc.data().wrapper);
             }
           }
         );
