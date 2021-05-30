@@ -67,6 +67,8 @@ const TestSpeed = React.memo((props: any) => {
   const [customText, setCustomText] = useState("");
   const [customError, setCustomError] = useState("");
 
+  const [statusResult, setStatusResult] = useState("");
+
   // get the text for playzone category
   const location = useLocation<{playzone: boolean, playingText: string}>();
 
@@ -225,138 +227,88 @@ const TestSpeed = React.memo((props: any) => {
   let d = date.getDate();
 
   const categoryRandom = () => {
-    wpm <= 30 ? (givenPoints = 5) : (givenPoints = randomPoints(20, 40));
+    wpm < 30 ? (givenPoints = 5) : (givenPoints = randomPoints(20, 40));
 
     setDisplayPoints(givenPoints);
 
-    db.collection("users")
+    if(Math.round((symbols / allSymbols) * 100) >= 70 && wpm >= 30){
+      db.collection("users")
       .doc(user.uid)
       .update({
         points: userData.points + givenPoints,
-        randomTests:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? userData.randomTests + 1
-            : userData.randomTests,
-        races:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? userData.races + 1
-            : userData.races,
-        lastWPM:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? wpm
-            : userData.lastWPM,
+        randomTests: userData.randomTests + 1,
+        races: userData.races + 1,
+        lastWPM: wpm,
         bestWPM:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? wpm > userData.bestWPM
+            wpm > userData.bestWPM
               ? wpm
-              : userData.bestWPM
-            : userData.bestWPM,
+              : userData.bestWPM,
         randomHistory:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? [
-                ...userData.randomHistory,
-                { wpm: wpm, time: `${h}:${min} ${d}/${m}/${y}` },
-              ]
-            : userData.randomHistory,
+            [
+              ...userData.randomHistory,
+              { wpm: wpm, time: `${h}:${min} ${d}/${m}/${y}` },
+            ],
       });
+    }else{
+      setStatusResult("You didn't have an accuracy over 70% and over 30 WPM to save the score")
+    }
+  
   };
 
   const categoryQuotes = () => {
-    wpm <= 50 ? (givenPoints = 5) : (givenPoints = randomPoints(50, 80));
+    wpm < 50 ? (givenPoints = 5) : (givenPoints = randomPoints(50, 80));
 
     setDisplayPoints(givenPoints);
 
-    db.collection("users")
+    if(Math.round((symbols / allSymbols) * 100) >= 70 && wpm >= 50){
+      db.collection("users")
       .doc(user.uid)
       .update({
         points: userData.points + givenPoints,
-        quotesTests:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? userData.quotesTests + 1
-            : userData.quotesTests,
-        races:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? userData.races + 1
-            : userData.races,
-        lastWPM:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? wpm
-            : userData.lastWPM,
+        quotesTests: userData.quotesTests + 1,
+        races: userData.races + 1,
+        lastWPM: wpm,
         bestWPM:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? wpm > userData.bestWPM
+             wpm > userData.bestWPM
               ? wpm
-              : userData.bestWPM
-            : userData.bestWPM,
-        quotesHistory:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? [
+              : userData.bestWPM,
+        quotesHistory: [
                 ...userData.quotesHistory,
                 { wpm: wpm, time: `${h}:${min} ${d}/${m}/${y}` },
-              ]
-            : userData.quotesHistory,
+              ],
       });
+    }else{
+      setStatusResult("You didn't have an accuracy over 70% and over 50 WPM to save the score")
+    }
+
   };
 
   const categoryCustom = () => {
-    wpm <= 30 ? (givenPoints = 5) : (givenPoints = randomPoints(20, 40));
+    wpm < 30 ? (givenPoints = 5) : (givenPoints = randomPoints(20, 40));
 
     setDisplayPoints(givenPoints);
 
-    db.collection("users")
+    if(Math.round((symbols / allSymbols) * 100) >= 70 && wpm >= 30){
+      db.collection("users")
       .doc(user.uid)
       .update({
         points: userData.points + givenPoints,
-        customTests:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? userData.customTests + 1
-            : userData.customTests,
-        races:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? userData.races + 1
-            : userData.races,
-        lastWPM:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? wpm
-            : userData.lastWPM,
+        customTests: userData.customTests + 1,
+        races: userData.races + 1,
+        lastWPM: wpm,
         bestWPM:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? wpm > userData.bestWPM
+          wpm > userData.bestWPM
               ? wpm
-              : userData.bestWPM
-            : userData.bestWPM,
-        customHistory:
-          Math.round((symbols / allSymbols) * 100) >= 70
-            ? [
+              : userData.bestWPM,
+        customHistory: [
                 ...userData.customHistory,
                 { wpm: wpm, time: `${h}:${min} ${d}/${m}/${y}` },
-              ]
-            : userData.customHistory,
+              ],
       });
-    
-    
-      if(playzone){
-        db.collection("playzone").doc("texts").get().then((data:any) => {
-          let allTexts = data.data().wrapper;
-          for(let i = 0; i<allTexts.length; i++){
-            if(allTexts[i].text === playingText){
-              
-              let newObj = {
-                ...allTexts[i],
-                testsTaken: allTexts[i].testsTaken + 1
-              } 
-              let newArr = allTexts;
-              newArr.splice(i)
-              newArr.push(newObj);
-  
-              db.collection("playzone").doc("texts").update({
-                wrapper: newArr, // array with nr. of etests updated
-              })
-            
-            }
-          }
-        })
-      }
+    }else{
+      setStatusResult("You didn't have an accuracy over 70% and over 30 WPM to save the score")
+    }
+   
   };
 
   const finishedRace = () => {
@@ -708,6 +660,7 @@ const TestSpeed = React.memo((props: any) => {
                         {userData ? userData.points : "Calculating.."}
                       </span>
                     </p>
+                    <p className="infoResult">{statusResult}</p>
                     <p className="infoResult">
                       {displayPoints === 5
                         ? `You have to get over 
