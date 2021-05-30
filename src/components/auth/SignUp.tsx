@@ -68,12 +68,6 @@ function SignUp() {
   let usernames: string[] = [];
 
   let date = new Date();
-  let h = date.getHours();
-  let min = date.getMinutes();
-  let s = date.getSeconds();
-  let y = date.getFullYear();
-  let m = date.getMonth() + 1;
-  let d = date.getDate();
 
   // create account logic and check if the usernames is already taken
   const handleCreateAccount = (e: React.FormEvent<HTMLFormElement>) => {
@@ -122,15 +116,6 @@ function SignUp() {
                     customHistory: [],
                     changedUsername: false,
                     payment: {},
-                    notifications: [
-                      {
-                        sender: `{config.name}`,
-                        id: Math.floor(Math.random() * 999999999),
-                        message:
-                          "This is the section where you will recieve notifications from us, from events, and so on.",
-                        time: `${h}:${min}:${s} ${d}/${m}/${y}`,
-                      },
-                    ],
                     typingHubID: `#${Math.floor(Math.random() * 9999)}`,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     profileImage:

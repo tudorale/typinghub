@@ -3116,6 +3116,14 @@
   border-radius: 10px;
 }
 
+.navbarLogged .navContent .notifications .notificationsWrapper p {
+  font-size: 1.05rem;
+  margin: 5px;
+  margin-top: 25px;
+  margin-left: 10px;
+  color: white;
+}
+
 .navbarLogged .navContent .notifications .notificationsWrapper .notificationSpinner {
   border: 4px solid white;
   border-radius: 50%;

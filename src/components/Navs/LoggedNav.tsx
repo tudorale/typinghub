@@ -157,20 +157,22 @@ function LoggedNav(props: any) {
 
             <div className="notificationsWrapper">
               <h1>Notifications</h1>
-              {notifications ? (
-                notifications.map((x: any) => {
-                  return (
-                    <div className="notification" key={x.id}>
-                      <p className="sender">
-                        <span>from</span> {x.sender}
-                      </p>
-                      <p className="notificationMessage">
-                        {x.message} <span> - {x.time}</span>
-                      </p>
-                    </div>
-                  );
-                })
-              ) : (
+              {notifications ? 
+                notifications.length >= 1 ? (
+                  notifications.map((x: any) => {
+                    return (
+                      <div className="notification" key={x.id}>
+                        <p className="sender">
+                          <span>from</span> {x.sender}
+                        </p>
+                        <p className="notificationMessage">
+                          {x.message} <span> - {x.time}</span>
+                        </p>
+                      </div>
+                    );
+                  })
+                ) : <p>You have zero notifications!</p>
+              : (
                 <div className="notificationSpinner"></div>
               )}
             </div>

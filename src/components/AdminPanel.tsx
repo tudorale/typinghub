@@ -224,8 +224,8 @@ function AdminPanel() {
                   <h2>Send a global notification</h2>
                   <p>{notificationStatus}</p>
 
-                  <input placeholder="Text" id="text" onChange={e => setNotificationText(e.target.value)} />
-                  <input placeholder="Sender" id="sender" onChange={e => setNotificationSender(e.target.value)} />
+                  <input placeholder="Text" id="text" value={notificationText} onChange={e => setNotificationText(e.target.value)} />
+                  <input placeholder="Sender" id="sender" value={notificationSender} onChange={e => setNotificationSender(e.target.value)} />
 
                   <button className="sendButton" onClick={handleNotification}>Send notification</button>
                 </div>
