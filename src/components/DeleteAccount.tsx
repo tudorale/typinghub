@@ -2,18 +2,23 @@ import React, { useEffect, useState } from "react";
 import "../style/css/main.css";
 import Firebase, { db } from "./services/Firebase";
 import HTML from "./subComponents/Html";
+import {useHistory} from "react-router-dom";
 
 function DeleteAccount() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
-  const [buttonStatus, setButtonStatus] = useState("Delete account");
-  const [error, setError] = useState("");
+  const [buttonStatus, setButtonStatus] = useState<string>("Delete account");
+  const [error, setError] = useState<string>("");
+
+  const history = useHistory();
 
   const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     let btn = document.querySelector("#btn") as HTMLButtonElement;
     btn?.setAttribute("disabled", "");
     setButtonStatus("Loading...");
+
     Firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -40,7 +45,7 @@ function DeleteAccount() {
                 Firebase.auth()
                   .currentUser?.delete()
                   .then(() => {
-                    window.location.href = "/sign-up";
+                    history.push("/sign-up")
                   });
               });
           });
@@ -57,8 +62,7 @@ function DeleteAccount() {
       <HTML title={`${config.name} | Delete your account`} />
       <div className="deleteYourAccount">
         <p>
-          For security purposes you will need to re-enter your credentials to
-          delete your account.
+          WARNING: This is the delete account page, enter your credentials from the account that you want to delete, after deleting your account you will be redirected to the Sign Up page.
         </p>
 
         <form onSubmit={handleDelete}>

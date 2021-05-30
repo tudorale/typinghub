@@ -605,7 +605,7 @@ function AccountSettings() {
                 If you want to delete your {config.name} account press the button
                 below, by pressing that button you will be redirected to a
                 special page, from that page you will delete your account and
-                your data will be deleted from our databse, if you want to play
+                your data will be deleted from our database, if you want to play
                 again and use our website you need to make a new account.
               </p>
               <p>
