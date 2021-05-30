@@ -140,6 +140,10 @@ function AdminPanel() {
       }
     }
   }
+
+  const handleNotification = () => {
+
+  }
  
   return (
     <>
@@ -179,6 +183,15 @@ function AdminPanel() {
                             : <p>No reviews in queue, good job</p>
                           : <div className="playZoneSpinner"></div>
                         }
+                </div>
+            
+                <div className="panelNotifications">
+                  <h2>Send a global notification</h2>
+
+                  <input placeholder="Text" id="text" />
+                  <input placeholder="Sender" id="sender" />
+
+                  <button className="sendButton" onClick={handleNotification}>Send notification</button>
                 </div>
             </div>
         </div>

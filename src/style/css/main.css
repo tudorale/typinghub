@@ -4846,11 +4846,59 @@
   margin-top: 20px;
 }
 
+.panelWrapper .panelContent .panelNotifications {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 400px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.panelWrapper .panelContent .panelNotifications h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.panelWrapper .panelContent .panelNotifications input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: white;
+  background-color: #111825;
+}
+
+.panelWrapper .panelContent .panelNotifications input::-webkit-input-placeholder {
+  color: #a8bde7;
+}
+
+.panelWrapper .panelContent .panelNotifications input:-ms-input-placeholder {
+  color: #a8bde7;
+}
+
+.panelWrapper .panelContent .panelNotifications input::-ms-input-placeholder {
+  color: #a8bde7;
+}
+
+.panelWrapper .panelContent .panelNotifications input::placeholder {
+  color: #a8bde7;
+}
+
+.panelWrapper .panelContent .panelNotifications button {
+  margin-top: 20px;
+}
+
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button, .accountSettingsWrapper .subWrapper .profilePicture button, .accountSettingsWrapper .subWrapper .usernameButton, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newEmail form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newPassword form button,
 .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount form button, .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount button, .testSpeedExtraWrapper .testSpeedWrapper .customText button, .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons a button,
-.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button, .deleteYourAccount form button, .pageNotFound .buttonsNotFound button, .loginBox form button, .proBox .paypal .redirectedButtons a button, .notLoggedIn .buttons button, .panelWrapper .panelContent .panelReviews .text .buttons button {
+.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button, .deleteYourAccount form button, .pageNotFound .buttonsNotFound button, .loginBox form button, .proBox .paypal .redirectedButtons a button, .notLoggedIn .buttons button, .panelWrapper .panelContent .panelReviews .text .buttons button, .panelWrapper .panelContent .panelNotifications button {
   padding: 0px 15px;
   height: 40px;
   font-size: 1.1rem;
@@ -4867,7 +4915,7 @@
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button:hover, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button:hover, .accountSettingsWrapper .subWrapper .profilePicture button:hover, .accountSettingsWrapper .subWrapper .usernameButton:hover, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button:hover,
 .accountSettingsWrapper .subWrapper .settingsContent .newEmail form button:hover,
 .accountSettingsWrapper .subWrapper .settingsContent .newPassword form button:hover, .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount button:hover, .testSpeedExtraWrapper .testSpeedWrapper .customText button:hover,
-.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button:hover, .deleteYourAccount form button:hover, .pageNotFound .buttonsNotFound button:hover, .loginBox form button:hover, .proBox .paypal .redirectedButtons a button:hover, .notLoggedIn .buttons button:hover, .panelWrapper .panelContent .panelReviews .text .buttons button:hover {
+.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button:hover, .deleteYourAccount form button:hover, .pageNotFound .buttonsNotFound button:hover, .loginBox form button:hover, .proBox .paypal .redirectedButtons a button:hover, .notLoggedIn .buttons button:hover, .panelWrapper .panelContent .panelReviews .text .buttons button:hover, .panelWrapper .panelContent .panelNotifications button:hover {
   background-color: #802cff;
 }
 
