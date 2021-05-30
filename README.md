@@ -17,11 +17,17 @@
  <ul>
   <li>Achievements system</li>
   <li>Friendship system 👥</li>
-  <li>Public texts made by users (Play Zone) ⌨️</li>
   <li>Private messaging 💬</li>
   <li>Battles between users ⚔️</li>
  </ul>
  
+ <h4>Currently working on:</h4>
+ <ul>
+  <li>Public texts made by users (Play Zone) ⌨️ </li>
+  <li>Admin roles and panel</li>
+  <li>Improving code structure</li>
+ </ul>
+
 <h2>What we used?</h2>
  
 Systems | Technology |
@@ -44,6 +50,8 @@ I will take any help from a passionate developer, if you have an idea or if you 
 3. Make changes
 4. Make a pull request to the `staging` branch
 5. Wait for a response
+
+If you want to know what bugs I have found and what I am going to fix in the future, please view `ISSUES.md` file.
 
 <h2>Branches</h2>
 

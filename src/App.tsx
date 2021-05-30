@@ -26,6 +26,7 @@ function App() {
             <Route path="/terms-and-conditions" exact component={Component.Terms} />
             <Route path="/privacy-policy" exact component={Component.Privacy} />
             <Route path="/delete-account" exact component={Component.DeleteAccount} />
+            <Route path="/admin-panel" exact component={Component.AdminPanel} />
             <Route component={Component.Page404} />
           </Switch>
         </Router>

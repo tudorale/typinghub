@@ -766,7 +766,7 @@
   }
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 670px) {
   .content .footer {
     height: 350px;
   }
@@ -778,19 +778,16 @@
     top: 285px;
     display: block;
   }
-  .content .footer .footer_buttons {
-    left: 0;
-    margin-top: 60px;
-    margin-left: 15px;
-  }
-}
-
-@media only screen and (max-width: 670px) {
   .content .subHero_content .contact form {
     padding: 0px;
   }
   .content .subHero_content .contact p {
     padding: 0px;
+  }
+  .content .footer .footer_buttons {
+    left: 0;
+    margin-top: 60px;
+    margin-left: 15px;
   }
   .content .subHero_content .contact form {
     -ms-grid-columns: auto;
@@ -898,36 +895,6 @@
   }
   .content .footer .footer_buttons .footerButton svg {
     width: 35px;
-  }
-  .content .footer {
-    height: 390px;
-  }
-  .content .footer .footer_buttons {
-    left: 0;
-    margin-top: 0px;
-    margin-left: 15px;
-  }
-  .content .footer .rights {
-    top: 270px;
-    font-size: .9rem;
-    word-break: break-all;
-    width: 300px;
-  }
-  .content .footer .links {
-    left: 15px;
-    top: 285px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    font-size: 1rem;
-  }
-  .content .footer .links a:nth-child(2) {
-    margin-left: 0px;
-    margin-top: 10px;
   }
   .content .footer .footer_buttons .join svg {
     width: 33px;
@@ -1639,7 +1606,7 @@
           justify-content: space-between;
   height: 150px;
   top: 120px;
-  left: -158px;
+  left: -145px;
   font-weight: 400;
 }
 
@@ -2710,15 +2677,6 @@
   height: 84%;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .textsInfo {
-  font-size: 1.1rem;
-}
-
-.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .textsInfo a {
-  color: #802cff;
-  text-decoration: none;
-}
-
 .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text:nth-child(1) {
   margin-top: 0px;
 }
@@ -2747,7 +2705,7 @@
 }
 
 .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 15px;
   max-height: 70px;
   overflow: auto;
@@ -2765,6 +2723,12 @@
   font-size: 1rem !important;
   padding: 0 10px !important;
   height: 35px !important;
+}
+
+.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .testsTaken {
+  float: right;
+  position: relative;
+  top: 18px;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -2862,9 +2826,6 @@
     height: 40px;
   }
   .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 {
-    padding: 10px;
-  }
-  .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone {
     padding: 10px;
   }
   .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .userWrapper .lbUser {
@@ -3086,7 +3047,6 @@
   transition: all 500ms ease;
   z-index: -100;
   opacity: 0;
-  overflow: auto;
   right: 0;
   margin-top: 10px;
   margin-right: 25px;
@@ -3108,14 +3068,6 @@
   position: absolute;
   top: 40px;
   border-radius: 10px;
-}
-
-.navbarLogged .navContent .notifications .notificationsWrapper .zeroNotifications {
-  font-size: 1.05rem;
-  margin: 5px;
-  margin-top: 25px;
-  margin-left: 10px;
-  color: white;
 }
 
 .navbarLogged .navContent .notifications .notificationsWrapper .notificationSpinner {
@@ -3140,7 +3092,6 @@
   width: 95%;
   color: white;
   margin: 0 auto;
-  margin-top: 20px;
 }
 
 .navbarLogged .navContent .notifications .notificationsWrapper .notification .sender {
@@ -3161,10 +3112,6 @@
 .navbarLogged .navContent .notifications .notificationsWrapper .notification .notificationMessage span {
   font-size: 0.8rem;
   color: #a8bde7;
-}
-
-.navbarLogged .navContent .notifications .notificationsWrapper .notification:nth-child(2) {
-  margin-top: 0px;
 }
 
 .mobileNavLogged {
@@ -4222,7 +4169,7 @@
 }
 
 @media only screen and (max-width: 770px) {
-  .testSpeedExtraWrapper .testSpeedWrapper {
+  .battleExtraWrapper .battleWrapper {
     max-width: unset;
     padding: 0 20px;
     width: 100%;
@@ -4230,13 +4177,13 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons {
+  .battleExtraWrapper .battleWrapper .testWrapper .testOver .testOverButtons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons a .homeButton {
+  .battleExtraWrapper .battleWrapper .testWrapper .testOver .testOverButtons a:nth-child(2) button {
     margin-top: 20px;
     margin-left: -37px;
   }
@@ -4772,146 +4719,11 @@
   color: white;
 }
 
-.panelWrapper .panelContent h1 {
-  font-size: 1.8rem;
-}
-
-.panelWrapper .panelContent .panelInfo h2, .panelWrapper .panelContent .panelReviews h2 {
-  font-size: 1.5rem;
-  margin-top: 20px;
-}
-
-.panelWrapper .panelContent .panelInfo p, .panelWrapper .panelContent .panelReviews p {
-  margin-top: 7px;
-  font-size: 1.05rem;
-}
-
-.panelWrapper .panelContent .panelInfo p span, .panelWrapper .panelContent .panelReviews p span {
-  color: #802cff;
-}
-
-.panelWrapper .panelContent .panelReviews {
-  margin-top: 30px;
-}
-
-.panelWrapper .panelContent .panelReviews .text {
-  width: 100%;
-  margin-top: 50px;
-  padding: 10px 10px;
-  border-radius: 5px;
-  background-color: #141d31;
-}
-
-.panelWrapper .panelContent .panelReviews .text p {
-  font-size: 1rem;
-}
-
-.panelWrapper .panelContent .panelReviews .text .author {
-  font-size: .9rem;
-  color: #92a9d6;
-  margin-bottom: 10px;
-}
-
-.panelWrapper .panelContent .panelReviews .text .author a {
-  color: #a8bde7;
-  text-decoration: none;
-}
-
-.panelWrapper .panelContent .panelReviews .text .playingText {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  max-height: 70px;
-  overflow: auto;
-}
-
-.panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar {
-  width: 6px !important;
-  height: 6px !important;
-}
-
-.panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar-thumb {
-  width: 6px !important;
-  height: 6px !important;
-}
-
-.panelWrapper .panelContent .panelReviews .text .buttons button {
-  font-size: 1rem !important;
-  padding: 0 10px !important;
-  height: 35px !important;
-}
-
-.panelWrapper .panelContent .panelReviews .text .buttons button:nth-child(2) {
-  margin-left: 15px;
-}
-
-.panelWrapper .panelContent .panelReviews .text .sendAt {
-  float: right;
-  position: relative;
-  top: 15px;
-}
-
-.panelWrapper .panelContent .panelReviews .text:nth-child(3) {
-  margin-top: 20px;
-}
-
-.panelWrapper .panelContent .panelNotifications {
-  margin-top: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 400px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.panelWrapper .panelContent .panelNotifications h2 {
-  font-size: 1.5rem;
-  margin-top: 20px;
-}
-
-.panelWrapper .panelContent .panelNotifications p {
-  margin-top: 7px;
-  font-size: 1.05rem;
-}
-
-.panelWrapper .panelContent .panelNotifications input {
-  padding: 10px;
-  border: none;
-  outline: none;
-  border-radius: 2px;
-  margin-top: 15px;
-  font-size: 1rem;
-  color: white;
-  background-color: #111825;
-}
-
-.panelWrapper .panelContent .panelNotifications input::-webkit-input-placeholder {
-  color: #a8bde7;
-}
-
-.panelWrapper .panelContent .panelNotifications input:-ms-input-placeholder {
-  color: #a8bde7;
-}
-
-.panelWrapper .panelContent .panelNotifications input::-ms-input-placeholder {
-  color: #a8bde7;
-}
-
-.panelWrapper .panelContent .panelNotifications input::placeholder {
-  color: #a8bde7;
-}
-
-.panelWrapper .panelContent .panelNotifications button {
-  margin-top: 20px;
-}
-
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button, .accountSettingsWrapper .subWrapper .profilePicture button, .accountSettingsWrapper .subWrapper .usernameButton, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newEmail form button,
 .accountSettingsWrapper .subWrapper .settingsContent .newPassword form button,
 .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount form button, .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount button, .testSpeedExtraWrapper .testSpeedWrapper .customText button, .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons a button,
-.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button, .deleteYourAccount form button, .pageNotFound .buttonsNotFound button, .loginBox form button, .proBox .paypal .redirectedButtons a button, .notLoggedIn .buttons button, .panelWrapper .panelContent .panelReviews .text .buttons button, .panelWrapper .panelContent .panelNotifications button {
+.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button, .deleteYourAccount form button, .pageNotFound .buttonsNotFound button, .loginBox form button, .proBox .paypal .redirectedButtons a button, .notLoggedIn .buttons button {
   padding: 0px 15px;
   height: 40px;
   font-size: 1.1rem;
@@ -4928,22 +4740,21 @@
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-one .card button:hover, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text a button:hover, .accountSettingsWrapper .subWrapper .profilePicture button:hover, .accountSettingsWrapper .subWrapper .usernameButton:hover, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form button:hover,
 .accountSettingsWrapper .subWrapper .settingsContent .newEmail form button:hover,
 .accountSettingsWrapper .subWrapper .settingsContent .newPassword form button:hover, .accountSettingsWrapper .subWrapper .settingsContent .deleteAccount button:hover, .testSpeedExtraWrapper .testSpeedWrapper .customText button:hover,
-.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button:hover, .deleteYourAccount form button:hover, .pageNotFound .buttonsNotFound button:hover, .loginBox form button:hover, .proBox .paypal .redirectedButtons a button:hover, .notLoggedIn .buttons button:hover, .panelWrapper .panelContent .panelReviews .text .buttons button:hover, .panelWrapper .panelContent .panelNotifications button:hover {
+.testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons button:hover, .deleteYourAccount form button:hover, .pageNotFound .buttonsNotFound button:hover, .loginBox form button:hover, .proBox .paypal .redirectedButtons a button:hover, .notLoggedIn .buttons button:hover {
   background-color: #802cff;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar, .navbarLogged .navContent .notifications .notificationsWrapper::-webkit-scrollbar, .panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar {
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar {
   width: 9px;
   background-color: #92a9d6;
   border-radius: 10px;
-  height: 6px;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar-thumb, .navbarLogged .navContent .notifications .notificationsWrapper::-webkit-scrollbar-thumb, .panelWrapper .panelContent .panelReviews .text .playingText::-webkit-scrollbar-thumb {
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .playingText::-webkit-scrollbar-thumb, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper::-webkit-scrollbar-thumb {
   width: 9px;
   background-color: #5c17c4;
   border-radius: 10px;
-  height: 6px;
+  height: 30px;
 }
 
 .slowNetworkSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .lbSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .playZoneSpinner, .loadingSpinnerProfile, .accountSettingsWrapper .subWrapper .descriptionSpinner, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form .loadingSpinner,

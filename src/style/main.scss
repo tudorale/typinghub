@@ -13,13 +13,14 @@
 @import "account/profile";
 @import "account/accountSettings";
 @import "user";
-@import "battle";
+@import "testSpeed";
 @import "delete";
 @import "404";
 @import "navs/infoNav";
 @import "info";
 @import "pro";
 @import "notLogged";
+@import "adminPanel";
 
 %button-styles {
   padding: 0px 15px;
@@ -35,6 +36,20 @@
   &:hover {
     background-color: $text-color;
   }
+}
+
+%scrollbar{
+  width: 9px;
+  background-color: $grey-color-darker;
+  border-radius: 10px;
+  height: 6px;
+}
+
+%scrollbar-thumb{
+  width: 9px;
+  background-color: $main-color;
+  border-radius: 10px;
+  height: 6px;
 }
 
 %loadingSpinner {

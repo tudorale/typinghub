@@ -9,7 +9,17 @@ const Card = (props:any) => {
         <>
             <h1>{props.title} {pro ? <img src={Pro} /> : ""}</h1> 
             <p className="races">{props.tests}</p>
-            <Link to={`/speed/${props.type}`}><button>{props.button}</button></Link>
+            <Link
+                to={{
+                pathname: `/speed/${props.type}`,
+                state: {
+                  playingText: "",
+                  playzone: false
+                },
+                }}
+            >
+                <button>{props.button}</button>
+            </Link>
             <p className="points">{props.points}</p>
             <div className="icons">
                 {

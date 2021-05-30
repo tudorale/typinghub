@@ -8,6 +8,7 @@ import Card from "./subComponents/Card";
 import NotLogged from "./subComponents/NotLogged";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
+import {chatMessage} from "./subComponents/Interfaces";
 
 function Play() {
   // states
@@ -15,6 +16,8 @@ function Play() {
   const [message, setMessage] = useState<string>("");
   const [users, setUsers] = useState<Array<Object>>([]);
   const [timer, setTimer] = useState<number>(0);
+
+  const [texts, setTexts] = useState<Array<Object> | undefined >(undefined);
 
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
@@ -46,6 +49,18 @@ function Play() {
               }
             }
           });
+
+        // texts
+        db.collection("playzone")
+          .doc("texts")
+          .onSnapshot(
+            {
+              includeMetadataChanges: true,
+            },
+            (doc: any) => {
+              setTexts(doc.data().wrapper); 
+            }
+          );
 
         spinner.style.display = "none";
 
@@ -94,7 +109,7 @@ function Play() {
     if (timer === 0) {
       if (message !== "" && message.length <= 200) {
         setTimer(3000); // 3 seconds cooldown
-        let userMessage = {
+        let userMessage: chatMessage = {
           author: user?.displayName,
           authorImage: user?.photoURL,
           message: filter.clean(message),
@@ -403,10 +418,6 @@ function Play() {
                 <div className="rowTwo">
                   <div className="section-five">
                     <h1 className="topHeader">Top 10</h1>
-                    <p className="topInfo">
-                      The monthly prize is not active yet, for more info check{" "}
-                      <Link to="/info">this</Link>.
-                    </p>
                     <div className="top10">
                       {users.length >= 1 ? (
                         users.map((d: any) => {
@@ -440,6 +451,43 @@ function Play() {
                       ) : (
                         <div className="lbSpinner"></div>
                       )}
+                    </div>
+                  </div>
+                  
+                  <div className="section-six">
+                    <h1 className="playZoneHeader">Play Zone</h1>
+                    <div className="playZone">
+                      <p className="indication">Test your speed on custom texts made by the comunity users or <Link to="/speed/custom">add</Link> your own custom text.</p>
+                      <div className="textsWrapper">
+                        
+                        {
+                          texts ? 
+                            texts.length >= 1 ?
+                              texts.map((d: any) => {
+                                return (
+                                  <div className="text" key={Math.random() * 999}>
+                                    <p className="author">Created by <Link to={`/user/${d.author}`}>{d.author} {d.typingHubID}</Link></p>
+                                    <p className="playingText">{d.text}</p>
+                                    <Link
+                                    to={{
+                                      pathname: "/speed/custom",
+                                      state: {
+                                        playingText: d.text,
+                                        playzone: true
+                                      },
+                                      }}
+                                    >
+                                    <button>Take test</button>
+                                    </Link>
+                                    
+                                  </div>
+                                )
+                              })
+                            : <p className="textsInfo">There are no texts so far, <Link to="/speed/custom">add</Link> your own.</p>
+                          : <div className="playZoneSpinner"></div>
+                        }
+                       
+                      </div>
                     </div>
                   </div>
                 </div>

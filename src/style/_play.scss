@@ -276,16 +276,11 @@
               }
 
               .chatContent::-webkit-scrollbar {
-                width: 10px;
-                background-color: #1d1d1d;
-                border-radius: 10px;
+                @extend %scrollbar;
               }
 
               .chatContent::-webkit-scrollbar-thumb {
-                width: 10px;
-                background-color: $main-color;
-                border-radius: 10px;
-                height: 30px;
+                @extend %scrollbar-thumb;
               }
 
               .chatLocked {
@@ -345,6 +340,7 @@
         }
         .rowTwo {
           grid-area: rowTwo;
+
           .section-five {
             grid-area: sectionFive;
             display: grid;
@@ -360,14 +356,6 @@
               grid-area: topHeader;
               font-size: 1.75rem;
               font-weight: 500;
-            }
-            .topInfo {
-              
-              font-size: 1rem;
-              color: white;
-              a {
-                color: $text-color;
-              }
             }
             .top10 {
               grid-area: top10;
@@ -475,16 +463,114 @@
             }
 
             .top10::-webkit-scrollbar {
-              width: 10px;
-              background-color: $grey-color-darker;
-              border-radius: 10px;
+              @extend %scrollbar;
             }
 
             .top10::-webkit-scrollbar-thumb {
-              width: 10px;
-              background-color: $main-color;
-              border-radius: 10px;
-              height: 30px;
+              @extend %scrollbar-thumb;
+            }
+          }
+
+          .section-six{
+            grid-area: sectionSix;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+              "playZoneHeader"
+              "playZone";
+            grid-gap: 30px;
+            margin-top: 30px;
+            .playZoneHeader {
+              color: white;
+              grid-area: playZoneHeader;
+              font-size: 1.75rem;
+              font-weight: 500;
+            }
+            .playZone{
+              grid-area: playZone;
+              background-color: $card-background;
+              border-radius: 5px;
+              padding: 20px;
+              position: relative;
+              color: white;
+              height: 610px;
+              
+              .indication{
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+                a{
+                  color: $text-color;
+                  text-decoration: none;
+                }
+              }
+              .textsWrapper{
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+                height: 84%;
+                .textsInfo{
+                  font-size: 1.1rem;
+                  a{
+                    color: $text-color;
+                    text-decoration: none;
+                  }
+                }
+                .text:nth-child(1){
+                  margin-top: 0px;
+                }
+                .text{
+                  width: 100%;
+                  margin-top: 20px;
+                  padding: 10px 10px;
+                  border-radius: 5px;
+                  background-color: $lighter-card;
+                  p{
+                    font-size: 1rem;
+                  }
+                  .author{
+                    font-size: .9rem;
+                    color: $grey-color-darker;
+                    margin-bottom: 10px;
+                    a{
+                      color: $grey-color;
+                      text-decoration: none;
+                    }
+                  }
+                  .playingText{
+                    font-size: 1.1rem;
+                    margin-bottom: 15px;
+                    max-height: 70px;
+                    overflow: auto;
+                    &::-webkit-scrollbar {
+                      @extend %scrollbar;
+                      width: 6px !important;
+                    }
+        
+                    &::-webkit-scrollbar-thumb {
+                      @extend %scrollbar-thumb;
+                      width: 6px !important;
+                    }
+                  }
+                  a button{
+                    @extend %button-styles;
+                    font-size: 1rem !important;
+                    padding: 0 10px !important;
+                    height: 35px !important;
+                  }
+                }
+                .playZoneSpinner{
+                  @extend %loadingSpinner;
+                }
+              }
+
+              .textsWrapper::-webkit-scrollbar {
+                @extend %scrollbar;
+              }
+  
+              .textsWrapper::-webkit-scrollbar-thumb {
+                @extend %scrollbar-thumb;
+              }
             }
           }
         }
@@ -700,6 +786,16 @@
     .rowTwo
     .section-five
     .top10 {
+    padding: 10px;
+  }
+
+  .extraWrapper
+    .playWrapper
+    .playContent
+    .globalGrid
+    .rowTwo
+    .section-six
+    .playZone {
     padding: 10px;
   }
 

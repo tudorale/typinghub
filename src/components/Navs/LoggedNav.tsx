@@ -10,7 +10,7 @@ function LoggedNav(props: any) {
   const [notifications, setNotifications] = useState<any>("");
 
   const userStatus = useContext(UserContext);
-  const { user, setUser } = userStatus;
+  const { user, setUser} = userStatus;
 
   // ui stuff & checking if the user is logged in
   useEffect(() => {
@@ -30,15 +30,15 @@ function LoggedNav(props: any) {
   useEffect(() => {
     let isMounted = true; // fixing a bug
     if (user) {
-      db.collection("users")
-        .doc(user?.uid)
+      db.collection("notifications")
+        .doc("global")
         .onSnapshot(
           {
             includeMetadataChanges: true,
           },
           (doc: any) => {
             if (isMounted) {
-              setNotifications(doc.data().notifications);
+              setNotifications(doc.data().wrapper);
             }
           }
         );
@@ -157,20 +157,22 @@ function LoggedNav(props: any) {
 
             <div className="notificationsWrapper">
               <h1>Notifications</h1>
-              {notifications ? (
-                notifications.map((x: any) => {
-                  return (
-                    <div className="notification" key={x.id}>
-                      <p className="sender">
-                        <span>from</span> {x.sender}
-                      </p>
-                      <p className="notificationMessage">
-                        {x.message} <span> - {x.time}</span>
-                      </p>
-                    </div>
-                  );
-                })
-              ) : (
+              {notifications ? 
+                notifications.length >= 1 ? (
+                  notifications.map((x: any) => {
+                    return (
+                      <div className="notification" key={x.id}>
+                        <p className="sender">
+                          <span>from</span> {x.sender}
+                        </p>
+                        <p className="notificationMessage">
+                          {x.message} <span> - {x.time}</span>
+                        </p>
+                      </div>
+                    );
+                  })
+                ) : <p className="zeroNotifications">You have zero notifications!</p>
+              : (
                 <div className="notificationSpinner"></div>
               )}
             </div>

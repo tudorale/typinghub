@@ -21,3 +21,5 @@ export const DeleteAccount = React.lazy(
 export const Page404 = React.lazy(() => import("./components/404"));
 export const Info = React.lazy(() => import("./components/Info"));
 export const Pro = React.lazy(() => import("./components/Pro"));
+export const AdminPanel = React.lazy(() => import("./components/AdminPanel"));
+

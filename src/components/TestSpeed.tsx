@@ -3,10 +3,13 @@ import NotLogged from "./subComponents/NotLogged";
 import "../style/css/main.css";
 import Nav from "./Navs/LoggedNav";
 import Firebase, { db } from "./services/Firebase";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
-const Battle = React.memo((props: any) => {
+import { HashLink } from "react-router-hash-link";
+import {reviewText} from "./subComponents/Interfaces";
+
+const TestSpeed = React.memo((props: any) => {
   const randomWords = require("random-words");
   const axios = require("axios");
 
@@ -19,14 +22,14 @@ const Battle = React.memo((props: any) => {
     HEADER = "Quotes"; // 60-80
   } else if (category === "custom") {
     HEADER = "Custom"; // 20-40
-  } else {
+  }else {
     HEADER = category;
   }
 
   const userStatus = useContext(UserContext);
   const { user, setUser, userData, setUserData } = userStatus;
 
-  const [countdown, setCountdown] = useState<number>(5);
+  const [countdown, setCountdown] = useState<number | null>(null);
   const [timer, setTimer] = useState<number>(60);
   const [userInput, setUserInput] = useState<string>("");
 
@@ -64,13 +67,17 @@ const Battle = React.memo((props: any) => {
   const [customText, setCustomText] = useState("");
   const [customError, setCustomError] = useState("");
 
+  // get the text for playzone category
+  const location = useLocation<{playzone: boolean, playingText: string}>();
+
+  const {playzone, playingText} = location.state;
+
   function randomPoints(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   useEffect(() => {
     setRandomTip(tips[Math.floor(Math.random() * 9)]);
-
     Firebase.auth().onAuthStateChanged((usr: any) => {
       let mustLogged = document.querySelector(".notLoggedIn") as HTMLDivElement;
 
@@ -111,13 +118,37 @@ const Battle = React.memo((props: any) => {
               ".countdown"
             ) as HTMLHeadingElement;
             countdown.style.display = "none";
-            setCountdown(5);
+            
+            if(playzone){
+              setCustomText(playingText)
+              setQuote(playingText);
+
+              let content = document.querySelector(".customText") as HTMLDivElement;
+              let textarea = document.querySelector("#custom") as HTMLTextAreaElement;
+              let btn = document.querySelector("#btn") as HTMLButtonElement;
+              let countdown = document.querySelector(".countdown") as HTMLHeadingElement;
+              
+              btn.setAttribute("disabled", "");
+              textarea.setAttribute("readonly", "");
+              countdown.style.display = "block";
+              setCountdown(5)
+              content.style.display = "none";
+
+              setTimeout(() => {
+                id.current = setInterval(() => {
+                  setCountdown((s: any) => s - 1);
+                }, 1000);
+              }, 500);
+            }
+
           } else {
+            setCountdown(5)
             id.current = setInterval(() => {
-              setCountdown((s) => s - 1);
+              setCountdown((s: any) => s - 1);
             }, 1000);
           }
         }
+
       } else {
         if (mustLogged) {
           mustLogged.style.display = "block";
@@ -126,7 +157,7 @@ const Battle = React.memo((props: any) => {
     });
   }, []);
 
-  // start the test
+  // refs for timers
   const id = React.useRef<any>();
   const idTimer = React.useRef<any>();
   const idSeconds = React.useRef<any>();
@@ -185,6 +216,7 @@ const Battle = React.memo((props: any) => {
   }, [started]);
 
   let givenPoints = 0;
+
   let date = new Date();
   let h = date.getHours();
   let min = date.getMinutes();
@@ -301,6 +333,30 @@ const Battle = React.memo((props: any) => {
               ]
             : userData.customHistory,
       });
+    
+    
+      if(playzone){
+        db.collection("playzone").doc("texts").get().then((data:any) => {
+          let allTexts = data.data().wrapper;
+          for(let i = 0; i<allTexts.length; i++){
+            if(allTexts[i].text === playingText){
+              
+              let newObj = {
+                ...allTexts[i],
+                testsTaken: allTexts[i].testsTaken + 1
+              } 
+              let newArr = allTexts;
+              newArr.splice(i)
+              newArr.push(newObj);
+  
+              db.collection("playzone").doc("texts").update({
+                wrapper: newArr, // array with nr. of etests updated
+              })
+            
+            }
+          }
+        })
+      }
   };
 
   const finishedRace = () => {
@@ -372,6 +428,7 @@ const Battle = React.memo((props: any) => {
 
     setWrongSymbols(checkWrongSymbols(userInput));
     isFinished(userInput);
+
   }, [userInput]);
 
   useEffect(() => {
@@ -387,6 +444,7 @@ const Battle = React.memo((props: any) => {
   }, [wpm, finished]);
 
   const handleCustomText = () => {
+
     let content = document.querySelector(".customText") as HTMLDivElement;
     let textarea = document.querySelector("#custom") as HTMLTextAreaElement;
     let btn = document.querySelector("#btn") as HTMLButtonElement;
@@ -396,14 +454,17 @@ const Battle = React.memo((props: any) => {
 
     if (customText.length >= 100 && customText.length <= 250) {
       if (regEx.test(customText)) {
+
         setQuote(customText);
         btn.setAttribute("disabled", "");
         textarea.setAttribute("readonly", "");
         countdown.style.display = "block";
+        setCountdown(5)
         content.style.display = "none";
+
         setTimeout(() => {
           id.current = setInterval(() => {
-            setCountdown((s) => s - 1);
+            setCountdown((s: any) => s - 1);
           }, 1000);
         }, 500);
       } else {
@@ -421,6 +482,79 @@ const Battle = React.memo((props: any) => {
   const newTest = () => {
     window.location.reload();
   };
+
+  const handlePlayZone = () => {
+  
+    const regEx = /^[a-zA-Z0-9\.\,\;\?\'\"\(\)\!\$\-\& \s]*$/;
+
+    if(userData.points >= 700){
+      if (customText.length >= 100 && customText.length <= 250) {
+        if (regEx.test(customText)) {
+
+          // add text to review
+          let playZoneText: reviewText = {
+            author: user?.displayName,
+            text: customText,
+            time: `${h}:${min} ${d}/${m}/${y}`,
+            id: user?.uid,
+            typingHubID: userData?.typingHubID,
+          };
+
+          // get the texts in queue
+          db.collection("playzone")
+            .doc("review")
+            .get()
+            .then((doc: any) => {
+              let firestoreData = doc.data().queue;
+
+              if(firestoreData.length >= 1){
+                firestoreData.map((data: reviewText) => {
+                  if(data.author === user?.displayName){
+                  setCustomError("You already sent a text for a review, you can not send another.")
+                  }else{
+                    // update the queue with new text
+                    firestoreData.push(playZoneText)
+
+                    db.collection("playzone")
+                    .doc("review")
+                    .update({
+                      queue: firestoreData,
+                    })
+                    .then(() => {
+                      setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
+                    });
+                  }
+              })
+              }else{
+                // if empty queue
+                firestoreData.push(playZoneText)
+                db.collection("playzone")
+                .doc("review")
+                .update({
+                  queue: firestoreData,
+                })
+                .then(() => {
+                  setCustomError("Your text was submitted for a review, if it is appropriate for the play zone, it will appear there.")
+                });
+              }
+              
+            });
+
+        } else {
+          setCustomError(
+            "You can only use lowercase, uppercase letters, numbers, punctuation and some symbols such as: () ? ! - $ & "
+          );
+        }
+      } else {
+        setCustomError(
+          "The text length must be at least 100 characters and max 250 characters."
+        );
+      }
+    }else{
+      setCustomError("You need at least 700 points to add a text to the play zone.")
+    }
+  }
+
   const config = require("../config.json")
 
   return (
@@ -429,12 +563,12 @@ const Battle = React.memo((props: any) => {
 
       {category === "random" ||
       category === "quotes" ||
-      category === "custom" ? (
+      category === "custom"  ? (
         <>
           {user ? (
-            <div className="battleExtraWrapper">
+            <div className="testSpeedExtraWrapper">
               <Nav path="/play" name="Main" />
-              <div className="battleWrapper">
+              <div className="testSpeedWrapper">
                 {category === "custom" ? (
                   <div className="customText">
                     <p>
@@ -448,10 +582,14 @@ const Battle = React.memo((props: any) => {
                       }}
                       maxLength={250}
                       minLength={150}
+                      value={customText}
                       id="custom"
                     ></textarea>
                     <button id="btn" onClick={handleCustomText}>
                       Go
+                    </button>
+                    <button id="playZone" onClick={handlePlayZone}>
+                      Add to Play Zone
                     </button>
                     <p className="lengthText">{customText.length}/250</p>
                     <p>{customError}</p>
@@ -465,47 +603,52 @@ const Battle = React.memo((props: any) => {
                 <div className="testWrapper">
                   <div className="neededWrapper">
                     <div className="quote">
-                      {quote.split("").map((word, index) => {
-                        let color;
-                        if (index < userInput.length) {
-                          color =
-                            word === userInput[index]
-                              ? CORRECT_COLOR
-                              : WRONG_COLOR;
 
-                          if (word === " ") {
-                            if (userInput[index] !== word) {
-                              word = userInput[index];
-                            }
+                    {quote.split("").map((letter, index) => {
+
+                      let color;
+
+                      if (index < userInput.length) {
+                        color =
+                          letter === userInput[index]
+                            ? CORRECT_COLOR
+                            : WRONG_COLOR;
+
+                        if (letter === " ") { // if user have to type a space and he is not doing it it will appear the key that he typed
+                          if (userInput[index] !== letter) {
+                            letter = userInput[index];
                           }
                         }
+                      }
 
-                        if (index === userInput.length) {
-                          return (
-                            <span
-                              key={index}
-                              className={"word"}
-                              style={{
-                                color: color,
-                                fontWeight: 700,
-                                textDecoration: "underline",
-                              }}
-                            >
-                              {word === " " ? " " : word}
-                            </span>
-                          );
-                        }
-
+                      if (index === userInput.length) { // code for the current letter that user have to type
                         return (
                           <span
                             key={index}
-                            className={"word"}
-                            style={{ color: color }}
+                            className={"letter"}
+                            style={{
+                              color: color,
+                              fontWeight: 700,
+                              textDecoration: "underline",
+                            }}
                           >
-                            {word === " " ? " " : word}
-                          </span> // is weird isn't it? is not a normal space is &nbsp; using alt + 2 2 5
+                            {letter === " " ? " " : letter} {/* *** */}
+                          </span>
                         );
-                      })}
+                      }
+
+                      return (
+                        <span
+                          key={index}
+                          className={"letter"}
+                          style={{ color: color }}
+                        >
+                          {letter === " " ? " " : letter}
+                        </span> // *** is weird isn't it? is not a normal space is &nbsp; using alt + 2 2 5 using that so it will appear as a space into the DOM
+                      );
+
+                    })}
+
                     </div>
 
                     <input
@@ -552,7 +695,7 @@ const Battle = React.memo((props: any) => {
                       <button onClick={newTest}>New test on {HEADER}</button>
 
                       <Link to="/play">
-                        <button>Go home</button>
+                        <button className="homeButton">Go home</button>
                       </Link>
                     </div>
                   </div>
@@ -647,11 +790,11 @@ const Battle = React.memo((props: any) => {
       ) : (
         <p className="categoryNotExist">
           This category ({category}) does not exist, sorry!{" "}
-          <a href="/play">Play</a>
+          <HashLink to="/play">Play</HashLink>
         </p>
       )}
     </>
   );
 });
 
-export default Battle;
+export default TestSpeed;
