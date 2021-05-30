@@ -702,7 +702,7 @@ const TestSpeed = React.memo((props: any) => {
                       <button onClick={newTest}>New test on {HEADER}</button>
 
                       <Link to="/play">
-                        <button>Go home</button>
+                        <button className="homeButton">Go home</button>
                       </Link>
                     </div>
                   </div>

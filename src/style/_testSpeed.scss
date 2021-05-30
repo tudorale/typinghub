@@ -210,7 +210,7 @@
 }
 
 @media only screen and (max-width: 770px) {
-  .battleExtraWrapper .battleWrapper {
+  .testSpeedExtraWrapper .testSpeedWrapper {
     max-width: unset;
     padding: 0 20px;
     width: 100%;
@@ -218,16 +218,15 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .battleExtraWrapper .battleWrapper .testWrapper .testOver .testOverButtons {
+  .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons {
     flex-direction: column;
   }
-  .battleExtraWrapper
-    .battleWrapper
+  .testSpeedExtraWrapper
+    .testSpeedWrapper
     .testWrapper
     .testOver
     .testOverButtons
-    a:nth-child(2)
-    button {
+    a .homeButton {
     margin-top: 20px;
     margin-left: -37px;
   }

@@ -1639,7 +1639,7 @@
           justify-content: space-between;
   height: 150px;
   top: 120px;
-  left: -145px;
+  left: -158px;
   font-weight: 400;
 }
 
@@ -2868,6 +2868,9 @@
     height: 40px;
   }
   .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 {
+    padding: 10px;
+  }
+  .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone {
     padding: 10px;
   }
   .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .userWrapper .lbUser {
@@ -4211,7 +4214,7 @@
 }
 
 @media only screen and (max-width: 770px) {
-  .battleExtraWrapper .battleWrapper {
+  .testSpeedExtraWrapper .testSpeedWrapper {
     max-width: unset;
     padding: 0 20px;
     width: 100%;
@@ -4219,13 +4222,13 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .battleExtraWrapper .battleWrapper .testWrapper .testOver .testOverButtons {
+  .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .battleExtraWrapper .battleWrapper .testWrapper .testOver .testOverButtons a:nth-child(2) button {
+  .testSpeedExtraWrapper .testSpeedWrapper .testWrapper .testOver .testOverButtons a .homeButton {
     margin-top: 20px;
     margin-left: -37px;
   }
