@@ -2767,12 +2767,6 @@
   height: 35px !important;
 }
 
-.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .text .testsTaken {
-  float: right;
-  position: relative;
-  top: 18px;
-}
-
 @media only screen and (max-width: 1120px) {
   .extraWrapper .playWrapper .playContent {
     width: 100%;
@@ -3116,7 +3110,7 @@
   border-radius: 10px;
 }
 
-.navbarLogged .navContent .notifications .notificationsWrapper p {
+.navbarLogged .navContent .notifications .notificationsWrapper .zeroNotifications {
   font-size: 1.05rem;
   margin: 5px;
   margin-top: 25px;

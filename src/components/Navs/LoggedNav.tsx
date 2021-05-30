@@ -171,7 +171,7 @@ function LoggedNav(props: any) {
                       </div>
                     );
                   })
-                ) : <p>You have zero notifications!</p>
+                ) : <p className="zeroNotifications">You have zero notifications!</p>
               : (
                 <div className="notificationSpinner"></div>
               )}

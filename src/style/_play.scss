@@ -487,7 +487,6 @@
               font-size: 1.75rem;
               font-weight: 500;
             }
-
             .playZone{
               grid-area: playZone;
               background-color: $card-background;
@@ -559,13 +558,7 @@
                     padding: 0 10px !important;
                     height: 35px !important;
                   }
-                  .testsTaken{
-                    float: right;
-                    position: relative;
-                    top: 18px;
-                  }
                 }
-
                 .playZoneSpinner{
                   @extend %loadingSpinner;
                 }
