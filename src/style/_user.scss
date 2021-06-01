@@ -32,14 +32,15 @@
               margin-left: 15px;
               position: relative;
             }
-
-            img {
-              width: 53px;
-              height: 25px;
+            .proIcon{
+              @extend %pro-icon;
+              top: 2px !important;
+              margin-right: 0px !important;
+            }
+            .adminIcon{
+              @extend %admin-icon;
               margin-left: 15px;
-              border-radius: 3px;
-              position: relative;
-              top: 2px;
+              top: 5px;
             }
           }
           .userPageDescription {
@@ -80,6 +81,15 @@
       .userSectionTwo {
         color: white;
         margin-top: 25px;
+        .adminInfo{
+          margin-top: 0px;
+          margin-bottom: 20px;
+          .adminIcon{
+            @extend %admin-icon;
+            margin-left: 0px !important;
+            top: 7px !important;
+          }
+        }
         h1 {
           font-size: 1.6rem;
           font-weight: 500;

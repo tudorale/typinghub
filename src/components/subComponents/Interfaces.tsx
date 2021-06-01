@@ -22,6 +22,7 @@ export interface chatMessage{
     time: string,
     id?: string, // uid of the user not a normal ID
     typingHubID: string,
+    role: string
 }
 
 export interface userInterface{

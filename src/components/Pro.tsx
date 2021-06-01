@@ -115,7 +115,7 @@ function Pro() {
       <HTML title={`${config.name} | Pro membership`} />
       <Navigation />
       <div className="loadingSpinnerPro"></div>
-      {user ? (
+      {userData && user ? (
         <div className="proBox">
           <h1>{config.name} Pro Membership</h1>
           <h2>What you will get?</h2>

@@ -514,7 +514,7 @@ const TestSpeed = React.memo((props: any) => {
       category === "quotes" ||
       category === "custom"  ? (
         <>
-          {user ? (
+          {userData && user ? (
             <div className="testSpeedExtraWrapper">
               <Nav path="/play" name="Main" />
               <div className="testSpeedWrapper">

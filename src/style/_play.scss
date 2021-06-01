@@ -258,6 +258,11 @@
                       border-radius: 3px;
                       top: 6px;
                     }
+                    .adminImage{
+                      @extend %admin-icon;
+                      top: 7px !important;
+                      margin-top: -10px;
+                    }
                     span {
                       font-size: 1rem;
                       color: $grey-color-darker;
@@ -415,6 +420,7 @@
                 margin-top: 20px;
                 width: 100%;
                 padding: 10px 0px;
+                
                 padding-right: 60px;
                 grid-template-areas:
                   "lbimage lbuser ."
@@ -436,6 +442,7 @@
                   font-weight: 500;
                   margin-top: -5px;
                   width: fit-content;
+                  position: relative;
                   grid-area: lbuser;
                   .lbId {
                     font-size: 1.09rem;
@@ -447,6 +454,14 @@
                     height: 23px;
                     border-radius: 3px;
                     top: 5px;
+                    margin-top: -10px;
+                  }
+                  .lbAdmin{
+                    @extend %admin-icon;
+                    margin-top: -30px !important;
+                    top: 7px !important;
+                    width: 31px !important;
+                    height: 31px !important;
                   }
                 }
 

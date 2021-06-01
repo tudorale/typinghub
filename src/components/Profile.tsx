@@ -9,6 +9,7 @@ import NotLogged from "./subComponents/NotLogged";
 import Statistics from "./services/Statistics";
 import UserContext from "./services/UserContext";
 import Linkify from "react-linkify";
+import Admin from "../images/admin.svg";
 
 function Profile() {
   const userStatus = useContext(UserContext);
@@ -80,7 +81,7 @@ function Profile() {
     <>
       <HTML title={`${config.name} | Your profile`}/>
 
-      {userData ? (
+      {userData && user ? (
         <div className="profileWrapper">
           <Nav path="/play" name="Main" />
 
@@ -97,7 +98,8 @@ function Profile() {
               <div className="userInfo">
                 <h1>
                   <span className="usern">{user.displayName}</span>
-                  {userData.pro ? <img src={Pro} alt="" /> : ""}
+                  {userData.role === "admin" ? <img className="adminIcon" src={Admin} alt="" /> : ""}
+                  {userData.pro ? <img className="proIcon" src={Pro} alt="" /> : ""}
                   <span className="jtId">{userData.typingHubID}</span>
                 </h1>
                 <Linkify>

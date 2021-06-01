@@ -8,6 +8,7 @@ import HTML from "./subComponents/Html";
 import Statistics from "./services/Statistics";
 import UserContext from "./services/UserContext";
 import Linkify from "react-linkify";
+import Admin from "../images/admin.svg";
 
 const User = (props: any) => {
   const config = require("../config.json")
@@ -98,7 +99,7 @@ const User = (props: any) => {
         title={`${config.name} | ${haveAUser && username ? username : "User"} page`}
       />
 
-      {user ? (
+      {userData && user ? (
         <div className="userPageWrapper">
           <Nav path="/play" name="Main" />
           <div className="userPageContent">
@@ -110,7 +111,8 @@ const User = (props: any) => {
                   <div className="userPageInfo">
                     <h1>
                       {userData.username}
-                      {userData.pro ? <img src={Pro} /> : null}
+                      {userData.role === "admin" ? <img className="adminIcon" src={Admin} alt="" /> : ""}
+                      {userData.pro ? <img className="proIcon" src={Pro} /> : null}
                       <span>{userData.typingHubID}</span>
                     </h1>
                     <Linkify>
@@ -123,6 +125,9 @@ const User = (props: any) => {
                 </div>
                 <div className="userSectionTwo">
                   <h1>Public info</h1>
+                  {
+                    userData.role === "admin" ? <p className="adminInfo">This user is a TypingHub Admin <img className="adminIcon" src={Admin} alt="" /></p> : ""
+                  }
                   <p>
                     Points: <span>{`${userData.points}`}</span>
                   </p>

@@ -52,6 +52,23 @@
   height: 6px;
 }
 
+%pro-icon{
+  width: 53px;
+  height: 25px;
+  border-radius: 3px;
+  margin-right: 15px;
+  position: relative;
+  top: 7px;
+}
+%admin-icon{
+  width: 30px;
+  margin-right:15px;
+  height: 30px;
+  position: relative;
+  top: 3px;
+}
+
+
 %loadingSpinner {
   border: 6px solid rgb(236, 236, 236);
   border-radius: 50%;
@@ -103,6 +120,7 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translate(-50%, -50%);
   z-index: 999;
 }
+
 
 @keyframes spin {
   0% {

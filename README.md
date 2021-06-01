@@ -7,6 +7,7 @@
   <li>Global Chat 💬</li>
   <li>Different categories such as Random, Quotes, Custom 🗒️</li>
   <li>Leaderboard 🥇</li>
+  <li>Public texts made by users (Play Zone) ⌨️ </li>
   <li>Statistics on profiles based on the results history 📈</li>
   <li>The best measurements for WPM 🖥️</li>
   <li>Ranking System 🏆</li>
@@ -23,9 +24,8 @@
  
  <h4>Currently working on:</h4>
  <ul>
-  <li>Public texts made by users (Play Zone) ⌨️ </li>
-  <li>Admin roles and panel</li>
   <li>Improving code structure</li>
+  <li>Fixing bugs and adding new features</li>
  </ul>
 
 <h2>What we used?</h2>
