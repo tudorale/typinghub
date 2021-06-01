@@ -2373,6 +2373,11 @@
   top: 6px;
 }
 
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent .messageWrapper a .username .adminImage {
+  top: 7px !important;
+  margin-top: -10px;
+}
+
 .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent .messageWrapper a .username span {
   font-size: 1rem;
   color: #92a9d6;
@@ -2628,6 +2633,7 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  position: relative;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: lbuser;
@@ -2644,6 +2650,14 @@
   height: 23px;
   border-radius: 3px;
   top: 5px;
+  margin-top: -10px;
+}
+
+.extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .userWrapper .lbUser .lbAdmin {
+  margin-top: -30px !important;
+  top: 7px !important;
+  width: 31px !important;
+  height: 31px !important;
 }
 
 .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .userWrapper .lbPoints {
@@ -3422,15 +3436,6 @@
   position: relative;
 }
 
-.profileWrapper .grid .first-section .userInfo h1 img {
-  width: 53px;
-  height: 25px;
-  border-radius: 3px;
-  margin-right: 15px;
-  position: relative;
-  top: 7px;
-}
-
 .profileWrapper .grid .first-section .userInfo .descriptionProfile {
   margin-top: 10px;
   font-size: 1.05rem;
@@ -3858,13 +3863,14 @@
   position: relative;
 }
 
-.userPageWrapper .userPageContent .userPageGrid .userSectionOne .userPageInfo h1 img {
-  width: 53px;
-  height: 25px;
+.userPageWrapper .userPageContent .userPageGrid .userSectionOne .userPageInfo h1 .proIcon {
+  top: 2px !important;
+  margin-right: 0px !important;
+}
+
+.userPageWrapper .userPageContent .userPageGrid .userSectionOne .userPageInfo h1 .adminIcon {
   margin-left: 15px;
-  border-radius: 3px;
-  position: relative;
-  top: 2px;
+  top: 5px;
 }
 
 .userPageWrapper .userPageContent .userPageGrid .userSectionOne .userPageInfo .userPageDescription {
@@ -3908,6 +3914,16 @@
 .userPageWrapper .userPageContent .userPageGrid .userSectionTwo {
   color: white;
   margin-top: 25px;
+}
+
+.userPageWrapper .userPageContent .userPageGrid .userSectionTwo .adminInfo {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.userPageWrapper .userPageContent .userPageGrid .userSectionTwo .adminInfo .adminIcon {
+  margin-left: 0px !important;
+  top: 7px !important;
 }
 
 .userPageWrapper .userPageContent .userPageGrid .userSectionTwo h1 {
@@ -4944,6 +4960,23 @@
   background-color: #5c17c4;
   border-radius: 10px;
   height: 6px;
+}
+
+.profileWrapper .grid .first-section .userInfo h1 .proIcon, .userPageWrapper .userPageContent .userPageGrid .userSectionOne .userPageInfo h1 .proIcon {
+  width: 53px;
+  height: 25px;
+  border-radius: 3px;
+  margin-right: 15px;
+  position: relative;
+  top: 7px;
+}
+
+.extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatContent .messageWrapper a .username .adminImage, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .userWrapper .lbUser .lbAdmin, .profileWrapper .grid .first-section .userInfo h1 .adminIcon, .userPageWrapper .userPageContent .userPageGrid .userSectionOne .userPageInfo h1 .adminIcon, .userPageWrapper .userPageContent .userPageGrid .userSectionTwo .adminInfo .adminIcon {
+  width: 30px;
+  margin-right: 15px;
+  height: 30px;
+  position: relative;
+  top: 3px;
 }
 
 .slowNetworkSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowOne .section-four .globalChat .chatSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-five .top10 .lbSpinner, .extraWrapper .playWrapper .playContent .globalGrid .rowTwo .section-six .playZone .textsWrapper .playZoneSpinner, .loadingSpinnerProfile, .accountSettingsWrapper .subWrapper .descriptionSpinner, .accountSettingsWrapper .subWrapper .settingsContent .newUsername form .loadingSpinner,

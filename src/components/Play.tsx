@@ -10,7 +10,7 @@ import HTML from "./subComponents/Html";
 import UserContext from "./services/UserContext";
 import PlayZoneContext from "./services/PlayZoneContext";
 import {chatMessage} from "./subComponents/Interfaces";
-
+import Admin from "../images/admin.svg";
 function Play() {
   // states
   const [chat, setChat] = useState<any>();
@@ -121,6 +121,7 @@ function Play() {
           time: `${h}:${min}:${s} ${d}/${m}/${y}`,
           id: user?.uid,
           typingHubID: userData?.typingHubID,
+          role: userData.role
         };
 
         db.collection("chat")
@@ -364,6 +365,15 @@ function Play() {
                                         <Link to={`/user/${x.author}`}>
                                           <p className="username">
                                             {x.author}{" "}
+                                            {
+                                              x.role === "admin" ? 
+                                              <img
+                                              src={Admin}
+                                              className="adminImage"
+                                              alt=""
+                                              />
+                                              : ""
+                                            }
                                             <img
                                               src={Pro}
                                               className="proImage"
@@ -450,6 +460,9 @@ function Play() {
                               <Link to={`/user/${d.username}`}>
                                 <p className="lbUser">
                                   <span>{d.username}</span>{" "}
+                                  {
+                                    d.role === "admin" ? <img src={Admin} className="lbAdmin" alt=""/> : ""
+                                  }
                                   {d.pro ? (
                                     <img src={Pro} alt="" className="lbPro" />
                                   ) : null}{" "}
