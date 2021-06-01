@@ -98,7 +98,7 @@ const User = (props: any) => {
         title={`${config.name} | ${haveAUser && username ? username : "User"} page`}
       />
 
-      {user ? (
+      {userData && user ? (
         <div className="userPageWrapper">
           <Nav path="/play" name="Main" />
           <div className="userPageContent">

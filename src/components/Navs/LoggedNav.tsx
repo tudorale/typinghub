@@ -10,7 +10,7 @@ function LoggedNav(props: any) {
   const [notifications, setNotifications] = useState<any>("");
 
   const userStatus = useContext(UserContext);
-  const { user, setUser} = userStatus;
+  const { user, setUser, setUserData} = userStatus;
 
   // ui stuff & checking if the user is logged in
   useEffect(() => {
@@ -86,6 +86,8 @@ function LoggedNav(props: any) {
 
   const handleSignOut = () => {
     Firebase.auth().signOut();
+    setUserData(null);
+    setUser(null)
     history.push("/sign-in");
   };
 

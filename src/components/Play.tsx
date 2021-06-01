@@ -206,7 +206,7 @@ function Play() {
     <>
       <HTML title={`${config.name} | Main page`}/>
 
-      {user ? (
+      {userData && user ? (
         <div className="extraWrapper">
           <Nav path="/account-settings" name="Account Settings" />
           <div className="playWrapper">

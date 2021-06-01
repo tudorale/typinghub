@@ -80,7 +80,7 @@ function Profile() {
     <>
       <HTML title={`${config.name} | Your profile`}/>
 
-      {userData ? (
+      {userData && user ? (
         <div className="profileWrapper">
           <Nav path="/play" name="Main" />
 
