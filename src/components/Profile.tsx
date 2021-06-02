@@ -118,6 +118,7 @@ function Profile() {
               <p>
                 Points: <span>{userData.points}</span>
               </p>
+              <p>Your TypingHub Role: <span>{userData.role === "admin" ? "Admin" : "User"}</span></p>
               <p>
                 Keyboard Layout: <span>{userData.keyboardLayout}</span>
               </p>
