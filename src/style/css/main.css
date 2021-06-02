@@ -3542,10 +3542,6 @@
   }
 }
 
-.accountSettingsWrapper {
-  display: none;
-}
-
 .accountSettingsWrapper .subWrapper {
   position: relative;
   top: 10px;

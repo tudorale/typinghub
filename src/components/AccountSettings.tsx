@@ -33,15 +33,12 @@ function AccountSettings() {
     Firebase.auth().onAuthStateChanged((usr) => {
       if (usr) {
         setUser(usr);
-        let content = document.querySelector(
-          ".accountSettingsWrapper"
-        ) as HTMLDivElement;
+
         let spinner = document.querySelector(
           ".networkSpinner"
         ) as HTMLDivElement;
         spinner.style.display = "none";
-        content.style.display = "block";
-
+        
         db.collection("users")
           .doc(usr.uid)
           .get()
@@ -53,9 +50,11 @@ function AccountSettings() {
         let contentNot = document.querySelector(
           ".notLoggedIn"
         ) as HTMLDivElement;
+
         let spinner = document.querySelector(
           ".networkSpinner"
         ) as HTMLDivElement;
+        
         spinner.style.display = "none";
         contentNot.style.display = "block";
       }
@@ -399,27 +398,30 @@ function AccountSettings() {
 
       <div className="networkSpinner"></div>
 
-      <div className="accountSettingsWrapper">
+      {
+        userData && user ?
+          <div className="accountSettingsWrapper">
         <Nav path="/play" name="Main" />
         <div className="subWrapper">
           <h1>Your account</h1>
           <p>
-            Username: <span>{user ? user.displayName : "Loading..."}</span>
+            Username: <span>{user.displayName}</span>
           </p>
+          <p>TypingHub Role: <span>{userData.role === "admin" ? "Admin" : "User"}</span></p>
           <p>
             Keyboard layout:{" "}
-            <span>{userData ? userData.keyboardLayout : "Loading..."}</span>
+            <span>{userData.keyboardLayout}</span>
           </p>
           <p>
-            Email: <span>{user ? user.email : "Loading..."}</span>
+            Email: <span>{user.email}</span>
           </p>
           <p>
             Created on:{" "}
-            <span>{user ? user.metadata.creationTime : "Loading..."}</span>
+            <span>{user.metadata.creationTime}</span>
           </p>
           <p>
             Last login:{" "}
-            <span>{user ? user.metadata.lastSignInTime : "Loading..."}</span>
+            <span>{user.metadata.lastSignInTime}</span>
           </p>
 
           <div className="profilePicture">
@@ -498,13 +500,12 @@ function AccountSettings() {
               <form onSubmit={handleUsername}>
                 <p>
                   Change username{" "}
-                  {userData
-                    ? !userData.pro
+                  { !userData.pro
                       ? userData.changedUsername
                         ? "(Used)"
-                        : "(1 time)"
-                      : "(Unlimited)"
-                    : ""}
+                      : "(1 time)"
+                    : "(Unlimited)"
+                  }
                 </p>
                 <label htmlFor="username" className="newUserL">
                   New username
@@ -613,8 +614,9 @@ function AccountSettings() {
           </div>
         </div>
       </div>
-
-      <NotLogged />
+        :
+          <NotLogged />
+      }
     </>
   );
 }

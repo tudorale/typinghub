@@ -131,6 +131,7 @@ const User = (props: any) => {
                   <p>
                     Points: <span>{`${userData.points}`}</span>
                   </p>
+                  <p>TypingHub Role: <span>{userData.role === "admin" ? "Admin" : "User"}</span></p>
                   <p>
                     Keyboard Layout: <span>{userData.keyboardLayout}</span>
                   </p>
