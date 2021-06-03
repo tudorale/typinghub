@@ -79,6 +79,7 @@ function SignIn() {
         setError(error.message);
       });
   };
+  
   const config = require("../../config.json")
   return (
     <div className="signin">
