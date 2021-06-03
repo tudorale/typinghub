@@ -67,11 +67,13 @@ function Navigation() {
       </div>
 
       <div className="mobileNavInfo">
+        
         <h1 className="logoNavMobileInfo">
           <HashLink to="/">
             TypingHu<span></span>
           </HashLink>
         </h1>
+
         <ul>
           <Link to="/">
             <li>Landing page</li>
@@ -82,7 +84,7 @@ function Navigation() {
           <Link to="/sign-in">
             <li>Sign In</li>
           </Link>
-          <Link to="/sign-in">
+          <Link to="/sign-up">
             <li>Create Account</li>
           </Link>
         </ul>
