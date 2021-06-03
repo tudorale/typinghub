@@ -224,7 +224,7 @@ function Play() {
                       <span className="yourPoints">
                         {" "}
                         Your points:{" "}
-                        {!userData ? "Loading..." : userData.points}
+                        {userData.points}
                       </span>
                     </h1>
 
@@ -232,7 +232,7 @@ function Play() {
                       <Card
                         title="RANDOM"
                         tests={
-                          userData ? `${userData.randomTests} Tests` : "Loading"
+                          `${userData.randomTests} Tests`
                         }
                         type="random"
                         button="Start typing"
@@ -256,7 +256,7 @@ function Play() {
                       <Card
                         title="QUOTES"
                         tests={
-                          userData ? `${userData.quotesTests} Tests` : "Loading"
+                        `${userData.quotesTests} Tests`
                         }
                         type="quotes"
                         button="Start typing"
@@ -280,7 +280,7 @@ function Play() {
                       <Card
                         title="CUSTOM TEXT"
                         tests={
-                          userData ? `${userData.customTests} Tests` : "Loading"
+                          `${userData.customTests} Tests`
                         }
                         type="custom"
                         button="Start typing"
