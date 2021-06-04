@@ -54,7 +54,7 @@ function Navigation() {
           <Link to="/sign-in">
             <li>Sign In</li>
           </Link>
-          <Link to="/sign-in">
+          <Link to="/sign-up">
             <li>Create Account</li>
           </Link>
         </ul>
