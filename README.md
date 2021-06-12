@@ -22,12 +22,7 @@
   <li>Battles between users ⚔️</li>
  </ul>
  
- <h4>Currently working on:</h4>
- <ul>
-  <li>Improving code structure</li>
-  <li>Fixing bugs and adding new features</li>
- </ul>
-
+ 
 <h2>What we used?</h2>
  
 Systems | Technology |
@@ -71,4 +66,5 @@ The application code is visible on this repository, and will be updated when new
 <h2>Notes</h2>
 <ul>
  <li>Contact directly the creator at tudorbussines77@gmail.com or on the official <a href="https://tudorale.github.io/portfolio/">website</a></li>
+ <li>This project is in stand-by for personal reasons</li>
 </ul>
